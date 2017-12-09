@@ -14,3 +14,114 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+ion-app{
+
+ .scroll-content{
+    background: url("../assets/imgs/bg.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+ }
+
+ a {
+ 	text-decoration: underline;
+ }
+
+ .grind-item-input input {
+ 	color: $text-white-dim;
+ }
+
+	.grind-item-input input::-webkit-input-placeholder { color: $text-white-dim; }
+	.grind-item-input input:-moz-placeholder { color: $text-white-dim; }
+	.grind-item-input input::-moz-placeholder { color: $text-white-dim; }
+	.grind-item-input input:-ms-input-placeholder { color: $text-white-dim; }
+
+
+ ion-item.grind-item-input {
+    border-radius: 64px;
+    padding-left: 25px;
+    background-color: rgba(30, 30, 30, 0.3);
+    box-shadow: none;
+ }
+
+ ion-item.grind-clear-item {
+ 	padding-left: 5px;
+    background-color: transparent;
+    box-shadow: none;
+ }
+
+	.grind-clear-item .item-inner .input-wrapper ion-label{
+ 		font-size: 1.3rem;
+	}
+
+ 	.grind-item-input.item-ios.item-block .item-inner, .grind-item-input.item-md.item-block .item-inner, .grind-clear-item.item-ios.item-block .item-inner, .grind-clear-item.item-md.item-block .item-inner {
+ 		border-bottom: 0px;
+ 	}
+
+ .item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.item-input-has-focus .item-inner {
+ 	border-bottom: 0px;
+ 	box-shadow: none;
+ }
+
+
+ .grind-clear-item.item.item-ios .checkbox-ios, .grind-clear-item.item.item-md .checkbox-md{
+	margin-right: 5px;
+ }
+
+ 	.grind-checkbox.checkbox-md .checkbox-checked .checkbox-inner {
+ 		top: 1px;
+ 	}
+
+ 	.grind-checkbox button .button-effect {
+  		display: none;
+ 	}
+
+
+ .grind-item-input.item-ios.item-select, .item-select .label-md {
+    color: $text-white-dim;
+ }
+
+ 
+ .alert-ios .alert-head h2, .alert-md .alert-head h2,  {
+    color: color($colors, primary);
+ }
+
+    .alert-ios .alert-message, .alert-md .alert-message, .alert-ios .alert-radio-group, .alert-ios .alert-checkbox-group, .alert-md .alert-radio-group, .alert-ios .alert-checkbox-group {
+        overflow: auto;
+    }
+
+    .confirm-alert {
+        .alert-button:nth-child(1) { color: $grind-gray !important; }
+        .alert-button:nth-child(2) { color: color($colors, primary) !important; }
+    }
+
+
+ .button-md {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+ }
+
+ 	.grind-btn-icon-right .button-inner {
+ 		-webkit-justify-content: space-between;
+ 		-moz-justify-content: space-between;
+ 		justify-content: space-between;
+ 	}
+
+ .mb-20 { margin-bottom: 20px !important; }
+ .ml-10 { margin-bottom: 10px !important; }
+ .mt-10 { margin-bottom: 10px !important; }
+ .mr-10 { margin-bottom: 10px !important; }
+
+ .text-grind-gray { color: $grind-gray !important; }
+ .text-grind-dark-gray { color: $grind-dark-gray !important; }
+
+ .invisible { visibility: hidden; }
+
+ .text-mutated {
+ 	opacity: 0.8;
+ 	font-size: 1.1rem;
+ }
+
+}

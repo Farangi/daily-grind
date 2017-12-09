@@ -1,0 +1,69 @@
+<ion-content padding text-center>
+
+	<img margin-bottom src="../assets/imgs/logo-md.png" alt="Logo" />
+
+	<form (ngSubmit)="submitForm()">
+
+		<ion-row>
+			<ion-col col-12>
+				<ion-item margin-bottom class="grind-item-input">
+			    	<ion-input type="text" placeholder="Username" [(ngModel)]="item.userName" name="username"></ion-input>
+			  	</ion-item>
+		  	</ion-col>
+	    </ion-row>
+
+	    <ion-row>
+		    <ion-col col-12>
+			  	<ion-item margin-bottom class="grind-item-input">
+			    	<ion-input type="password" placeholder="Password" [(ngModel)]="item.password" name="password"></ion-input>
+			  	</ion-item>
+		  	</ion-col>
+	  	</ion-row>
+
+	  	<ion-row margin-bottom>
+	  		<ion-col col-6>
+				<ion-item class="grind-clear-item">
+		    		<ion-label ion-text color="dark">Remember me</ion-label>
+		    		<ion-checkbox [(ngModel)]="item.rememberMe" name="rememberme" class="grind-checkbox"></ion-checkbox>
+				</ion-item>
+			</ion-col>
+			<ion-col col-6>
+				<ion-item class="grind-clear-item" text-right>
+					<a ion-text color="dark">Forgot Password?</a>
+				</ion-item>
+			</ion-col>
+	  	</ion-row>
+
+		<ion-row>
+			<ion-col col-12>
+			  	<button ion-button block round margin-bottom color="primary" type="submit" class="grind-btn-icon-right">
+			  		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>
+			  		Sign In
+			  		<ion-icon name="arrow-round-forward"></ion-icon>
+			  	</button>
+			</ion-col>
+		</ion-row>
+
+	</form>
+
+	<div text-center margin-bottom>
+		<h5 ion-text color="primary">OR</h5>
+	</div>
+
+	<ion-row>
+		<ion-col col-12>
+			<button ion-button block round outline margin-bottom color="primary" type="button" (click)="showSignup()" class="grind-btn-icon-right">
+				<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>
+				Sign Up
+				<ion-icon name="arrow-round-forward"></ion-icon>
+			</button>
+		</ion-col>
+    </ion-row>
+
+	<div text-center>
+		<p class="text-grind-dark-gray text-mutated">By signing up, I agree to the 
+			<a class="text-grind-dark-gray">Terms of Use</a>
+		</p>
+	</div>
+
+</ion-content>
