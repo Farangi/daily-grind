@@ -18,11 +18,16 @@ export class LoginPage {
   }
 
   submitForm() {
-    console.log(this.item)
+    console.log(this.item);
+    this.navCtrl.setRoot("SidemenuPage");
   }
 
   showSignup() {
     this.navCtrl.push("SignupPage");
+  }
+
+  showForgotPassword() {
+    this.navCtrl.push("ForgotpasswordPage");
   }
 
 }

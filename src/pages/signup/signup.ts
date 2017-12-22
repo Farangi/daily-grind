@@ -88,7 +88,7 @@ export class SignupPage {
   private copyFileToLocalDir(namePath, currentName, newFileName) {console.log('abc'+cordova.file.dataDirectory);
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
       this.lastImage = newFileName;
-    }, error => {console.log('azz');
+    }, error => {console.log(error);
       this.presentToast('Error while storing file.');
     });
   }
@@ -151,7 +151,7 @@ export class SignupPage {
   }
 
   submitForm() {
-    console.log(this.item)
+    console.log(this.item);
   }
 
   showLogin() {

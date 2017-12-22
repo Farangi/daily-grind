@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 270:
+/***/ 281:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmartcardPageModule", function() { return SmartcardPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__smartcard__ = __webpack_require__(297);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = (function () {
-    function LoginPageModule() {
+var SmartcardPageModule = (function () {
+    function SmartcardPageModule() {
     }
-    LoginPageModule = __decorate([
+    SmartcardPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__smartcard__["a" /* SmartcardPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__smartcard__["a" /* SmartcardPage */]),
             ],
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], SmartcardPageModule);
+    return SmartcardPageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=smartcard.module.js.map
 
 /***/ }),
 
-/***/ 272:
+/***/ 297:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmartcardPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(98);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -56,31 +56,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var LoginPage = (function () {
-    function LoginPage(navCtrl, navParams) {
+var SmartcardPage = (function () {
+    function SmartcardPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.item = {};
     }
-    LoginPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad LoginPage');
-    };
-    LoginPage.prototype.submitForm = function () {
-        console.log(this.item);
-    };
-    LoginPage.prototype.showSignup = function () {
-        this.navCtrl.push("SignupPage");
-    };
-    LoginPage = __decorate([
+    SmartcardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\login\login.html"*/'<ion-content padding text-center>\n\n	<img margin-bottom src="../assets/imgs/logo-md.png" alt="Logo" />\n\n	<form (ngSubmit)="submitForm()">\n\n		<ion-row>\n			<ion-col col-12>\n				<ion-item margin-bottom class="grind-item-input">\n			    	<ion-input type="text" placeholder="Username" [(ngModel)]="item.userName" name="username"></ion-input>\n			  	</ion-item>\n		  	</ion-col>\n	    </ion-row>\n\n	    <ion-row>\n		    <ion-col col-12>\n			  	<ion-item margin-bottom class="grind-item-input">\n			    	<ion-input type="password" placeholder="Password" [(ngModel)]="item.password" name="password"></ion-input>\n			  	</ion-item>\n		  	</ion-col>\n	  	</ion-row>\n\n	  	<ion-row margin-bottom>\n	  		<ion-col col-6>\n				<ion-item class="grind-clear-item">\n		    		<ion-label ion-text color="dark">Remember me</ion-label>\n		    		<ion-checkbox [(ngModel)]="item.rememberMe" name="rememberme" class="grind-checkbox"></ion-checkbox>\n				</ion-item>\n			</ion-col>\n			<ion-col col-6>\n				<ion-item class="grind-clear-item" text-right>\n					<a ion-text color="dark">Forgot Password?</a>\n				</ion-item>\n			</ion-col>\n	  	</ion-row>\n\n		<ion-row>\n			<ion-col col-12>\n			  	<button ion-button block round margin-bottom color="primary" type="submit" class="grind-btn-icon-right">\n			  		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n			  		Sign In\n			  		<ion-icon name="arrow-round-forward"></ion-icon>\n			  	</button>\n			</ion-col>\n		</ion-row>\n\n	</form>\n\n	<div text-center margin-bottom>\n		<h5 ion-text color="primary">OR</h5>\n	</div>\n\n	<ion-row>\n		<ion-col col-12>\n			<button ion-button block round outline margin-bottom color="primary" type="button" (click)="showSignup()" class="grind-btn-icon-right">\n				<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n				Sign Up\n				<ion-icon name="arrow-round-forward"></ion-icon>\n			</button>\n		</ion-col>\n    </ion-row>\n\n	<div text-center>\n		<p class="text-grind-dark-gray text-mutated">By signing up, I agree to the \n			<a class="text-grind-dark-gray">Terms of Use</a>\n		</p>\n	</div>\n\n</ion-content>\n'/*ion-inline-end:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\login\login.html"*/,
+            selector: 'page-smartcard',template:/*ion-inline-start:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\smartcard\smartcard.html"*/'<ion-header>\n\n  	<ion-navbar>\n    	<ion-buttons start>\n          <button ion-button menuToggle>\n        		<ion-icon name="menu"></ion-icon>\n      		</button>\n      	</ion-buttons>\n    	<ion-title>smartcard</ion-title>\n  	</ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\nThis is smart card tab.\n</ion-content>\n'/*ion-inline-end:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\smartcard\smartcard.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
-    ], LoginPage);
-    return LoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], SmartcardPage);
+    return SmartcardPage;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=smartcard.js.map
 
 /***/ })
 

@@ -25678,8 +25678,7 @@ ion-navbar.toolbar {
 }
 
 ion-app .scroll-content {
-  background: url("../assets/imgs/bg.png") no-repeat center center fixed;
-  background-size: cover;
+  overflow-y: hidden;
 }
 
 ion-app a {
@@ -25751,6 +25750,11 @@ ion-app .grind-item-input.item-ios.item-select, ion-app .item-select .label-md {
   color: rgba(255, 255, 255, 0.9);
 }
 
+ion-app .item-ios ion-avatar.grind-avatar, ion-app .item-ios ion-avatar.grind-avatar img, ion-app .item-md ion-avatar.grind-avatar, ion-app .item-md ion-avatar.grind-avatar img {
+  min-width: 72px;
+  min-height: 72px;
+}
+
 ion-app .alert-ios .alert-head h2, ion-app .alert-md .alert-head h2 {
   color: #f02222;
 }
@@ -25813,12 +25817,26 @@ ion-app .text-mutated {
   font-size: 1.1rem;
 }
 
+ion-app .bold {
+  font-weight: bold !important;
+}
+
+page-forgotpassword .scroll-content {
+  background: url("../assets/imgs/bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
 page-login [col-6] {
   padding: 0px;
 }
 
 page-login .col {
   padding: 0px;
+}
+
+page-login .scroll-content {
+  background: url("../assets/imgs/bg.png") no-repeat center center fixed;
+  background-size: cover;
 }
 
 page-signup .col {
@@ -25829,4 +25847,9 @@ page-signup .col {
 page-signup [col-6] {
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+page-signup .scroll-content {
+  background: url("../assets/imgs/bg.png") no-repeat center center fixed;
+  background-size: cover;
 }

@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+  	<ion-buttons start>
+        <button ion-button menuToggle>
+      		<ion-icon name="menu"></ion-icon>
+    	</button>
+    </ion-buttons>
+    <ion-title>menu</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-tabs tabsPlacement="top">
+	  <ion-tab [root]="wantedRoot" tabTitle="Wanted Deals"></ion-tab>
+	  <ion-tab [root]="allRoot" tabTitle="All"></ion-tab>
+	  <ion-tab [root]="snacksRoot" tabTitle="Snacks"></ion-tab>
+	</ion-tabs>
+</ion-content>

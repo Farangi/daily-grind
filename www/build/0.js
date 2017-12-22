@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 271:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupPageModule", function() { return SignupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(292);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,17 +38,17 @@ var SignupPageModule = (function () {
 
 /***/ }),
 
-/***/ 273:
+/***/ 292:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_file__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_transfer__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_file_path__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_file__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_transfer__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_file_path__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__ = __webpack_require__(296);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -146,7 +146,7 @@ var SignupPage = (function () {
         this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(function (success) {
             _this.lastImage = newFileName;
         }, function (error) {
-            console.log('azz');
+            console.log(error);
             _this.presentToast('Error while storing file.');
         });
     };
@@ -210,7 +210,7 @@ var SignupPage = (function () {
             selector: 'page-signup',template:/*ion-inline-start:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\signup\signup.html"*/'\n<ion-content padding text-center>\n	<h5 margin-bottom ion-text color="primary">CREATE YOUR PROFILE</h5>\n\n	<form (ngSubmit)="submitForm()">\n\n		<ion-buttons>\n	      <button ion-button icon-left (click)="presentActionSheet()">\n	        <ion-icon name="camera"></ion-icon>Select Image\n	      </button>\n	      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">\n	        <ion-icon name="cloud-upload"></ion-icon>Upload\n	      </button>\n	    </ion-buttons>\n\n		<ion-row margin-bottom>\n	  		<ion-col col-6>\n				<ion-item class="grind-item-input">\n			    	<ion-input type="text" placeholder="Firstname" [(ngModel)]="item.firstName" name="firstname"></ion-input>\n			  	</ion-item>\n			</ion-col>\n			<ion-col col-6>\n				<ion-item class="grind-item-input">\n			    	<ion-input type="text" placeholder="Lastname" [(ngModel)]="item.lastName" name="lastname"></ion-input>\n			  	</ion-item>\n			</ion-col>\n	  	</ion-row>\n\n	  	<ion-row margin-bottom>\n			<ion-col col-12>\n				<ion-item class="grind-item-input">\n			    	<ion-input type="text" placeholder="Email" [(ngModel)]="item.email" name="email"></ion-input>\n			  	</ion-item>\n		  	</ion-col>\n	    </ion-row>\n\n		<ion-row margin-bottom>\n			<ion-col col-12>\n				<ion-item  class="grind-item-input">\n			    	<ion-input type="text" placeholder="Username" [(ngModel)]="item.userName" name="username"></ion-input>\n			  	</ion-item>\n		  	</ion-col>\n	    </ion-row>\n\n	    <ion-row margin-bottom>\n		    <ion-col col-12>\n			  	<ion-item class="grind-item-input">\n			    	<ion-input type="password" placeholder="Password" [(ngModel)]="item.password" name="password"></ion-input>\n			  	</ion-item>\n		  	</ion-col>\n	  	</ion-row>\n\n	  	<ion-row margin-bottom>\n		    <ion-col col-12>\n			  	<ion-item class="grind-item-input">\n			    	<ion-input type="password" placeholder="Confirm Password" [(ngModel)]="item.confirmPassword" name="confirmpassword"></ion-input>\n			  	</ion-item>\n		  	</ion-col>\n	  	</ion-row>\n\n	  	<ion-row margin-bottom>\n		    <ion-col col-12>\n			  	<ion-item class="grind-item-input">\n			    	<ion-input type="phone" placeholder="Cell Phone" [(ngModel)]="item.phone" name="phone"></ion-input>\n			  	</ion-item>\n		  	</ion-col>\n	  	</ion-row>\n\n	  	<ion-row margin-bottom>\n		    <ion-col col-12>\n			  	<ion-item class="grind-item-input">\n				  <ion-label>Select University</ion-label>\n				  <ion-select [(ngModel)]="item.university" name="university" [selectOptions]="{ cssClass: \'confirm-alert\' }">\n				    <ion-option value="BAHRIA">Bahria University</ion-option>\n				  </ion-select>\n				</ion-item>\n			</ion-col>\n	  	</ion-row>\n\n	  	<ion-row margin-bottom>\n		    <ion-col col-12>\n			  	<ion-item class="grind-item-input">\n			    	<ion-input type="text" placeholder="Enrollment Number" [(ngModel)]="item.enrolllmentNumber" name="enrolllmentnumber"></ion-input>\n			  	</ion-item>\n		  	</ion-col>\n	  	</ion-row>\n\n	  	<ion-row margin-bottom>\n		    <ion-col col-12>\n			  	<ion-item class="grind-item-input">\n				  <ion-label class="text-white-dim">Discipline</ion-label>\n				  <ion-select [(ngModel)]="item.discipline" name="discipline" [selectOptions]="{ cssClass: \'confirm-alert\' }">\n				    <ion-option value="CS">CS</ion-option>\n				    <ion-option value="BBA">BBA</ion-option>\n				    <ion-option value="MBA">MBA</ion-option>\n				  </ion-select>\n				</ion-item>\n			</ion-col>\n	  	</ion-row>\n\n	  	<ion-row margin-bottom>\n	  		<ion-col col-12>\n				<ion-item class="grind-clear-item">\n		    		<ion-label ion-text color="dark">Request for smart card</ion-label>\n		    		<ion-checkbox [(ngModel)]="item.rememberMe" name="rememberme" class="grind-checkbox"></ion-checkbox>\n				</ion-item>\n			</ion-col>\n	  	</ion-row>\n\n		<ion-row margin-bottom>\n			<ion-col col-12>\n			  	<button ion-button block round color="primary" type="submit">\n			  		Register\n			  	</button>\n			</ion-col>\n		</ion-row>\n\n		<a ion-text color="dark" (click)="showLogin()">Cancel</a>\n\n	</form>\n\n</ion-content>\n'/*ion-inline-end:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\signup\signup.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__ionic_native_file__["a" /* File */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_transfer__["a" /* Transfer */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_file_path__["a" /* FilePath */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_transfer__["a" /* Transfer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_transfer__["a" /* Transfer */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_file__["a" /* File */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_file__["a" /* File */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_file_path__["a" /* FilePath */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_file_path__["a" /* FilePath */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _k || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_transfer__["a" /* Transfer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_transfer__["a" /* Transfer */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_file__["a" /* File */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_file__["a" /* File */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_file_path__["a" /* FilePath */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_file_path__["a" /* FilePath */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _k || Object])
     ], SignupPage);
     return SignupPage;
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
@@ -220,7 +220,7 @@ var SignupPage = (function () {
 
 /***/ }),
 
-/***/ 274:
+/***/ 293:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1172,7 +1172,7 @@ var File = (function (_super) {
 
 /***/ }),
 
-/***/ 275:
+/***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1403,7 +1403,7 @@ TransferObject = __decorate([
 
 /***/ }),
 
-/***/ 276:
+/***/ 295:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1489,7 +1489,7 @@ var FilePath = (function (_super) {
 
 /***/ }),
 
-/***/ 277:
+/***/ 296:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
