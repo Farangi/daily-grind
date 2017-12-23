@@ -1,4 +1,4 @@
-webpackJsonp([2],{
+webpackJsonp([12],{
 
 /***/ 110:
 /***/ (function(module, exports) {
@@ -21,13 +21,53 @@ webpackEmptyAsyncContext.id = 110;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"../pages/login/login.module": [
+	"../pages/forgotpassword/forgotpassword.module": [
 		270,
-		1
+		11
+	],
+	"../pages/home/home.module": [
+		271,
+		10
+	],
+	"../pages/login/login.module": [
+		272,
+		9
+	],
+	"../pages/menu/menu.module": [
+		273,
+		8
+	],
+	"../pages/menuall/menuall.module": [
+		274,
+		7
+	],
+	"../pages/menusnacks/menusnacks.module": [
+		275,
+		6
+	],
+	"../pages/menuwanted/menuwanted.module": [
+		276,
+		5
+	],
+	"../pages/orderhistory/orderhistory.module": [
+		277,
+		4
+	],
+	"../pages/profile/profile.module": [
+		278,
+		3
+	],
+	"../pages/sidemenu/sidemenu.module": [
+		279,
+		2
 	],
 	"../pages/signup/signup.module": [
-		271,
+		280,
 		0
+	],
+	"../pages/smartcard/smartcard.module": [
+		281,
+		1
 	]
 };
 function webpackAsyncContext(req) {
@@ -95,8 +135,18 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                     links: [
+                        { loadChildren: '../pages/forgotpassword/forgotpassword.module#ForgotpasswordPageModule', name: 'ForgotpasswordPage', segment: 'forgotpassword', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/menuall/menuall.module#MenuallPageModule', name: 'MenuallPage', segment: 'menuall', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/menusnacks/menusnacks.module#MenusnacksPageModule', name: 'MenusnacksPage', segment: 'menusnacks', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/menuwanted/menuwanted.module#MenuwantedPageModule', name: 'MenuwantedPage', segment: 'menuwanted', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/orderhistory/orderhistory.module#OrderhistoryPageModule', name: 'OrderhistoryPage', segment: 'orderhistory', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/sidemenu/sidemenu.module#SidemenuPageModule', name: 'SidemenuPage', segment: 'sidemenu', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/smartcard/smartcard.module#SmartcardPageModule', name: 'SmartcardPage', segment: 'smartcard', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
@@ -153,7 +203,7 @@ var MyApp = (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\FreeLancing\DailyGrind\DailyGrind\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"E:\FreeLancing\DailyGrind\DailyGrind\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
