@@ -1,3 +1,4 @@
+import { AuthenticationService } from "../../_services";
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 
@@ -27,7 +28,10 @@ export class SidemenuPage {
     { title: 'Order History', pageName: 'HomePage', tabComponent: 'LoginPage', index: 3, icon: 'return-left' }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+      public navCtrl: NavController, 
+      public navParams: NavParams,
+      private authenticationService: AuthenticationService) {
   }
 
   openPage(page: PageInterface) {
@@ -61,7 +65,8 @@ export class SidemenuPage {
   }
 
   logOut() {
-    console.log('logout');
+    this.authenticationService.logout();
+    this.navCtrl.setRoot("LoginPage");
   }
 
   exit() {

@@ -8,13 +8,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ForgotpasswordPage {
 
-  item = {};
+  user:any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   submitForm() {
-    console.log(this.item);
+    console.log(this.user);
   }
 
   showLogin() {

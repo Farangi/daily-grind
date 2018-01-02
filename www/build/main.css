@@ -25677,10 +25677,6 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-ion-app .scroll-content {
-  overflow-y: hidden;
-}
-
 ion-app a {
   text-decoration: underline;
 }

@@ -5,10 +5,10 @@
 	<form (ngSubmit)="submitForm()">
 
 		<ion-buttons>
-	      <button ion-button icon-left (click)="presentActionSheet()">
+	      <button ion-button icon-left (click)="presentActionSheet()" type="button">
 	        <ion-icon name="camera"></ion-icon>Select Image
 	      </button>
-	      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+	      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null" type="button">
 	        <ion-icon name="cloud-upload"></ion-icon>Upload
 	      </button>
 	    </ion-buttons>
@@ -16,12 +16,12 @@
 		<ion-row margin-bottom>
 	  		<ion-col col-6>
 				<ion-item class="grind-item-input">
-			    	<ion-input type="text" placeholder="Firstname" [(ngModel)]="item.firstName" name="firstname"></ion-input>
+			    	<ion-input type="text" placeholder="Firstname" [(ngModel)]="user.firstName" name="firstname"></ion-input>
 			  	</ion-item>
 			</ion-col>
 			<ion-col col-6>
 				<ion-item class="grind-item-input">
-			    	<ion-input type="text" placeholder="Lastname" [(ngModel)]="item.lastName" name="lastname"></ion-input>
+			    	<ion-input type="text" placeholder="Lastname" [(ngModel)]="user.lastName" name="lastname"></ion-input>
 			  	</ion-item>
 			</ion-col>
 	  	</ion-row>
@@ -29,7 +29,7 @@
 	  	<ion-row margin-bottom>
 			<ion-col col-12>
 				<ion-item class="grind-item-input">
-			    	<ion-input type="text" placeholder="Email" [(ngModel)]="item.email" name="email"></ion-input>
+			    	<ion-input type="text" placeholder="Email" [(ngModel)]="user.email" name="email"></ion-input>
 			  	</ion-item>
 		  	</ion-col>
 	    </ion-row>
@@ -37,7 +37,7 @@
 		<ion-row margin-bottom>
 			<ion-col col-12>
 				<ion-item  class="grind-item-input">
-			    	<ion-input type="text" placeholder="Username" [(ngModel)]="item.userName" name="username"></ion-input>
+			    	<ion-input type="text" placeholder="Username" [(ngModel)]="user.username" name="username"></ion-input>
 			  	</ion-item>
 		  	</ion-col>
 	    </ion-row>
@@ -45,7 +45,7 @@
 	    <ion-row margin-bottom>
 		    <ion-col col-12>
 			  	<ion-item class="grind-item-input">
-			    	<ion-input type="password" placeholder="Password" [(ngModel)]="item.password" name="password"></ion-input>
+			    	<ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="password"></ion-input>
 			  	</ion-item>
 		  	</ion-col>
 	  	</ion-row>
@@ -53,7 +53,7 @@
 	  	<ion-row margin-bottom>
 		    <ion-col col-12>
 			  	<ion-item class="grind-item-input">
-			    	<ion-input type="password" placeholder="Confirm Password" [(ngModel)]="item.confirmPassword" name="confirmpassword"></ion-input>
+			    	<ion-input type="password" placeholder="Confirm Password" [(ngModel)]="user.password" name="confirmpassword"></ion-input>
 			  	</ion-item>
 		  	</ion-col>
 	  	</ion-row>
@@ -61,7 +61,7 @@
 	  	<ion-row margin-bottom>
 		    <ion-col col-12>
 			  	<ion-item class="grind-item-input">
-			    	<ion-input type="phone" placeholder="Cell Phone" [(ngModel)]="item.phone" name="phone"></ion-input>
+			    	<ion-input type="phone" placeholder="Cell Phone" [(ngModel)]="user.cellPhone" name="cellPhone"></ion-input>
 			  	</ion-item>
 		  	</ion-col>
 	  	</ion-row>
@@ -70,7 +70,7 @@
 		    <ion-col col-12>
 			  	<ion-item class="grind-item-input">
 				  <ion-label>Select University</ion-label>
-				  <ion-select [(ngModel)]="item.university" name="university" [selectOptions]="{ cssClass: 'confirm-alert' }">
+				  <ion-select [(ngModel)]="user.university" name="university" [selectOptions]="{ cssClass: 'confirm-alert' }">
 				    <ion-option value="BAHRIA">Bahria University</ion-option>
 				  </ion-select>
 				</ion-item>
@@ -80,7 +80,7 @@
 	  	<ion-row margin-bottom>
 		    <ion-col col-12>
 			  	<ion-item class="grind-item-input">
-			    	<ion-input type="text" placeholder="Enrollment Number" [(ngModel)]="item.enrolllmentNumber" name="enrolllmentnumber"></ion-input>
+			    	<ion-input type="text" placeholder="Enrollment Number" [(ngModel)]="user.enrollmentNumber" name="enrollmentNumber"></ion-input>
 			  	</ion-item>
 		  	</ion-col>
 	  	</ion-row>
@@ -89,7 +89,7 @@
 		    <ion-col col-12>
 			  	<ion-item class="grind-item-input">
 				  <ion-label class="text-white-dim">Discipline</ion-label>
-				  <ion-select [(ngModel)]="item.discipline" name="discipline" [selectOptions]="{ cssClass: 'confirm-alert' }">
+				  <ion-select [(ngModel)]="user.discipline" name="discipline" [selectOptions]="{ cssClass: 'confirm-alert' }">
 				    <ion-option value="CS">CS</ion-option>
 				    <ion-option value="BBA">BBA</ion-option>
 				    <ion-option value="MBA">MBA</ion-option>
@@ -102,7 +102,7 @@
 	  		<ion-col col-12>
 				<ion-item class="grind-clear-item">
 		    		<ion-label ion-text color="dark">Request for smart card</ion-label>
-		    		<ion-checkbox [(ngModel)]="item.rememberMe" name="rememberme" class="grind-checkbox"></ion-checkbox>
+		    		<ion-checkbox [(ngModel)]="user.requestSmartCard" name="requestSmartCard" class="grind-checkbox"></ion-checkbox>
 				</ion-item>
 			</ion-col>
 	  	</ion-row>
@@ -115,8 +115,11 @@
 			</ion-col>
 		</ion-row>
 
-		<a ion-text color="dark" (click)="showLogin()">Cancel</a>
-
 	</form>
+	<ion-row margin-bottom>
+		<ion-col col-12>
+		  	<a ion-text color="dark" (click)="showLogin()">Cancel</a>
+		</ion-col>
+	</ion-row>
 
 </ion-content>
