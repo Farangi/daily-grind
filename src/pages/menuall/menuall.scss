@@ -1,0 +1,43 @@
+page-menuall {
+
+	.item-ios, .item-md{
+		padding-left: 0px;
+	}
+
+	.item-ios.item-block .item-inner, .item-md.item-block .item-inner {
+		padding-right: 0px;
+	}
+
+	.label-ios, .label-md {
+	    margin: 10px 0px 10px 0px;
+	}
+
+	.collapse-content {
+		padding: 0px 20px 10px 20px;
+        border-top: 1px solid #dedede; 
+	}
+
+	.quantity-control {
+		font-size: 1.5em;
+		margin: 0px 5px 0px 5px;
+	}
+
+	.quantity-text {
+		font-size: 1.1em;
+	}
+
+	.toolbar-ios {
+		padding: 0px;
+		padding-left: 0px;
+	}
+
+	.grind-block-btn {
+		margin: 0px;
+		border-radius: 0px;
+	}
+
+	[col-1],[col-2],[col-3],[col-4],[col-5],[col-6],[col-7],[col-8],[col-9],[col-10],[col-11],[col-12] {
+		padding:0px;
+	}
+
+}

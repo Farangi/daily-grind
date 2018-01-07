@@ -18,14 +18,15 @@
 ion-app{
 
  .scroll-content{
-    background: url("../assets/imgs/bg.png") no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
+    
  }
 
  a {
  	text-decoration: underline;
+ }
+
+ .item[no-lines].bottom-border { 
+    border-bottom: 1px solid #dedede; 
  }
 
  .grind-item-input input {
@@ -82,6 +83,14 @@ ion-app{
     color: $text-white-dim;
  }
 
+ .item-ios ion-avatar.grind-avatar, .item-ios ion-avatar.grind-avatar img, .item-md ion-avatar.grind-avatar, .item-md ion-avatar.grind-avatar img {
+    min-width: 72px;
+    min-height: 72px;
+ }
+
+ .grind-menu-list-item-p {
+    white-space: pre-line;
+ }
  
  .alert-ios .alert-head h2, .alert-md .alert-head h2,  {
     color: color($colors, primary);
@@ -109,10 +118,15 @@ ion-app{
  		justify-content: space-between;
  	}
 
- .mb-20 { margin-bottom: 20px !important; }
+ .mb-10 { margin-bottom: 10px !important; }
  .ml-10 { margin-bottom: 10px !important; }
  .mt-10 { margin-bottom: 10px !important; }
  .mr-10 { margin-bottom: 10px !important; }
+
+ .mb-20 { margin-bottom: 20px !important; }
+ .ml-20 { margin-bottom: 20px !important; }
+ .mt-20 { margin-bottom: 20px !important; }
+ .mr-20 { margin-bottom: 20px !important; }
 
  .text-grind-gray { color: $grind-gray !important; }
  .text-grind-dark-gray { color: $grind-dark-gray !important; }
@@ -122,6 +136,16 @@ ion-app{
  .text-mutated {
  	opacity: 0.8;
  	font-size: 1.1rem;
+ }
+
+ .bold {
+    font-weight: bold !important;
+ }
+
+ .centered-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
 
 }

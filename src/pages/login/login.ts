@@ -1,3 +1,4 @@
+import { AuthenticationService, AlertService } from "../../_services";
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -8,9 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
   
-  item = {};
+  user:any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+      public navCtrl: NavController, 
+      public navParams: NavParams,
+      private authenticationService: AuthenticationService,
+      private alertService: AlertService) {
   }
 
   ionViewDidLoad() {
@@ -18,11 +23,21 @@ export class LoginPage {
   }
 
   submitForm() {
-    console.log(this.item)
+    // this.authenticationService.login(this.user.username, this.user.password)
+    //   .subscribe(
+    //   data=>{
+        this.navCtrl.setRoot("SidemenuPage");
+      // },error=>{
+      //   this.alertService.error(error);
+      // });
   }
 
   showSignup() {
     this.navCtrl.push("SignupPage");
+  }
+
+  showForgotPassword() {
+    this.navCtrl.push("ForgotpasswordPage");
   }
 
 }

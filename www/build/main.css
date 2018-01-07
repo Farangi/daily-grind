@@ -25677,13 +25677,12 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-ion-app .scroll-content {
-  background: url("../assets/imgs/bg.png") no-repeat center center fixed;
-  background-size: cover;
-}
-
 ion-app a {
   text-decoration: underline;
+}
+
+ion-app .item[no-lines].bottom-border {
+  border-bottom: 1px solid #dedede;
 }
 
 ion-app .grind-item-input input {
@@ -25751,6 +25750,15 @@ ion-app .grind-item-input.item-ios.item-select, ion-app .item-select .label-md {
   color: rgba(255, 255, 255, 0.9);
 }
 
+ion-app .item-ios ion-avatar.grind-avatar, ion-app .item-ios ion-avatar.grind-avatar img, ion-app .item-md ion-avatar.grind-avatar, ion-app .item-md ion-avatar.grind-avatar img {
+  min-width: 72px;
+  min-height: 72px;
+}
+
+ion-app .grind-menu-list-item-p {
+  white-space: pre-line;
+}
+
 ion-app .alert-ios .alert-head h2, ion-app .alert-md .alert-head h2 {
   color: #f02222;
 }
@@ -25780,8 +25788,8 @@ ion-app .grind-btn-icon-right .button-inner {
   justify-content: space-between;
 }
 
-ion-app .mb-20 {
-  margin-bottom: 20px !important;
+ion-app .mb-10 {
+  margin-bottom: 10px !important;
 }
 
 ion-app .ml-10 {
@@ -25794,6 +25802,22 @@ ion-app .mt-10 {
 
 ion-app .mr-10 {
   margin-bottom: 10px !important;
+}
+
+ion-app .mb-20 {
+  margin-bottom: 20px !important;
+}
+
+ion-app .ml-20 {
+  margin-bottom: 20px !important;
+}
+
+ion-app .mt-20 {
+  margin-bottom: 20px !important;
+}
+
+ion-app .mr-20 {
+  margin-bottom: 20px !important;
 }
 
 ion-app .text-grind-gray {
@@ -25813,11 +25837,89 @@ ion-app .text-mutated {
   font-size: 1.1rem;
 }
 
+ion-app .bold {
+  font-weight: bold !important;
+}
+
+ion-app .centered-col {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+menu-item-collapse .expand-wrapper {
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+menu-item-collapse .collapsed {
+  height: 0 !important;
+}
+
+page-forgotpassword .scroll-content {
+  background: url("../assets/imgs/bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
 page-login [col-6] {
   padding: 0px;
 }
 
 page-login .col {
+  padding: 0px;
+}
+
+page-login .scroll-content {
+  background: url("../assets/imgs/bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+page-menuall .item-ios, page-menuall .item-md {
+  padding-left: 0px;
+}
+
+page-menuall .item-ios.item-block .item-inner, page-menuall .item-md.item-block .item-inner {
+  padding-right: 0px;
+}
+
+page-menuall .label-ios, page-menuall .label-md {
+  margin: 10px 0px 10px 0px;
+}
+
+page-menuall .collapse-content {
+  padding: 0px 20px 10px 20px;
+  border-top: 1px solid #dedede;
+}
+
+page-menuall .quantity-control {
+  font-size: 1.5em;
+  margin: 0px 5px 0px 5px;
+}
+
+page-menuall .quantity-text {
+  font-size: 1.1em;
+}
+
+page-menuall .toolbar-ios {
+  padding: 0px;
+  padding-left: 0px;
+}
+
+page-menuall .grind-block-btn {
+  margin: 0px;
+  border-radius: 0px;
+}
+
+page-menuall [col-1], page-menuall [col-2], page-menuall [col-3], page-menuall [col-4], page-menuall [col-5], page-menuall [col-6], page-menuall [col-7], page-menuall [col-8], page-menuall [col-9], page-menuall [col-10], page-menuall [col-11], page-menuall [col-12] {
   padding: 0px;
 }
 
@@ -25829,4 +25931,9 @@ page-signup .col {
 page-signup [col-6] {
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+page-signup .scroll-content {
+  background: url("../assets/imgs/bg.png") no-repeat center center fixed;
+  background-size: cover;
 }
