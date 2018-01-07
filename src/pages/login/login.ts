@@ -23,13 +23,13 @@ export class LoginPage {
   }
 
   submitForm() {
-    this.authenticationService.login(this.user.username, this.user.password)
-      .subscribe(
-      data=>{
+    // this.authenticationService.login(this.user.username, this.user.password)
+    //   .subscribe(
+    //   data=>{
         this.navCtrl.setRoot("SidemenuPage");
-      },error=>{
-        this.alertService.error(error);
-      });
+      // },error=>{
+      //   this.alertService.error(error);
+      // });
   }
 
   showSignup() {

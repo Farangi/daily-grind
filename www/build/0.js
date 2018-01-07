@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupPageModule", function() { return SignupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(306);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var SignupPageModule = (function () {
 
 /***/ }),
 
-/***/ 305:
+/***/ 306:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46,10 +46,10 @@ var SignupPageModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_file__ = __webpack_require__(306);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_transfer__ = __webpack_require__(307);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_path__ = __webpack_require__(308);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_file__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_transfer__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_path__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__ = __webpack_require__(310);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -221,20 +221,31 @@ var SignupPage = (function () {
     };
     SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-signup',template:/*ion-inline-start:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\pages\signup\signup.html"*/'\n\n<ion-content padding text-center>\n\n	<h5 margin-bottom ion-text color="primary">CREATE YOUR PROFILE</h5>\n\n\n\n	<form (ngSubmit)="submitForm()">\n\n\n\n		<ion-buttons>\n\n	      <button ion-button icon-left (click)="presentActionSheet()" type="button">\n\n	        <ion-icon name="camera"></ion-icon>Select Image\n\n	      </button>\n\n	      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null" type="button">\n\n	        <ion-icon name="cloud-upload"></ion-icon>Upload\n\n	      </button>\n\n	    </ion-buttons>\n\n\n\n		<ion-row margin-bottom>\n\n	  		<ion-col col-6>\n\n				<ion-item class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Firstname" [(ngModel)]="user.firstName" name="firstname"></ion-input>\n\n			  	</ion-item>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<ion-item class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Lastname" [(ngModel)]="user.lastName" name="lastname"></ion-input>\n\n			  	</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n			<ion-col col-12>\n\n				<ion-item class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Email" [(ngModel)]="user.email" name="email"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	    </ion-row>\n\n\n\n		<ion-row margin-bottom>\n\n			<ion-col col-12>\n\n				<ion-item  class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Username" [(ngModel)]="user.username" name="username"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	    </ion-row>\n\n\n\n	    <ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n			    	<ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="password"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n			    	<ion-input type="password" placeholder="Confirm Password" [(ngModel)]="user.password" name="confirmpassword"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n			    	<ion-input type="phone" placeholder="Cell Phone" [(ngModel)]="user.cellPhone" name="cellPhone"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n				  <ion-label>Select University</ion-label>\n\n				  <ion-select [(ngModel)]="user.university" name="university" [selectOptions]="{ cssClass: \'confirm-alert\' }">\n\n				    <ion-option value="BAHRIA">Bahria University</ion-option>\n\n				  </ion-select>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Enrollment Number" [(ngModel)]="user.enrollmentNumber" name="enrollmentNumber"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n				  <ion-label class="text-white-dim">Discipline</ion-label>\n\n				  <ion-select [(ngModel)]="user.discipline" name="discipline" [selectOptions]="{ cssClass: \'confirm-alert\' }">\n\n				    <ion-option value="CS">CS</ion-option>\n\n				    <ion-option value="BBA">BBA</ion-option>\n\n				    <ion-option value="MBA">MBA</ion-option>\n\n				  </ion-select>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n	  		<ion-col col-12>\n\n				<ion-item class="grind-clear-item">\n\n		    		<ion-label ion-text color="dark">Request for smart card</ion-label>\n\n		    		<ion-checkbox [(ngModel)]="user.requestSmartCard" name="requestSmartCard" class="grind-checkbox"></ion-checkbox>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n		<ion-row margin-bottom>\n\n			<ion-col col-12>\n\n			  	<button ion-button block round color="primary" type="submit">\n\n			  		Register\n\n			  	</button>\n\n			</ion-col>\n\n		</ion-row>\n\n\n\n	</form>\n\n	<ion-row margin-bottom>\n\n		<ion-col col-12>\n\n		  	<a ion-text color="dark" (click)="showLogin()">Cancel</a>\n\n		</ion-col>\n\n	</ion-row>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\pages\signup\signup.html"*/,
+            selector: 'page-signup',template:/*ion-inline-start:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\signup\signup.html"*/'\n\n<ion-content padding text-center>\n\n	<h5 margin-bottom ion-text color="primary">CREATE YOUR PROFILE</h5>\n\n\n\n	<form (ngSubmit)="submitForm()">\n\n\n\n		<ion-buttons>\n\n	      <button ion-button icon-left (click)="presentActionSheet()" type="button">\n\n	        <ion-icon name="camera"></ion-icon>Select Image\n\n	      </button>\n\n	      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null" type="button">\n\n	        <ion-icon name="cloud-upload"></ion-icon>Upload\n\n	      </button>\n\n	    </ion-buttons>\n\n\n\n		<ion-row margin-bottom>\n\n	  		<ion-col col-6>\n\n				<ion-item class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Firstname" [(ngModel)]="user.firstName" name="firstname"></ion-input>\n\n			  	</ion-item>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<ion-item class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Lastname" [(ngModel)]="user.lastName" name="lastname"></ion-input>\n\n			  	</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n			<ion-col col-12>\n\n				<ion-item class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Email" [(ngModel)]="user.email" name="email"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	    </ion-row>\n\n\n\n		<ion-row margin-bottom>\n\n			<ion-col col-12>\n\n				<ion-item  class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Username" [(ngModel)]="user.username" name="username"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	    </ion-row>\n\n\n\n	    <ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n			    	<ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="password"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n			    	<ion-input type="password" placeholder="Confirm Password" [(ngModel)]="user.password" name="confirmpassword"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n			    	<ion-input type="phone" placeholder="Cell Phone" [(ngModel)]="user.cellPhone" name="cellPhone"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n				  <ion-label>Select University</ion-label>\n\n				  <ion-select [(ngModel)]="user.university" name="university" [selectOptions]="{ cssClass: \'confirm-alert\' }">\n\n				    <ion-option value="BAHRIA">Bahria University</ion-option>\n\n				  </ion-select>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n			    	<ion-input type="text" placeholder="Enrollment Number" [(ngModel)]="user.enrollmentNumber" name="enrollmentNumber"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n		    <ion-col col-12>\n\n			  	<ion-item class="grind-item-input">\n\n				  <ion-label class="text-white-dim">Discipline</ion-label>\n\n				  <ion-select [(ngModel)]="user.discipline" name="discipline" [selectOptions]="{ cssClass: \'confirm-alert\' }">\n\n				    <ion-option value="CS">CS</ion-option>\n\n				    <ion-option value="BBA">BBA</ion-option>\n\n				    <ion-option value="MBA">MBA</ion-option>\n\n				  </ion-select>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n	  		<ion-col col-12>\n\n				<ion-item class="grind-clear-item">\n\n		    		<ion-label ion-text color="dark">Request for smart card</ion-label>\n\n		    		<ion-checkbox [(ngModel)]="user.requestSmartCard" name="requestSmartCard" class="grind-checkbox"></ion-checkbox>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n		<ion-row margin-bottom>\n\n			<ion-col col-12>\n\n			  	<button ion-button block round color="primary" type="submit">\n\n			  		Register\n\n			  	</button>\n\n			</ion-col>\n\n		</ion-row>\n\n\n\n	</form>\n\n	<ion-row margin-bottom>\n\n		<ion-col col-12>\n\n		  	<a ion-text color="dark" (click)="showLogin()">Cancel</a>\n\n		</ion-col>\n\n	</ion-row>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\signup\signup.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_3__ionic_native_file__["a" /* File */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_transfer__["a" /* Transfer */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_path__["a" /* FilePath */], __WEBPACK_IMPORTED_MODULE_0__services__["c" /* UserService */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_transfer__["a" /* Transfer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_transfer__["a" /* Transfer */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_file__["a" /* File */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_file__["a" /* File */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_path__["a" /* FilePath */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_path__["a" /* FilePath */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* LoadingController */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_0__services__["c" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services__["c" /* UserService */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_0__services__["b" /* AuthenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services__["b" /* AuthenticationService */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_0__services__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services__["a" /* AlertService */]) === "function" && _o || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_transfer__["a" /* Transfer */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_file__["a" /* File */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_path__["a" /* FilePath */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_0__services__["c" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_0__services__["b" /* AuthenticationService */],
+            __WEBPACK_IMPORTED_MODULE_0__services__["a" /* AlertService */]])
     ], SignupPage);
     return SignupPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
 }());
 
 //# sourceMappingURL=signup.js.map
 
 /***/ }),
 
-/***/ 306:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1186,7 +1197,7 @@ var File = (function (_super) {
 
 /***/ }),
 
-/***/ 307:
+/***/ 308:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1417,7 +1428,7 @@ TransferObject = __decorate([
 
 /***/ }),
 
-/***/ 308:
+/***/ 309:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1503,7 +1514,7 @@ var FilePath = (function (_super) {
 
 /***/ }),
 
-/***/ 309:
+/***/ 310:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
