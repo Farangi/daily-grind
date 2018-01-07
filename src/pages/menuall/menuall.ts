@@ -1,3 +1,5 @@
+import { AlertService, ItemService } from "../../_services";
+import { OnInit } from "@angular/core";
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 
@@ -6,119 +8,133 @@ import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-ang
   selector: 'page-menuall',
   templateUrl: 'menuall.html',
 })
-export class MenuallPage {
+export class MenuallPage implements OnInit {
 
   	items: any = [];
   	itemsUiHelper: any = [];
   	orderItems: any = [];
   	orderItemCount: number = 0;
  
-    constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+    constructor(
+		public navCtrl: NavController, 
+		public navParams: NavParams, 
+		private alertCtrl: AlertController,
+		private itemService: ItemService,
+		private alertService: AlertService) {
  
-        this.items = [
-            {
-	            id: 1,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
-	            servings:[
-         			{id:1,name:'Two egg',price:0},
-         			{id:2,name:'Three egg',price:15}
-	            ],
-	         	variants:[
-     	 			{id:1,name:'Plain',price:0},
-     	 			{id:2,name:'Mushroom',price:10},
-     	 			{id:3,name:'Cheese',price:20}
-	         	],
-	         	addons:[
-	 	 			{id:1,name:'Mushroom',price:10},
-	 	 			{id:2,name:'Cheese',price:20},
-	 	 			{id:3,name:'Olives',price:30}
-	         	]
-         	},
-            {
-	            id: 2,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
-	         	variants:[
-     	 			{id:1,name:'Plain',price:0},
-     	 			{id:2,name:'Mushroom',price:10},
-     	 			{id:3,name:'Cheese',price:20}
-	         	],
-	         	addons:[
-	 	 			{id:1,name:'Mushroom',price:10},
-	 	 			{id:2,name:'Cheese',price:20},
-	 	 			{id:3,name:'Olives',price:30}
-	         	]
-         	},
-            {
-	            id: 3,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
-	            servings:[
-         			{id:1,name:'Two egg',price:0},
-         			{id:2,name:'Three egg',price:15}
-	            ],
-	         	variants:[
-     	 			{id:1,name:'Plain',price:0},
-     	 			{id:2,name:'Mushroom',price:10},
-     	 			{id:3,name:'Cheese',price:20}
-	         	],
-	         	addons:[
-	 	 			{id:1,name:'Mushroom',price:10},
-	 	 			{id:2,name:'Cheese',price:20},
-	 	 			{id:3,name:'Olives',price:30}
-	         	]
-         	},
-            {
-	            id: 4,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
-	            servings:[
-         			{id:1,name:'Two egg',price:0},
-         			{id:2,name:'Three egg',price:15}
-	            ],
-	         	variants:[
-     	 			{id:1,name:'Plain',price:0},
-     	 			{id:2,name:'Mushroom',price:10},
-     	 			{id:3,name:'Cheese',price:20}
-	         	],
-	         	addons:[
-	 	 			{id:1,name:'Mushroom',price:10},
-	 	 			{id:2,name:'Cheese',price:20},
-	 	 			{id:3,name:'Olives',price:30}
-	         	]
-         	},
-            {
-	            id: 5,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
-	            servings:[
-         			{id:1,name:'Two egg',price:0},
-         			{id:2,name:'Three egg',price:15}
-	            ],
-	         	variants:[
-     	 			{id:1,name:'Plain',price:0},
-     	 			{id:2,name:'Mushroom',price:10},
-     	 			{id:3,name:'Cheese',price:20}
-	         	],
-	         	addons:[
-	 	 			{id:1,name:'Mushroom',price:10},
-	 	 			{id:2,name:'Cheese',price:20},
-	 	 			{id:3,name:'Olives',price:30}
-	         	]
-         	},
-            {
-	            id: 6,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
-	            servings:[
-         			{id:1,name:'Two egg',price:0},
-         			{id:2,name:'Three egg',price:15}
-	            ],
-	         	variants:[
-     	 			{id:1,name:'Plain',price:0},
-     	 			{id:2,name:'Mushroom',price:10},
-     	 			{id:3,name:'Cheese',price:20}
-	         	],
-	         	addons:[
-	 	 			{id:1,name:'Mushroom',price:10},
-	 	 			{id:2,name:'Cheese',price:20},
-	 	 			{id:3,name:'Olives',price:30}
-	         	]
-         	}
-        ];
+//        this.items = [
+//            {
+//	            id: 1,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+//	            servings:[
+//         			{id:1,name:'Two egg',price:0},
+//         			{id:2,name:'Three egg',price:15}
+//	            ],
+//	         	variants:[
+//     	 			{id:1,name:'Plain',price:0},
+//     	 			{id:2,name:'Mushroom',price:10},
+//     	 			{id:3,name:'Cheese',price:20}
+//	         	],
+//	         	addons:[
+//	 	 			{id:1,name:'Mushroom',price:10},
+//	 	 			{id:2,name:'Cheese',price:20},
+//	 	 			{id:3,name:'Olives',price:30}
+//	         	]
+//         	},
+//            {
+//	            id: 2,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+//	         	variants:[
+//     	 			{id:1,name:'Plain',price:0},
+//     	 			{id:2,name:'Mushroom',price:10},
+//     	 			{id:3,name:'Cheese',price:20}
+//	         	],
+//	         	addons:[
+//	 	 			{id:1,name:'Mushroom',price:10},
+//	 	 			{id:2,name:'Cheese',price:20},
+//	 	 			{id:3,name:'Olives',price:30}
+//	         	]
+//         	},
+//            {
+//	            id: 3,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+//	            servings:[
+//         			{id:1,name:'Two egg',price:0},
+//         			{id:2,name:'Three egg',price:15}
+//	            ],
+//	         	variants:[
+//     	 			{id:1,name:'Plain',price:0},
+//     	 			{id:2,name:'Mushroom',price:10},
+//     	 			{id:3,name:'Cheese',price:20}
+//	         	],
+//	         	addons:[
+//	 	 			{id:1,name:'Mushroom',price:10},
+//	 	 			{id:2,name:'Cheese',price:20},
+//	 	 			{id:3,name:'Olives',price:30}
+//	         	]
+//         	},
+//            {
+//	            id: 4,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+//	            servings:[
+//         			{id:1,name:'Two egg',price:0},
+//         			{id:2,name:'Three egg',price:15}
+//	            ],
+//	         	variants:[
+//     	 			{id:1,name:'Plain',price:0},
+//     	 			{id:2,name:'Mushroom',price:10},
+//     	 			{id:3,name:'Cheese',price:20}
+//	         	],
+//	         	addons:[
+//	 	 			{id:1,name:'Mushroom',price:10},
+//	 	 			{id:2,name:'Cheese',price:20},
+//	 	 			{id:3,name:'Olives',price:30}
+//	         	]
+//         	},
+//            {
+//	            id: 5,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+//	            servings:[
+//         			{id:1,name:'Two egg',price:0},
+//         			{id:2,name:'Three egg',price:15}
+//	            ],
+//	         	variants:[
+//     	 			{id:1,name:'Plain',price:0},
+//     	 			{id:2,name:'Mushroom',price:10},
+//     	 			{id:3,name:'Cheese',price:20}
+//	         	],
+//	         	addons:[
+//	 	 			{id:1,name:'Mushroom',price:10},
+//	 	 			{id:2,name:'Cheese',price:20},
+//	 	 			{id:3,name:'Olives',price:30}
+//	         	]
+//         	},
+//            {
+//	            id: 6,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+//	            servings:[
+//         			{id:1,name:'Two egg',price:0},
+//         			{id:2,name:'Three egg',price:15}
+//	            ],
+//	         	variants:[
+//     	 			{id:1,name:'Plain',price:0},
+//     	 			{id:2,name:'Mushroom',price:10},
+//     	 			{id:3,name:'Cheese',price:20}
+//	         	],
+//	         	addons:[
+//	 	 			{id:1,name:'Mushroom',price:10},
+//	 	 			{id:2,name:'Cheese',price:20},
+//	 	 			{id:3,name:'Olives',price:30}
+//	         	]
+//         	}
+//        ];
 
-        this.prepareItems();
+        
  
     }
+	
+	ngOnInit(){
+		this.itemService.getAll().subscribe( data => {
+			this.items = data;
+			this.prepareItems();
+		}, error => {
+			this.alertService.error(error);
+		});
+	}
 
     private prepareItems(){
     	this.items.map(() => {
@@ -161,7 +177,7 @@ export class MenuallPage {
                 this.itemsUiHelper[idx].expanded = !this.itemsUiHelper[idx].expanded;
                 if(this.itemsUiHelper[idx].quantity == 0) {
                 	this.itemsUiHelper[idx].quantity = 1;
-                	this.addOrderItem(listItem.id, idx);
+                	this.addOrderItem(listItem._id, idx);
                 }
             } else {
                 this.itemsUiHelper[idx].expanded = false;
@@ -189,11 +205,11 @@ export class MenuallPage {
  
     }
 
-    private increment (itemId, helperIdx) {
+    increment (itemId, helperIdx) {
 
     	this.items.map((item, idx) => {
  
-            if(item.id == itemId){
+            if(item._id == itemId){
             	if(this.itemsUiHelper[idx].quantity>=5){
             		this.itemsUiHelper[idx].quantity = 5;
             	}
@@ -208,11 +224,11 @@ export class MenuallPage {
         });
 	}
 
-	private decrement (itemId, helperIdx) {
+	decrement (itemId, helperIdx) {
 
 		this.items.map((item, idx) => {
  
-            if(item.id == itemId){
+            if(item._id == itemId){
             	if(this.itemsUiHelper[idx].quantity<=1){
             		this.itemsUiHelper[idx].quantity = 1;
             	}

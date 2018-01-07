@@ -29,7 +29,7 @@
 				    	<p>Item {{itemIdx+1}}</p>
 				    </div>
 		   			<div item-content text-center>
-				    	<button ion-button clear icon-only color="dark" (click)="showRemoveConfirmDialogue(item.id, itemIdx)">
+				    	<button ion-button clear icon-only color="dark" (click)="showRemoveConfirmDialogue(item._id, itemIdx)">
 						  <ion-icon name="close"></ion-icon>
 						</button>
 				    </div>
@@ -40,14 +40,14 @@
 				    	<p ion-text color="dark" class="bold">Quantity</p>
 				    </div>
 					<div item-content text-center>
-				    	<ion-icon name="remove-circle" color="primary" class="quantity-control" (click)="decrement(item.id, itemIdx)"></ion-icon>
+				    	<ion-icon name="remove-circle" color="primary" class="quantity-control" (click)="decrement(item._id, itemIdx)"></ion-icon>
 	    				<span class="quantity-text">{{itemsUiHelper[itemIdx].quantity}}</span>
-	    				<ion-icon name="add-circle" color="secondary" class="quantity-control" (click)="increment(item.id, itemIdx)"></ion-icon>
+	    				<ion-icon name="add-circle" color="secondary" class="quantity-control" (click)="increment(item._id, itemIdx)"></ion-icon>
 				    </div>
 				</ion-item>
 
 				<div *ngIf="item.servings || item.variants || item.addons">
-					<ion-item *ngFor="let orderItem of getordersOfItem(item.id); let orderItemidx= index">
+					<ion-item *ngFor="let orderItem of getordersOfItem(item._id); let orderItemidx= index">
 						
 						<ion-item (click)="expandOrderItem(itemIdx, orderItemidx)">
 							<div item-start>
