@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { MenuallPage } from './menuall';
-import { MenuItemCollapseComponent } from '../../components/menu-item-collapse/menu-item-collapse';
+import { MenuPageModule } from '../menu/menu.module';
 
 @NgModule({
   declarations: [
-    MenuallPage,
-    MenuItemCollapseComponent
+    MenuallPage
   ],
   imports: [
     IonicPageModule.forChild(MenuallPage),
+    MenuPageModule
   ],
 })
 export class MenuallPageModule {}

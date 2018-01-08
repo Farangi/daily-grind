@@ -1,6 +1,5 @@
 import { AlertService, ItemService } from "../../_services";
-import { OnInit } from "@angular/core";
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 
 @IonicPage()
@@ -139,15 +138,15 @@ export class MenuallPage implements OnInit {
     private prepareItems(){
     	this.items.map(() => {
  
-            this.itemsUiHelper.push({expanded: false, quantity: 0, orderItemsHelper:[]});
+            this.itemsUiHelper.push({expanded: false, selected:false, quantity: 0, orderItemsHelper:[]});
  
         });
     }
 
     private addOrderItem (itemId, helperIdx) {
     	this.orderItems.push({itemId:itemId});
-    	this.orderItemCount++;
-    	this.itemsUiHelper[helperIdx].orderItemsHelper.push({itemId:itemId, expanded:false});
+    	this.itemsUiHelper[helperIdx].orderItemsHelper.push({itemId:itemId, expanded:false, index:this.orderItemCount});
+        this.orderItemCount++;
 	}
 
 	private removeOrderItem (itemId, helperIdx) {
@@ -164,8 +163,8 @@ export class MenuallPage implements OnInit {
 
         if(removeIdx > -1){
         	this.orderItems.splice(removeIdx, 1);
+            this.itemsUiHelper[helperIdx].orderItemsHelper.splice(-1, 1);
         	this.orderItemCount--;
-        	this.itemsUiHelper[helperIdx].orderItemsHelper.splice(-1, 1);
     	}
 	}
  
@@ -176,6 +175,7 @@ export class MenuallPage implements OnInit {
             if(item == listItem){
                 this.itemsUiHelper[idx].expanded = !this.itemsUiHelper[idx].expanded;
                 if(this.itemsUiHelper[idx].quantity == 0) {
+                    this.itemsUiHelper[idx].selected = true;
                 	this.itemsUiHelper[idx].quantity = 1;
                 	this.addOrderItem(listItem._id, idx);
                 }
@@ -262,16 +262,17 @@ export class MenuallPage implements OnInit {
 
     private removeItemOfOrder(itemId, itemIndex) {
     	this.itemsUiHelper[itemIndex].expanded = false;
-    	this.itemsUiHelper[itemIndex].quantity = 0;
-    	this.orderItems.map((orderItem, idx) => {
- 
-            if(orderItem.itemId == itemId){
+        this.itemsUiHelper[idx].selected = false;
+        this.itemsUiHelper[itemIndex].quantity = 0;
+
+        var idx = this.orderItems.length-1;
+        for(;idx>=0;idx--){
+            if(this.orderItems[idx].itemId == itemId){
                 this.orderItems.splice(idx, 1);
+                this.itemsUiHelper[itemIndex].orderItemsHelper.splice(-1, 1);
+                this.orderItemCount--;
             }
- 
-            return orderItem;
- 
-        });
+        }
     }
 
     public showRemoveConfirmDialogue(itemId, itemIndex) {
@@ -296,6 +297,11 @@ export class MenuallPage implements OnInit {
 	  alert.present();
     }
 
+    private getPreparedOrder(){
+        var preparedOrder = {order:{items:this.orderItems}};
+        return preparedOrder;
+    }
+
     public placeOrder(){
     	if(this.orderItems.length == 0){
     		let alert = this.alertCtrl.create({
@@ -306,7 +312,8 @@ export class MenuallPage implements OnInit {
 			alert.present();
     	}
     	else{
-    		console.log(this.orderItems);
+    		console.log(this.getPreparedOrder());
+            this.app.getRootNav().push("LocationPage", this.getPreparedOrder());
     	}
     }
 

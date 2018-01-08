@@ -1,0 +1,80 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Check Out</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-card>
+
+		<ion-card-header text-center>
+	    	Your Order Preview
+		</ion-card-header>
+
+		<ion-card-content text-center>
+			<ion-list>
+			    <ion-item detail-none no-lines class="bottom-border" *ngFor="let item of items; let itemIdx= index">
+			      	
+			      	<ion-row>
+					   <ion-col col-4 class="centered-col">
+					       <ion-avatar class="grind-avatar">
+						      <img src="http://lorempixel.com/100/100/">
+						    </ion-avatar>
+					   </ion-col>  
+					   <ion-col col-6>
+					      	<h3 class="grind-menu-list-item-p bold">{{item.name}}</h3>
+					      	<p class="grind-menu-list-item-p" *ngIf="!item.variant">{{item.description}}</p>
+					        <p class="grind-menu-list-item-p" *ngIf="item.variant">Variant: {{item.variant.name}}</p>
+						    <p ion-text color="primary" class="bold">RS {{item.price}}/-</p>
+					   </ion-col>
+					   <ion-col col-2 class="centered-col">
+					        <ion-icon name="md-create" class="quantity-control" color="secondary" (click)="editItem(itemIdx)"></ion-icon>
+	    					<ion-icon name="trash" class="quantity-control" color="primary" (click)="deleteItem(itemIdx)"></ion-icon>
+					   </ion-col>
+					</ion-row>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+
+		<ion-row>
+		    <ion-col text-center>
+		      <p ion-text color="dark">Total Bill</p>
+		    </ion-col>
+		</ion-row>
+
+		<ion-row>
+		    <ion-col text-center>
+		      <ion-badge>RS {{totalPrice}}/-</ion-badge>
+		    </ion-col>
+		</ion-row>
+
+	</ion-card>
+
+	<ion-item no-lines text-center>
+	      	<p ion-text color="dark" class="bold">Your Delivery Location</p>
+	</ion-item>
+
+	<ion-row>
+	    <ion-col text-center>
+	      <p ion-text color="dark">{{selectedLocation}}</p>
+	      <ion-icon name="md-create" color="secondary" (click)="editLocation()"></ion-icon>
+	    </ion-col>
+	</ion-row>
+
+	
+
+</ion-content>
+
+<ion-footer>
+    <button ion-button block color="primary" type="button" class="grind-block-btn grind-btn-icon-right" (click)="placeOrder()">
+		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>
+		Done
+		<ion-icon name="arrow-round-forward"></ion-icon>
+	</button>
+</ion-footer>
+
+

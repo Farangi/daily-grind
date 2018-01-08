@@ -25708,9 +25708,16 @@ ion-app .grind-item-input input:-ms-input-placeholder {
 ion-app ion-item.grind-item-input {
   border-radius: 64px;
   padding-left: 25px;
-  background-color: rgba(30, 30, 30, 0.3);
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+ion-app ion-item.grind-item-input.faded-input {
+  background-color: rgba(30, 30, 30, 0.3);
+}
+
+ion-app ion-item.grind-item-input.primary-select {
+  background-color: #f02222;
 }
 
 ion-app ion-item.grind-clear-item {
@@ -25828,6 +25835,10 @@ ion-app .text-grind-dark-gray {
   color: #1e1e1e !important;
 }
 
+ion-app .text-white {
+  color: white !important;
+}
+
 ion-app .invisible {
   visibility: hidden;
 }
@@ -25870,6 +25881,72 @@ page-forgotpassword .scroll-content {
   background-size: cover;
 }
 
+page-location .fixed-content {
+  background: url("../assets/imgs/location-bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+page-location .scroll-content {
+  overflow-y: hidden;
+}
+
+page-location .content-md .fixed-content, page-location .content-md .scroll-content {
+  margin-bottom: 3.6rem !important;
+}
+
+page-location .content-ios .fixed-content, page-location .content-ios .scroll-content {
+  margin-bottom: 44.8px !important;
+}
+
+page-location ion-app.ios [padding] .scroll-content, page-location ion-app.md [padding] .scroll-content {
+  padding: 16px 32px 16px 32px;
+}
+
+page-location [margin-bottom] {
+  margin-bottom: 25px !important;
+}
+
+page-location .grind-location-pointer {
+  position: absolute;
+  /*top: calc(32-128)px;*/
+  z-index: 2;
+  width: calc(100% - 32px);
+  text-align: center;
+}
+
+page-location .grind-location-pointer-img {
+  display: block;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+}
+
+page-location .card-ios, page-location .card-md {
+  margin: 50px 12px 24px 12px;
+}
+
+page-location .card-content-ios, page-location .card-content-md {
+  padding-top: 100px;
+}
+
+page-location .item-ios, page-location .item-md {
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+page-location .toolbar-ios, page-location .toolbar-md {
+  padding: 0px;
+  padding-left: 0px;
+}
+
+page-location .grind-block-btn {
+  margin: 0px;
+  border-radius: 0px;
+}
+
 page-login [col-6] {
   padding: 0px;
 }
@@ -25881,6 +25958,12 @@ page-login .col {
 page-login .scroll-content {
   background: url("../assets/imgs/bg.png") no-repeat center center fixed;
   background-size: cover;
+}
+
+page-login .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, page-login .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  border: 0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 page-menuall .item-ios, page-menuall .item-md {
@@ -25901,7 +25984,7 @@ page-menuall .collapse-content {
 }
 
 page-menuall .quantity-control {
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin: 0px 5px 0px 5px;
 }
 
@@ -25909,7 +25992,7 @@ page-menuall .quantity-text {
   font-size: 1.1em;
 }
 
-page-menuall .toolbar-ios {
+page-menuall .toolbar-ios, page-menuall .toolbar-md {
   padding: 0px;
   padding-left: 0px;
 }
@@ -25919,8 +26002,150 @@ page-menuall .grind-block-btn {
   border-radius: 0px;
 }
 
+page-menuall .selected {
+  background-color: #f7f7f7 !important;
+  border-left: 5px solid #f02222 !important;
+}
+
+page-menuall .selected-inner {
+  background-color: #f7f7f7 !important;
+}
+
 page-menuall [col-1], page-menuall [col-2], page-menuall [col-3], page-menuall [col-4], page-menuall [col-5], page-menuall [col-6], page-menuall [col-7], page-menuall [col-8], page-menuall [col-9], page-menuall [col-10], page-menuall [col-11], page-menuall [col-12] {
   padding: 0px;
+}
+
+page-menusnacks .item-ios, page-menusnacks .item-md {
+  padding-left: 0px;
+}
+
+page-menusnacks .item-ios.item-block .item-inner, page-menusnacks .item-md.item-block .item-inner {
+  padding-right: 0px;
+}
+
+page-menusnacks .label-ios, page-menusnacks .label-md {
+  margin: 10px 0px 10px 0px;
+}
+
+page-menusnacks .collapse-content {
+  padding: 0px 20px 10px 20px;
+  border-top: 1px solid #dedede;
+}
+
+page-menusnacks .quantity-control {
+  font-size: 1.4em;
+  margin: 0px 5px 0px 5px;
+}
+
+page-menusnacks .quantity-text {
+  font-size: 1.1em;
+}
+
+page-menusnacks .toolbar-ios, page-menusnacks .toolbar-md {
+  padding: 0px;
+  padding-left: 0px;
+}
+
+page-menusnacks .grind-block-btn {
+  margin: 0px;
+  border-radius: 0px;
+}
+
+page-menusnacks .selected {
+  background-color: #f7f7f7 !important;
+  border-left: 5px solid #f02222 !important;
+}
+
+page-menusnacks .selected-inner {
+  background-color: #f7f7f7 !important;
+}
+
+page-menusnacks [col-1], page-menusnacks [col-2], page-menusnacks [col-3], page-menusnacks [col-4], page-menusnacks [col-5], page-menusnacks [col-6], page-menusnacks [col-7], page-menusnacks [col-8], page-menusnacks [col-9], page-menusnacks [col-10], page-menusnacks [col-11], page-menusnacks [col-12] {
+  padding: 0px;
+}
+
+page-menuwanted .item-ios, page-menuwanted .item-md {
+  padding-left: 0px;
+}
+
+page-menuwanted .item-ios.item-block .item-inner, page-menuwanted .item-md.item-block .item-inner {
+  padding-right: 0px;
+}
+
+page-menuwanted .label-ios, page-menuwanted .label-md {
+  margin: 10px 0px 10px 0px;
+}
+
+page-menuwanted .collapse-content {
+  padding: 0px 20px 10px 20px;
+  border-top: 1px solid #dedede;
+}
+
+page-menuwanted .quantity-control {
+  font-size: 1.4em;
+  margin: 0px 5px 0px 5px;
+}
+
+page-menuwanted .quantity-text {
+  font-size: 1.1em;
+}
+
+page-menuwanted .toolbar-ios, page-menuwanted .toolbar-md {
+  padding: 0px;
+  padding-left: 0px;
+}
+
+page-menuwanted .grind-block-btn {
+  margin: 0px;
+  border-radius: 0px;
+}
+
+page-menuwanted .selected {
+  background-color: #f7f7f7 !important;
+  border-left: 5px solid #f02222 !important;
+}
+
+page-menuwanted .selected-inner {
+  background-color: #f7f7f7 !important;
+}
+
+page-menuwanted [col-1], page-menuwanted [col-2], page-menuwanted [col-3], page-menuwanted [col-4], page-menuwanted [col-5], page-menuwanted [col-6], page-menuwanted [col-7], page-menuwanted [col-8], page-menuwanted [col-9], page-menuwanted [col-10], page-menuwanted [col-11], page-menuwanted [col-12] {
+  padding: 0px;
+}
+
+page-orderpreview .item-ios, page-orderpreview .item-md {
+  padding-left: 0px;
+}
+
+page-orderpreview .item-ios.item-block .item-inner, page-orderpreview .item-md.item-block .item-inner {
+  padding-right: 0px;
+}
+
+page-orderpreview .label-ios, page-orderpreview .label-md {
+  margin: 10px 0px 10px 0px;
+}
+
+page-orderpreview .quantity-control {
+  font-size: 1.2em;
+  margin: 0px 5px 0px 5px;
+}
+
+page-orderpreview .card-content-ios, page-orderpreview card-content-md {
+  padding: 0px;
+}
+
+page-orderpreview .toolbar-ios, page-orderpreview .toolbar-md {
+  padding: 0px;
+  padding-left: 0px;
+}
+
+page-orderpreview .grind-block-btn {
+  margin: 0px;
+  border-radius: 0px;
+}
+
+page-orderpreview [col-1], page-orderpreview [col-2], page-orderpreview [col-3], page-orderpreview [col-4], page-orderpreview [col-5], page-orderpreview [col-6], page-orderpreview [col-7], page-orderpreview [col-8], page-orderpreview [col-9], page-orderpreview [col-10], page-orderpreview [col-11], page-orderpreview [col-12] {
+  padding: 5px;
 }
 
 page-signup .col {
@@ -25936,4 +26161,10 @@ page-signup [col-6] {
 page-signup .scroll-content {
   background: url("../assets/imgs/bg.png") no-repeat center center fixed;
   background-size: cover;
+}
+
+page-signup .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, page-signup .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  border: 0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

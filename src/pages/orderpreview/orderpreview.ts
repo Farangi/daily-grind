@@ -1,0 +1,128 @@
+import { AlertService, ItemService } from "../../_services";
+import { Component, OnInit } from '@angular/core';
+import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+
+@IonicPage()
+@Component({
+  selector: 'page-orderpreview',
+  templateUrl: 'orderpreview.html',
+})
+export class OrderpreviewPage {
+
+	items: any=[];
+	allItems=[];
+	order: any={};
+	totalPrice:number = 0;
+	selectedLocation:any = "abc";
+
+  	constructor(
+  		public navCtrl: NavController, 
+  		public navParams: NavParams,
+  		private app: App,
+  		private itemService: ItemService,
+		private alertService: AlertService) {
+			this.order = this.navParams.data.order;
+			this.locations = [{_id:1,name:"Staff Room"}, {_id:2,name:"Main Hallway"}, {_id:3,name:"Ground"}];
+  	}
+
+  	ngOnInit(){
+		this.itemService.getAll().subscribe( data => {
+			this.allItems = data;
+			//console.log(JSON.stringify(this.allItems));
+			this.prepareItems();
+		}, error => {
+			this.alertService.error(error);
+		});
+	}
+
+	prepareItems(){
+		this.order.items.map((orderItem, idx) => {
+
+			this.allItems.map((item) => {
+ 
+	            if (orderItem.itemId == item._id){
+	            	this.addToItems(item, orderItem)
+	            	console.log(JSON.stringify(this.items));
+	            }
+	 
+	        });
+
+            return orderItem;
+ 
+        });
+	}
+
+	addToItems(item, orderItem) {
+		var uiItem = {};
+		uiItem.name = item.name;
+		uiItem.description = item.description;
+		uiItem.price = item.price;
+		if(orderItem.serving){
+			item.servings.map((serv) => {
+ 
+	            if (orderItem.serving == serv.id){
+	            	uiItem.serving = serv;
+	            	uiItem.price = uiItem.price+serv.price;
+	            }
+
+	            return serv;
+	 
+	        });
+		}
+
+		if(orderItem.variant){
+			item.variants.map((varian) => {
+ 
+	            if (orderItem.variant == varian.id){
+	            	uiItem.variant = varian;
+	            	uiItem.price = uiItem.price+varian.price;
+	            }
+
+	            return varian;
+	 
+	        });
+		}
+
+		if(orderItem.addon){
+			item.addons.map((ad) => {
+ 
+	            if (orderItem.addon == ad.id){
+	            	uiItem.addon = ad;
+	            	uiItem.price = uiItem.price+ad.price;
+	            }
+
+	            return ad;
+	 
+	        });
+		}
+
+		this.locations.map((loc) => {
+ 
+            if (loc._id == this.order.location){
+            	this.selectedLocation = loc.name;
+            }
+ 
+        });
+
+		this.items.push(uiItem);
+		this.totalPrice = this.totalPrice + uiItem.price;
+
+	}
+
+  	editItem(itemIdx) {
+
+  	}
+
+  	deleteItem(itemIdx) {
+
+  	}
+
+  	editLocation() {
+
+  	}
+
+  	placeOrder() {
+		
+	}
+
+}

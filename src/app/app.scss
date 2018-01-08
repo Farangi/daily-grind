@@ -42,9 +42,16 @@ ion-app{
  ion-item.grind-item-input {
     border-radius: 64px;
     padding-left: 25px;
-    background-color: rgba(30, 30, 30, 0.3);
     box-shadow: none;
  }
+
+    ion-item.grind-item-input.faded-input {
+        background-color: rgba(30, 30, 30, 0.3);
+    }
+
+    ion-item.grind-item-input.primary-select {
+        background-color: color($colors, primary);
+    }
 
  ion-item.grind-clear-item {
  	padding-left: 5px;
@@ -130,6 +137,7 @@ ion-app{
 
  .text-grind-gray { color: $grind-gray !important; }
  .text-grind-dark-gray { color: $grind-dark-gray !important; }
+ .text-white { color: white !important; }
 
  .invisible { visibility: hidden; }
 

@@ -1,0 +1,60 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Check Out</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-avatar class="grind-location-pointer">
+	    <img class="grind-location-pointer-img" src="../assets/imgs/location-pointer.png" alt="location-pointer">
+	</ion-avatar>
+
+	<ion-card>
+
+		<!-- <ion-card-header>
+	    	Card Header
+		</ion-card-header> -->
+
+		<ion-card-content text-center>
+
+			<h3 ion-text margin-bottom color="dark">Please Select your location</h3>
+
+			<form>
+			    <ion-row margin-bottom>
+				    <ion-col col-12>
+					  	<ion-item class="grind-item-input primary-select">
+						  <ion-label class="text-white">Select Location</ion-label>
+						  <ion-select [(ngModel)]="orderLocation" name="orderLocation" [selectOptions]="{ cssClass: 'confirm-alert' }">
+						    <ion-option value="{{location._id}}" *ngFor="let location of locations">{{location.name}}</ion-option>
+						  </ion-select>
+						</ion-item>
+					</ion-col>
+			  	</ion-row>
+		  </form>
+
+		  	<h5 ion-text margin-bottom color="dark" class="bold">OR</h5>
+
+		  	<ion-row margin-bottom>
+				<ion-col col-12>
+				  	<a ion-text color="primary" (click)="placeOrderNoLocation()">I will pick from the counter</a>
+				</ion-col>
+			</ion-row>
+		</ion-card-content>
+
+	</ion-card>
+
+</ion-content>
+
+<ion-footer>
+    <button ion-button block color="primary" type="button" class="grind-block-btn grind-btn-icon-right" (click)="placeOrder()">
+		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>
+		Done
+		<ion-icon name="arrow-round-forward"></ion-icon>
+	</button>
+</ion-footer>
+
+

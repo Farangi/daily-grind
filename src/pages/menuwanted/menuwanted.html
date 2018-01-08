@@ -1,29 +1,145 @@
 <ion-content padding>
+
 	<ion-list>
-	  <ion-item text-wrap>
-	    <!-- <ion-checkbox [(ngModel)]="item.rememberMe" name="rememberme" class="grind-checkbox"></ion-checkbox> -->
-	    <ion-avatar item-start class="grind-avatar">
-	      <img src="http://lorempixel.com/100/100/">
-	    </ion-avatar>
-	    <h2>Fries</h2>
-	    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
-	    <p ion-text color="primary" class="bold">RS 270/-</p>
-	  </ion-item>
-	  <ion-item text-wrap>
-	    <ion-avatar item-start class="grind-avatar">
-	      <img src="http://lorempixel.com/100/100/">
-	    </ion-avatar>
-	    <h2>Paratha</h2>
-	    <p class="grind-menu-list-item-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
-	    <p ion-text color="primary" class="bold">RS 90/-</p>
-	  </ion-item>
-	  <ion-item text-wrap>
-	    <ion-avatar item-start class="grind-avatar">
-	      <img src="http://lorempixel.com/100/100/">
-	    </ion-avatar>
-	    <h2>Chicken Karahi</h2>
-	    <p class="grind-menu-list-item-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
-	    <p ion-text color="primary" class="bold">RS 90/-</p>
-	  </ion-item>
-	</ion-list>
+      <ion-item detail-none no-lines class="bottom-border" *ngFor="let item of items; let itemIdx= index" [class.selected]="itemsUiHelper[itemIdx].selected">
+      	
+      	<ion-row (click)="expandItem(item)" (press)="showRemoveConfirmDialogue(item._id, itemIdx)" [class.mb-10]="itemsUiHelper[itemIdx].expanded">
+		   <ion-col col-4 class="centered-col">
+		       <ion-avatar class="grind-avatar">
+			      <img src="http://lorempixel.com/100/100/">
+			    </ion-avatar>
+		   </ion-col>  
+		   <ion-col col-6>
+		      <h2 class="grind-menu-list-item-p">{{item.name}}</h2>
+		        <p class="grind-menu-list-item-p">{{item.description}}</p>
+			    <p ion-text color="primary" class="bold">RS {{item.price}}/-</p>
+		   </ion-col>
+		   <ion-col col-2 class="centered-col">
+		        <button ion-button clear icon-only color="dark">
+				  <ion-icon [name]="itemsUiHelper[itemIdx].expanded ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
+				</button>
+		   </ion-col>
+		</ion-row>
+
+        <menu-item-collapse [expanded]="itemsUiHelper[itemIdx].expanded">
+        	<div class="collapse-content">
+
+        		<ion-item [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+        			<div item-start>
+        				<ion-badge>Item {{orderItems.length}}</ion-badge>
+				    </div>
+		   			<div item-content text-center>
+				    	<button ion-button clear icon-only color="dark" (click)="showRemoveConfirmDialogue(item._id, itemIdx)">
+						  <ion-icon name="close"></ion-icon>
+						</button>
+				    </div>
+				</ion-item>
+
+        		<ion-item [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+					<div item-start>
+				    	<p ion-text color="dark" class="bold">Quantity</p>
+				    </div>
+					<div item-content text-center>
+				    	<ion-icon name="remove-circle" color="primary" class="quantity-control" (click)="decrement(item._id, itemIdx)"></ion-icon>
+	    				<span class="quantity-text">{{itemsUiHelper[itemIdx].quantity}}</span>
+	    				<ion-icon name="add-circle" color="secondary" class="quantity-control" (click)="increment(item._id, itemIdx)"></ion-icon>
+				    </div>
+				</ion-item>
+
+				<div *ngIf="item.servings || item.variants || item.addons">
+					<ion-item *ngFor="let orderItem of getordersOfItem(item._id); let orderItemidx= index" [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+						
+						<ion-item (click)="expandOrderItem(itemIdx, orderItemidx)" [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+							<div item-start>
+						    	<p ion-text class="bold">Options for {{item.name}} {{orderItemidx+1}}</p>
+						    </div>
+							<div item-end text-center>
+						    	<button ion-button outline icon-only color="primary">
+								  <ion-icon [name]="itemsUiHelper[itemIdx].orderItemsHelper[orderItemidx].expanded ? 'remove' : 'add'"></ion-icon>
+								</button>
+						    </div>
+						</ion-item>
+
+					    <menu-item-collapse [expanded]="itemsUiHelper[itemIdx].orderItemsHelper[orderItemidx].expanded">
+
+					    	<ion-list radio-group *ngIf="item.servings" [(ngModel)]="orderItems[itemsUiHelper[itemIdx].orderItemsHelper[orderItemidx].index].serving">
+
+								<ion-list-header [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+								    Serving
+								</ion-list-header>
+
+								<ion-item *ngFor="let serving of item.servings" [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+									<div item-start>
+								    	<ion-radio value="{{serving.id}}" name="serving"></ion-radio>
+								    </div>
+									<div item-content>
+								    	<p>{{serving.name}}</p>
+								    </div>
+								    <div item-end text-center>
+								    	<p ion-text color="primary">{{serving.price}}/-</p>
+								    </div>
+								</ion-item>
+
+							</ion-list>
+
+							<ion-list radio-group *ngIf="item.variants" [(ngModel)]="orderItems[itemsUiHelper[itemIdx].orderItemsHelper[orderItemidx].index].variant">
+
+								<ion-list-header [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+								    Variants
+								</ion-list-header>
+
+								<ion-item *ngFor="let variant of item.variants" [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+									<div item-start>
+								    	<ion-radio value="{{variant.id}}" name="variant"></ion-radio>
+								    </div>
+									<div item-content>
+								    	<p>{{variant.name}}</p>
+								    </div>
+								    <div item-end text-center>
+								    	<p ion-text color="primary">{{variant.price}}/-</p>
+								    </div>
+								</ion-item>
+
+							</ion-list>
+
+							<ion-list radio-group *ngIf="item.addons" [(ngModel)]="orderItems[itemsUiHelper[itemIdx].orderItemsHelper[orderItemidx].index].addons">
+
+								<ion-list-header [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+								    Addons
+								</ion-list-header>
+
+								<ion-item *ngFor="let addon of item.addons" [class.selected-inner]="itemsUiHelper[itemIdx].selected">
+									<div item-start>
+								    	<ion-radio value="{{addon.id}}" name="addon"></ion-radio>
+								    </div>
+									<div item-content>
+								    	<p>{{addon.name}}</p>
+								    </div>
+								    <div item-end text-center>
+								    	<p ion-text color="primary">{{addon.price}}/-</p>
+								    </div>
+								</ion-item>
+
+							</ion-list>
+
+					    </menu-item-collapse>
+						
+					</ion-item>
+				</div>
+
+			</div>
+
+        </menu-item-collapse>
+
+      </ion-item>
+    </ion-list>
+
 </ion-content>
+
+<ion-footer>
+    <button ion-button block color="primary" type="button" class="grind-block-btn grind-btn-icon-right" (click)="placeOrder()">
+		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>
+		Place Order
+		<ion-icon name="arrow-round-forward"></ion-icon>
+	</button>
+</ion-footer>
