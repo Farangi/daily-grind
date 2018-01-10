@@ -1,24 +1,24 @@
 import { AlertService, ItemService } from "../../_services";
 import { Component, OnInit } from '@angular/core';
-import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
   selector: 'page-orderpreview',
   templateUrl: 'orderpreview.html',
 })
-export class OrderpreviewPage {
+export class OrderpreviewPage implements OnInit {
 
 	items: any=[];
 	allItems=[];
 	order: any={};
 	totalPrice:number = 0;
 	selectedLocation:any = "abc";
+	locations:any=[];
 
   	constructor(
   		public navCtrl: NavController, 
   		public navParams: NavParams,
-  		private app: App,
   		private itemService: ItemService,
 		private alertService: AlertService) {
 			this.order = this.navParams.data.order;
@@ -53,7 +53,7 @@ export class OrderpreviewPage {
 	}
 
 	addToItems(item, orderItem) {
-		var uiItem = {};
+		let uiItem:any = {};
 		uiItem.name = item.name;
 		uiItem.description = item.description;
 		uiItem.price = item.price;
@@ -95,6 +95,11 @@ export class OrderpreviewPage {
 	 
 	        });
 		}
+		
+		if(this.order.location == undefined) {
+			this.selectedLocation = 'counter';
+		}
+		else{
 
 		this.locations.map((loc) => {
  
@@ -103,6 +108,7 @@ export class OrderpreviewPage {
             }
  
         });
+	}
 
 		this.items.push(uiItem);
 		this.totalPrice = this.totalPrice + uiItem.price;

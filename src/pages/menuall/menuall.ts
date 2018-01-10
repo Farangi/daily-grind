@@ -1,6 +1,6 @@
 import { AlertService, ItemService } from "../../_services";
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -17,6 +17,7 @@ export class MenuallPage implements OnInit {
     constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams, 
+		private app: App,
 		private alertCtrl: AlertController,
 		private itemService: ItemService,
 		private alertService: AlertService) {
