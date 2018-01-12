@@ -5,6 +5,7 @@ var orderService = require('services/order.service');
 
 // routes
 router.post('/create', create);
+router.post('/checkBalanceAvailability', checkBalanceAvailability);
 
 module.exports = router;
 
@@ -12,6 +13,17 @@ function create(req, res) {
     orderService.create(req.body)
         .then(function () {
             res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function checkBalanceAvailability(req, res) {
+	//console.log("req.order = "+JSON.stringify(req.body));
+    orderService.checkBalanceAvailability(req.body)
+        .then(function (availability) {
+        	res.send(availability);
         })
         .catch(function (err) {
             res.status(400).send(err);

@@ -12,6 +12,7 @@ var service = {};
 service.authenticate = authenticate;
 service.getAll = getAll;
 service.getById = getById;
+service.getAccountBalance = getAccountBalance;
 service.create = create;
 service.update = update;
 service.delete = _delete;
@@ -76,6 +77,28 @@ function getById(_id) {
     return deferred.promise;
 }
 
+function getAccountBalance(_id) {
+    var deferred = Q.defer();
+
+    db.users.findById(_id, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        if (user) {
+            // return user's account balance
+        	if(user.balance){
+        		deferred.resolve(user.balance);
+        	} else{
+        		deferred.resolve(0);
+        	}
+        } else {
+            // user not found
+            deferred.resolve();
+        }
+    });
+
+    return deferred.promise;
+}
+
 function create(userParam) {
     var deferred = Q.defer();
     
@@ -100,6 +123,7 @@ function create(userParam) {
 
             // add hashed password to user object
             user.hash = bcrypt.hashSync(userParam.password, 10);
+            user.balance = 0;
 
             db.users.insert(
                 user,
@@ -133,7 +157,7 @@ function update(_id, userParam) {
 
                     if (user) {
                         // username already exists
-                        deferred.reject('Username "' + req.body.username + '" is already taken')
+                        deferred.reject('Username "' + user.username + '" is already taken')
                     } else {
                         updateUser();
                     }
@@ -146,9 +170,9 @@ function update(_id, userParam) {
     function updateUser() {
         // fields to update
         var set = {
-            firstName: userParam.firstName,
-            lastName: userParam.lastName,
-            username: userParam.username,
+            password: userParam.password,
+            cellPhone: userParam.cellPhone,
+            username: userParam.username
         };
 
         // update password if it was entered

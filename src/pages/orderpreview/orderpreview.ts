@@ -1,4 +1,4 @@
-import { AlertService, ItemService } from "../../_services";
+import { AlertService, ItemService, OrderService } from "../../_services";
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -13,20 +13,21 @@ export class OrderpreviewPage implements OnInit {
 	allItems = [];
 	order: any = {};
 	totalPrice: number = 0;
-	selectedLocation: any = "abc";
+	selectedLocation: any = "";
 	locations: any = [];
 
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
 		private itemService: ItemService,
-		private alertService: AlertService ) {
-		this.order = this.navParams.data.order;
-		console.log( "Order =>  " + JSON.stringify( this.order ) );
+		private alertService: AlertService,
+	   	private orderService: OrderService ) {
+		//console.log( "Order =>  " + JSON.stringify( this.order ) );
 		this.locations = [ { _id: 1, name: "Staff Room" }, { _id: 2, name: "Main Hallway" }, { _id: 3, name: "Ground" }];
 	}
 
 	ngOnInit() {
+		this.order = this.navParams.data.order;
 		this.itemService.getAll().subscribe( data => {
 			this.allItems = data;
 			//console.log(JSON.stringify(this.allItems));
@@ -129,7 +130,10 @@ export class OrderpreviewPage implements OnInit {
 	}
 
 	placeOrder() {
-
+		this.orderService.create(this.order).subscribe((data) => {
+			this.alertService.success('Order Succesfully placed');
+		}, error => {
+			this.alertService.error(error);
+		});
 	}
-
 }

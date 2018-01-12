@@ -28,15 +28,15 @@
 				    <ion-col col-12>
 					  	<ion-item class="grind-item-input primary-select">
 						  <ion-label class="text-white">Select Location</ion-label>
-						  <ion-select [(ngModel)]="orderLocation" name="orderLocation" [selectOptions]="{ cssClass: 'confirm-alert' }">
+						  <ion-select [disabled]="!this.enableLocations" [(ngModel)]="orderLocation" name="orderLocation" [selectOptions]="{ cssClass: 'confirm-alert' }">
 						    <ion-option value="{{location._id}}" *ngFor="let location of locations">{{location.name}}</ion-option>
 						  </ion-select>
 						</ion-item>
 					</ion-col>
 			  	</ion-row>
 		  </form>
-
-		  	<h5 ion-text margin-bottom color="dark" class="bold">OR</h5>
+			<p *ngIf="!this.enableLocations" ion-text margin-bottom color="dark" class="bold">You have insufficient balance but you can still pay by cash at counter.</p>
+		  	<h5 *ngIf="this.enableLocations" ion-text margin-bottom color="dark" class="bold">OR</h5>
 
 		  	<ion-row margin-bottom>
 				<ion-col col-12>

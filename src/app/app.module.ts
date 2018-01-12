@@ -1,5 +1,5 @@
 import { customHttpProvider } from "../_helpers";
-import { UserService, AuthenticationService, AlertService, ItemService } from "../_services";
+import { UserService, AuthenticationService, AlertService, ItemService, OrderService } from "../_services";
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -30,6 +30,7 @@ import { HttpModule } from "@angular/http";
     AuthenticationService,
     AlertService,
 	ItemService,
+	OrderService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
