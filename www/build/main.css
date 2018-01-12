@@ -25681,6 +25681,10 @@ ion-app a {
   text-decoration: underline;
 }
 
+ion-app .tabs-ios .tabbar, ion-app .tabs-md .tabbar {
+  background: #fff;
+}
+
 ion-app .item[no-lines].bottom-border {
   border-bottom: 1px solid #dedede;
 }
@@ -25846,6 +25850,18 @@ ion-app .invisible {
 ion-app .text-mutated {
   opacity: 0.8;
   font-size: 1.1rem;
+}
+
+ion-app .text-blue {
+  color: #387ef5;
+}
+
+ion-app .text-green {
+  color: #32db64;
+}
+
+ion-app .bg-green {
+  background-color: #32db64;
 }
 
 ion-app .bold {
@@ -26146,6 +26162,61 @@ page-orderpreview .grind-block-btn {
 
 page-orderpreview [col-1], page-orderpreview [col-2], page-orderpreview [col-3], page-orderpreview [col-4], page-orderpreview [col-5], page-orderpreview [col-6], page-orderpreview [col-7], page-orderpreview [col-8], page-orderpreview [col-9], page-orderpreview [col-10], page-orderpreview [col-11], page-orderpreview [col-12] {
   padding: 5px;
+}
+
+page-profile .header-ios .toolbar-background-ios, page-profile .footer-ios .toolbar-background-ios {
+  border: 0;
+}
+
+page-profile #profile-bg {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin-top: -16px;
+  height: 160px;
+  background: url("../assets/imgs/thank-you-bg.png") no-repeat center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+}
+
+page-profile #content {
+  position: relative;
+  margin-top: 160px;
+  padding-top: 80px;
+}
+
+page-profile #profile-image {
+  display: block;
+  border-radius: 50%;
+  border: 3px solid white;
+  width: auto;
+  height: 100px;
+  margin: 0 auto 0;
+}
+
+page-profile #profile-info {
+  position: absolute;
+  top: -80px;
+  width: 100%;
+  z-index: 2;
+  text-align: center;
+}
+
+page-profile #profile-name {
+  color: #444;
+  font-size: 20px;
+}
+
+page-profile .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, page-profile .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  border: 0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+page-sidemenu ion-header .toolbar-background {
+  background: url("../assets/imgs/bg.png") no-repeat;
 }
 
 page-signup .col {

@@ -8,7 +8,7 @@ import { App,IonicPage, NavController, NavParams, AlertController } from 'ionic-
   selector: 'page-menusnacks',
   templateUrl: 'menusnacks.html',
 })
-export class MenusnacksPage {
+export class MenusnacksPage implements OnInit {
 
 	items: any = [];
   	itemsUiHelper: any = [];

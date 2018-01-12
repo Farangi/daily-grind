@@ -1,3 +1,53 @@
 page-profile {
 
+	.header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
+		border: 0;
+	}
+
+  	#profile-bg {
+	    position: absolute;
+	    left: 0;
+	    width: 100%;
+	    margin-top: -16px;
+	    height: 160px;
+	    background: url("../assets/imgs/thank-you-bg.png") no-repeat center center fixed;
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    text-align: center;
+	}
+
+  	#content {
+	    position: relative;
+	    margin-top: 160px;
+	    padding-top: 80px;
+	}
+
+  	#profile-image {
+	    display: block;
+	    border-radius: 50%;
+	    border: 3px solid white;
+	    width: auto;
+	    height: 100px;
+	    margin: 0 auto 0;
+  	}
+
+  	#profile-info {
+	    position: absolute;
+	    top: -80px;
+	    width: 100%;
+	    z-index: 2;
+	    text-align: center;
+	}
+
+  	#profile-name {
+    	color: #444;
+    	font-size: 20px;
+  	}
+
+  	.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+ 		border: 0px;
+ 		box-shadow: none;
+ 	}
+
 }

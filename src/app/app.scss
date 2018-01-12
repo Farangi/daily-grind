@@ -18,11 +18,14 @@
 ion-app{
 
  .scroll-content{
-//    overflow-y: hidden;
  }
 
  a {
  	text-decoration: underline;
+ }
+
+ .tabs-ios .tabbar, .tabs-md .tabbar {
+    background: #fff;
  }
 
  .item[no-lines].bottom-border { 
@@ -144,6 +147,18 @@ ion-app{
  .text-mutated {
  	opacity: 0.8;
  	font-size: 1.1rem;
+ }
+
+ .text-blue {
+    color: #387ef5;
+ }
+
+ .text-green {
+    color: #32db64;
+ }
+
+ .bg-green {
+    background-color: #32db64;
  }
 
  .bold {

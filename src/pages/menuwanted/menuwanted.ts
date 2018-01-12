@@ -7,7 +7,7 @@ import { App, IonicPage, NavController, NavParams, AlertController  } from 'ioni
   selector: 'page-menuwanted',
   templateUrl: 'menuwanted.html',
 })
-export class MenuwantedPage {
+export class MenuwantedPage implements OnInit {
 
 	items: any = [];
   	itemsUiHelper: any = [];
