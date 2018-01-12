@@ -146,7 +146,7 @@ var LoginPage = (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\pages\login\login.html"*/'<ion-content padding text-center>\n\n\n\n	<img margin-bottom src="../assets/imgs/logo-md.png" alt="Logo" />\n\n\n\n	<form (ngSubmit)="submitForm()">\n\n\n\n		<ion-row>\n\n			<ion-col col-12>\n\n				<ion-item margin-bottom class="grind-item-input faded-input">\n\n			    	<ion-input type="text" placeholder="Username" [(ngModel)]="user.username" name="username"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	    </ion-row>\n\n\n\n	    <ion-row>\n\n		    <ion-col col-12>\n\n			  	<ion-item margin-bottom class="grind-item-input faded-input">\n\n			    	<ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="password"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n	  		<ion-col col-6>\n\n				<ion-item class="grind-clear-item">\n\n		    		<ion-label ion-text color="dark">Remember me</ion-label>\n\n		    		<ion-checkbox name="rememberme" class="grind-checkbox"></ion-checkbox>\n\n				</ion-item>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<ion-item class="grind-clear-item" text-right>\n\n					<a ion-text color="dark" (click)="showForgotPassword()">Forgot Password?</a>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n		<ion-row>\n\n			<ion-col col-12>\n\n			  	<button ion-button block round margin-bottom color="primary" type="submit" class="grind-btn-icon-right">\n\n			  		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n\n			  		Sign In\n\n			  		<ion-icon name="arrow-round-forward"></ion-icon>\n\n			  	</button>\n\n			</ion-col>\n\n		</ion-row>\n\n\n\n	</form>\n\n\n\n	<div text-center margin-bottom>\n\n		<h5 ion-text color="primary">OR</h5>\n\n	</div>\n\n\n\n	<ion-row>\n\n		<ion-col col-12>\n\n			<button ion-button block round outline margin-bottom color="primary" type="button" (click)="showSignup()" class="grind-btn-icon-right">\n\n				<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n\n				Sign Up\n\n				<ion-icon name="arrow-round-forward"></ion-icon>\n\n			</button>\n\n		</ion-col>\n\n    </ion-row>\n\n\n\n	<div text-center>\n\n		<p class="text-grind-dark-gray text-mutated">By signing up, I agree to the \n\n			<a class="text-grind-dark-gray">Terms of Use</a>\n\n		</p>\n\n	</div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\pages\login\login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\login\login.html"*/'<ion-content padding text-center>\n\n\n\n	<img margin-bottom src="../assets/imgs/logo-md.png" alt="Logo" />\n\n\n\n	<form (ngSubmit)="submitForm()">\n\n\n\n		<ion-row>\n\n			<ion-col col-12>\n\n				<ion-item margin-bottom class="grind-item-input faded-input">\n\n			    	<ion-input type="text" placeholder="Username" [(ngModel)]="user.username" name="username"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	    </ion-row>\n\n\n\n	    <ion-row>\n\n		    <ion-col col-12>\n\n			  	<ion-item margin-bottom class="grind-item-input faded-input">\n\n			    	<ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="password"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n	  		<ion-col col-6>\n\n				<ion-item class="grind-clear-item">\n\n		    		<ion-label ion-text color="dark">Remember me</ion-label>\n\n		    		<ion-checkbox name="rememberme" class="grind-checkbox"></ion-checkbox>\n\n				</ion-item>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<ion-item class="grind-clear-item" text-right>\n\n					<a ion-text color="dark" (click)="showForgotPassword()">Forgot Password?</a>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n		<ion-row>\n\n			<ion-col col-12>\n\n			  	<button ion-button block round margin-bottom color="primary" type="submit" class="grind-btn-icon-right">\n\n			  		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n\n			  		Sign In\n\n			  		<ion-icon name="arrow-round-forward"></ion-icon>\n\n			  	</button>\n\n			</ion-col>\n\n		</ion-row>\n\n\n\n	</form>\n\n\n\n	<div text-center margin-bottom>\n\n		<h5 ion-text color="primary">OR</h5>\n\n	</div>\n\n\n\n	<ion-row>\n\n		<ion-col col-12>\n\n			<button ion-button block round outline margin-bottom color="primary" type="button" (click)="showSignup()" class="grind-btn-icon-right">\n\n				<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n\n				Sign Up\n\n				<ion-icon name="arrow-round-forward"></ion-icon>\n\n			</button>\n\n		</ion-col>\n\n    </ion-row>\n\n\n\n	<div text-center>\n\n		<p class="text-grind-dark-gray text-mutated">By signing up, I agree to the \n\n			<a class="text-grind-dark-gray">Terms of Use</a>\n\n		</p>\n\n	</div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\login\login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
@@ -617,10 +617,9 @@ var OrderService = (function () {
     };
     OrderService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]])
     ], OrderService);
     return OrderService;
-    var _a;
 }());
 
 //# sourceMappingURL=order.service.js.map
@@ -669,31 +668,34 @@ var MyApp = (function () {
         this.alertService.getMessage().subscribe(function (message) {
             if (message) {
                 if (message.type == 'error') {
-                    var alert = _this.alertCtrl.create({
+                    var alert_1 = _this.alertCtrl.create({
                         title: 'Error',
                         subTitle: message.text,
                         buttons: ['Dismiss']
                     });
-                    alert.present();
+                    alert_1.present();
                 }
                 else if (message.type == 'success') {
-                    var alert = _this.alertCtrl.create({
+                    var alert_2 = _this.alertCtrl.create({
                         title: 'Success',
                         subTitle: message.text,
                         buttons: ['OK']
                     });
-                    alert.present();
+                    alert_2.present();
                 }
             }
         });
     };
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\FreeLancing\DailyGrind\DailyGrind\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"E:\FreeLancing\DailyGrind\DailyGrind\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__services__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services__["a" /* AlertService */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__["a" /* StatusBar */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__["a" /* SplashScreen */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_0__services__["a" /* AlertService */]])
     ], MyApp);
     return MyApp;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=app.component.js.map
