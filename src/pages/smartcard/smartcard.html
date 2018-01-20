@@ -1,17 +1,32 @@
 <ion-header>
 
-  	<ion-navbar>
-    	<ion-buttons start>
-          <button ion-button menuToggle>
-        		<ion-icon name="menu"></ion-icon>
-      		</button>
-      	</ion-buttons>
-    	<ion-title>smartcard</ion-title>
-  	</ion-navbar>
+  <ion-navbar>
+    <ion-title>Smart Card</ion-title>
+  </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-This is smart card tab.
+
+	<ion-avatar class="grind-location-pointer">
+	    <img class="grind-location-pointer-img" src="../assets/imgs/smart-card-pointer.png" alt="location-pointer">
+	</ion-avatar>
+
+	<ion-card>
+
+		<ion-card-content text-center>
+
+			<h3 ion-text margin-bottom color="dark">Your current account balance is</h3>
+
+		  	<ion-row margin-bottom>
+				<ion-col col-12 text-center>
+				  	<ion-badge color="secondary">RS {{accountBalance}}/-</ion-badge>
+				</ion-col>
+			</ion-row>
+
+		</ion-card-content>
+
+	</ion-card>
+
 </ion-content>

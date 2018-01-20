@@ -1,6 +1,6 @@
 import { AlertService, ItemService, OrderService } from "../../_services";
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component( {
@@ -10,7 +10,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class OrderpreviewPage implements OnInit {
 
 	items: any = [];
-	allItems = [];
 	order: any = {};
 	totalPrice: number = 0;
 	selectedLocation: any = "";
@@ -19,87 +18,59 @@ export class OrderpreviewPage implements OnInit {
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
+		private app: App,
 		private itemService: ItemService,
 		private alertService: AlertService,
 	   	private orderService: OrderService ) {
-		//console.log( "Order =>  " + JSON.stringify( this.order ) );
 		this.locations = [ { _id: 1, name: "Staff Room" }, { _id: 2, name: "Main Hallway" }, { _id: 3, name: "Ground" }];
 	}
 
 	ngOnInit() {
 		this.order = this.navParams.data.order;
-		this.itemService.getAll().subscribe( data => {
-			this.allItems = data;
-			//console.log(JSON.stringify(this.allItems));
-			this.prepareItems();
-		}, error => {
-			this.alertService.error( error );
-		} );
+		this.prepareItems();
 	}
 
 	prepareItems() {
-		this.order.items.map(( orderItem, idx ) => {
+		this.order.items.map(( orderItem ) => {
 
-			this.allItems.map(( item ) => {
+			this.calculatePrice( orderItem )
 
-				if( orderItem.itemId == item._id ) {
-					this.addToItems( item, orderItem )
-					//console.log(JSON.stringify(this.items));
-				}
-
-			} );
-
-			return orderItem;
-
-		} );
+		});
 	}
 
-	addToItems( item, orderItem ) {
-		let uiItem: any = {};
-		uiItem.name = item.name;
-		uiItem.description = item.description;
-		uiItem.price = item.price;
+	calculatePrice( orderItem ) {
 		if( orderItem.serving ) {
-			item.servings.map(( serv ) => {
+			orderItem.servings.map(( serv ) => {
 
 				if( orderItem.serving == serv.id ) {
-					uiItem.serving = serv;
-					uiItem.price = uiItem.price + serv.price;
+					orderItem.price = orderItem.price + serv.price;
 				}
 
-				return serv;
-
-			} );
+			});
 		}
 
 		if( orderItem.variant ) {
-			item.variants.map(( varian ) => {
+			orderItem.variants.map(( varian ) => {
 
 				if( orderItem.variant == varian.id ) {
-					uiItem.variant = varian;
-					uiItem.price = uiItem.price + varian.price;
+					orderItem.price = orderItem.price + varian.price;
 				}
 
-				return varian;
-
-			} );
+			});
 		}
 
 		if( orderItem.addon ) {
-			item.addons.map(( ad ) => {
+			orderItem.addons.map(( ad ) => {
 
 				if( orderItem.addon == ad.id ) {
-					uiItem.addon = ad;
-					uiItem.price = uiItem.price + ad.price;
+					orderItem.price = orderItem.price + ad.price;
 				}
 
-				return ad;
-
-			} );
+			});
 		}
 
 		if( this.order.location == undefined ) {
-			this.selectedLocation = 'counter';
+			this.selectedLocation = 'Counter';
 		}
 		else {
 
@@ -112,8 +83,7 @@ export class OrderpreviewPage implements OnInit {
 			} );
 		}
 
-		this.items.push( uiItem );
-		this.totalPrice = this.totalPrice + uiItem.price;
+		this.totalPrice = this.totalPrice + orderItem.price;
 
 	}
 
@@ -131,7 +101,8 @@ export class OrderpreviewPage implements OnInit {
 
 	placeOrder() {
 		this.orderService.create(this.order).subscribe((data) => {
-			this.alertService.success('Order Succesfully placed');
+			//this.alertService.success('Order Succesfully placed');
+			this.app.getRootNav().push("OrdertimerPage");
 		}, error => {
 			this.alertService.error(error);
 		});

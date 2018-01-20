@@ -160,7 +160,7 @@ export class MenuallPage implements OnInit {
 
     private removeItemOfOrder(itemId, itemIndex) {
     	this.itemsUiHelper[itemIndex].expanded = false;
-        this.itemsUiHelper[idx].selected = false;
+        this.itemsUiHelper[itemIndex].selected = false;
         this.itemsUiHelper[itemIndex].quantity = 0;
 
         var idx = this.orderItems.length-1;

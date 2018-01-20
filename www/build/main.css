@@ -25770,6 +25770,31 @@ ion-app .grind-menu-list-item-p {
   white-space: pre-line;
 }
 
+ion-app .grind-toast {
+  position: absolute;
+  top: 65px;
+}
+
+ion-app .toast-ios.grind-toast .toast-message, ion-app .toast-md.grind-toast .toast-message {
+  color: #1e1e1e;
+  padding-right: 0px;
+}
+
+ion-app .toast-ios.grind-toast .toast-button, ion-app .toast-md.grind-toast .toast-button {
+  color: #f02222;
+}
+
+ion-app .toast-md.grind-toast .toast-wrapper, ion-app .toast-ios.grind-toast .toast-wrapper {
+  left: 10%;
+  right: 10%;
+  max-height: 90px;
+  border-radius: 1.5rem;
+  padding: 10px;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 ion-app .alert-ios .alert-head h2, ion-app .alert-md .alert-head h2 {
   color: #f02222;
 }
@@ -25837,6 +25862,10 @@ ion-app .text-grind-gray {
 
 ion-app .text-grind-dark-gray {
   color: #1e1e1e !important;
+}
+
+ion-app .text-grind-light-gray {
+  color: #cccccc;
 }
 
 ion-app .text-white {
@@ -25980,6 +26009,107 @@ page-login .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focu
   border: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+page-menu .toolbar-ios .segment-ios {
+  border-top: 0.55px solid rgba(0, 0, 0, 0.3);
+  background-color: white;
+  padding: 10px;
+}
+
+page-menu .toolbar-md .segment-md {
+  /*border-top: .55px solid rgba(0, 0, 0, 0.3);*/
+  background-color: white;
+  padding: 10px;
+}
+
+page-menu ion-toolbar.toolbar-md:before {
+  left: 0;
+  top: -2px;
+  background-position: left 0 bottom -2px;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
+  background-repeat: repeat-x;
+  content: "";
+}
+
+page-menu .toolbar-ios .segment-button, page-menu .toolbar-md .segment-button {
+  max-width: 120px;
+  font-size: 1.3rem;
+}
+
+page-menu .segment-ios .segment-button:first-of-type {
+  border-radius: 0px;
+}
+
+page-menu .segment-ios .segment-button.segment-activated, page-menu .segment-md .segment-button.segment-activated {
+  background-color: transparent;
+  color: #f02222;
+  border-bottom: 1px solid #f02222;
+}
+
+page-menu .segment-ios .segment-button, page-menu .segment-md .segment-button {
+  border-width: 0px;
+  color: #3c3c3c;
+}
+
+page-menu .segment-ios .segment-button:hover:not(.segment-activated) {
+  background-color: transparent;
+}
+
+page-menu .item-ios, page-menu .item-md {
+  padding-left: 0px;
+}
+
+page-menu .item-ios.item-block .item-inner, page-menu .item-md.item-block .item-inner {
+  padding-right: 0px;
+}
+
+page-menu .label-ios, page-menu .label-md {
+  margin: 10px 0px 10px 0px;
+}
+
+page-menu .collapse-content {
+  padding: 0px 20px 10px 20px;
+  border-top: 1px solid #dedede;
+}
+
+page-menu .quantity-control {
+  font-size: 1.4em;
+  margin: 0px 5px 0px 5px;
+}
+
+page-menu .quantity-text {
+  font-size: 1.1em;
+}
+
+page-menu .toolbar-ios, page-menu .toolbar-md {
+  padding: 0px;
+  padding-left: 0px;
+}
+
+page-menu .grind-block-btn {
+  margin: 0px;
+  border-radius: 0px;
+}
+
+page-menu .selected {
+  background-color: #f7f7f7 !important;
+  border-left: 5px solid #f02222 !important;
+}
+
+page-menu .selected-inner {
+  background-color: #f7f7f7 !important;
+}
+
+page-menu .collapse-icon {
+  font-size: 1.5rem;
+}
+
+page-menu [col-1], page-menu [col-2], page-menu [col-3], page-menu [col-4], page-menu [col-5], page-menu [col-6], page-menu [col-7], page-menu [col-8], page-menu [col-9], page-menu [col-10], page-menu [col-11], page-menu [col-12] {
+  padding: 0px;
 }
 
 page-menuall .item-ios, page-menuall .item-md {
@@ -26164,6 +26294,63 @@ page-orderpreview [col-1], page-orderpreview [col-2], page-orderpreview [col-3],
   padding: 5px;
 }
 
+page-ordertimer .fixed-content {
+  background: url("../assets/imgs/blurred-bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+page-ordertimer .scroll-content {
+  margin-top: 160px !important;
+}
+
+page-ordertimer .transparent-badge {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #1e1e1e;
+}
+
+page-ordertimer .timer {
+  margin-bottom: 15px;
+}
+
+page-ordertimer .timer-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+page-ordertimer .timer-badge {
+  padding: 40px 0px;
+  width: 56px;
+  border-radius: 30px;
+  font-size: 22px;
+}
+
+page-ordertimer .timer-dots {
+  color: #1e1e1e;
+  font-size: 20px;
+}
+
+page-ordertimer .timer-label {
+  padding: 10px 0px;
+  width: 56px;
+  display: inline-block;
+}
+
+page-ordertimer .order-timer-inner {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+page-ordertimer [margin-bottom] {
+  margin-bottom: 25px !important;
+}
+
 page-profile .header-ios .toolbar-background-ios, page-profile .footer-ios .toolbar-background-ios {
   border: 0;
 }
@@ -26174,7 +26361,7 @@ page-profile #profile-bg {
   width: 100%;
   margin-top: -16px;
   height: 160px;
-  background: url("../assets/imgs/thank-you-bg.png") no-repeat center center fixed;
+  background: url("../assets/imgs/blurred-bg.png") no-repeat center center fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -26238,4 +26425,75 @@ page-signup .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-foc
   border: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+page-smartcard .fixed-content {
+  background: url("../assets/imgs/red-bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+page-smartcard .scroll-content {
+  overflow-y: hidden;
+}
+
+page-smartcard .content-md .fixed-content, page-smartcard .content-md .scroll-content {
+  margin-bottom: 3.6rem !important;
+}
+
+page-smartcard .content-ios .fixed-content, page-smartcard .content-ios .scroll-content {
+  margin-bottom: 44.8px !important;
+}
+
+page-smartcard ion-app.ios [padding] .scroll-content, page-smartcard ion-app.md [padding] .scroll-content {
+  padding: 16px 32px 16px 32px;
+}
+
+page-smartcard [margin-bottom] {
+  margin-bottom: 25px !important;
+}
+
+page-smartcard .grind-location-pointer {
+  position: absolute;
+  /*top: calc(32-128)px;*/
+  z-index: 2;
+  width: calc(100% - 32px);
+  text-align: center;
+}
+
+page-smartcard .grind-location-pointer-img {
+  display: block;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+}
+
+page-smartcard .card-ios, page-smartcard .card-md {
+  margin: 50px 12px 24px 12px;
+}
+
+page-smartcard .card-content-ios, page-smartcard .card-content-md {
+  padding-top: 100px;
+}
+
+page-smartcard .item-ios, page-smartcard .item-md {
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+page-smartcard ion-badge {
+  font-size: 1.8rem;
+  padding: 6px 16px;
+}
+
+page-smartcard .toolbar-ios, page-smartcard .toolbar-md {
+  padding: 0px;
+  padding-left: 0px;
+}
+
+page-smartcard .grind-block-btn {
+  margin: 0px;
+  border-radius: 0px;
 }

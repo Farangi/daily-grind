@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the OrdertimerPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -15,11 +8,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OrdertimerPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+  		public navCtrl: NavController,
+  		public navParams: NavParams,
+  		public toastCtrl: ToastController) {
+
+  			this.presentOrderCompleteToast();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OrdertimerPage');
+  presentOrderCompleteToast() {
+    let toast = this.toastCtrl.create({
+      	message: 'Your order has been recieved',
+      	position: 'top',
+		cssClass: 'grind-toast',
+		showCloseButton: true,
+		closeButtonText: 'Ok'
+    });
+    
+    toast.present();
   }
 
 }

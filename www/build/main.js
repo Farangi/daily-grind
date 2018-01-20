@@ -382,7 +382,7 @@ var customHttpProvider = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return appConfig; });
 var appConfig = {
-    apiUrl: 'http://localhost:4000'
+    apiUrl: 'http://192.168.10.2:4000'
 };
 //# sourceMappingURL=app.config.js.map
 

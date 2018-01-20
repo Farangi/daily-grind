@@ -1,3 +1,55 @@
 page-ordertimer {
 
+	.fixed-content{
+	    background: url("../assets/imgs/blurred-bg.png") no-repeat center center fixed; 
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    background-size: cover;
+ 	}
+
+ 	.scroll-content {
+ 		margin-top: 160px !important;
+ 	}
+
+ 	.transparent-badge {
+ 		background-color: rgba(255, 255, 255, 0.3);
+ 		color: $grind-dark-gray;
+ 	}
+
+ 	.timer {
+ 		margin-bottom: 15px;
+ 	}
+
+ 	.timer-item {
+ 		display: flex;
+ 		flex-direction: column;
+ 	}
+
+ 	.timer-badge {
+ 		padding: 40px 0px;
+ 		width: 56px;
+ 		border-radius: 30px;
+ 		font-size: 22px;
+ 	}
+
+ 	.timer-dots {
+ 		color: $grind-dark-gray;
+ 		font-size: 20px;
+ 	}
+
+ 	.timer-label {
+ 		padding: 10px 0px;
+ 		width: 56px;
+ 		display: inline-block;
+ 	}
+
+ 	.order-timer-inner {
+ 		padding-left: 10%;
+ 		padding-right: 10%;
+ 	}
+
+ 	[margin-bottom] {
+		margin-bottom: 25px !important;
+	}
+
 }

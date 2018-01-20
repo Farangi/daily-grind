@@ -8,7 +8,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SmartcardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	accountBalance:number=0;
+
+  	constructor(public navCtrl: NavController, public navParams: NavParams) {
+  		this.accountBalance = 534;
+  	}
 
 }
