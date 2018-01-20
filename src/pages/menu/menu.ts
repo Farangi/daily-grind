@@ -7,7 +7,7 @@ import { App, IonicPage, NavController, NavParams, AlertController  } from 'ioni
   selector: 'page-menu',
   templateUrl: 'menu.html',
 })
-export class MenuPage {
+export class MenuPage implements OnInit{
 
   	menu: string = "wanted";
 	items: any = [];
@@ -96,7 +96,7 @@ export class MenuPage {
     }
 
     private addOrderItem (item) {
-    	var orderItem = {_id:item._id, name:item.name, price:item.price, description:item.description, orderItemsHelper:item.orderItemsHelper};
+    	let orderItem:any = {_id:item._id, name:item.name, price:item.price, description:item.description, orderItemsHelper:item.orderItemsHelper};
     	if(item.servings){
     		orderItem.servings = item.servings;
     	}

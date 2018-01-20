@@ -1,3 +1,4 @@
+import { UserService } from "../../_services";
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -10,8 +11,12 @@ export class SmartcardPage {
 
 	accountBalance:number=0;
 
-  	constructor(public navCtrl: NavController, public navParams: NavParams) {
-  		this.accountBalance = 534;
+  	constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UserService) {
+  		//this.accountBalance = 534;
+		let userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+		this.userService.getAccountBalance(userId).subscribe((response) => {
+			this.accountBalance = response.balance;
+		});
   	}
 
 }

@@ -24,7 +24,7 @@ function checkBalanceAvailability(orderObject) {
 	if (orderItems) {
 		var itemsProcessed = 0;
 		orderItems.forEach(function(orderItem, itemNumber, orderItems) {
-			itemService.getById(orderItem.itemId)
+			itemService.getById(orderItem._id)
 				.then(function(item) {
 					if (item) {
 						totalPrice += item.price;

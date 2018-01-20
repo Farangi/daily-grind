@@ -1,4 +1,4 @@
-import { AlertService, ItemService, OrderService } from "../../_services";
+import { AlertService, OrderService } from "../../_services";
 import { Component, OnInit } from '@angular/core';
 import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -19,7 +19,6 @@ export class OrderpreviewPage implements OnInit {
 		public navCtrl: NavController,
 		public navParams: NavParams,
 		private app: App,
-		private itemService: ItemService,
 		private alertService: AlertService,
 	   	private orderService: OrderService ) {
 		this.locations = [ { _id: 1, name: "Staff Room" }, { _id: 2, name: "Main Hallway" }, { _id: 3, name: "Ground" }];
@@ -38,7 +37,12 @@ export class OrderpreviewPage implements OnInit {
 
 		});
 		this.items = this.order.items;
-		this.selectedLocation = this.order.location.subLocation.name;
+		if(this.order.location == undefined) {
+			this.selectedLocation = 'Counter';
+		}
+		else {
+			this.selectedLocation = this.order.location.subLocation.name;
+		}
 	}
 
 	calculatePrice( orderItem ) {
@@ -70,20 +74,6 @@ export class OrderpreviewPage implements OnInit {
 				}
 
 			});
-		}
-
-		if( this.order.location == undefined ) {
-			this.selectedLocation = 'Counter';
-		}
-		else {
-
-			this.locations.map(( loc ) => {
-
-				if( loc._id == this.order.location ) {
-					this.selectedLocation = loc.name;
-				}
-
-			} );
 		}
 
 		this.totalPrice = this.totalPrice + orderItem.price;

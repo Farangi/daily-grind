@@ -8,6 +8,7 @@ router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
 router.get('/:_id', getCurrent);
+router.get('/smartcard/:_id', getAccountBalance);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
 
@@ -57,6 +58,16 @@ function getCurrent(req, res) {
             } else {
                 res.sendStatus(404);
             }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getAccountBalance(req, res) {
+    userService.getAccountBalance(req.user.sub)
+        .then(function (balance) {
+                res.status(200).send({balance:balance});
         })
         .catch(function (err) {
             res.status(400).send(err);

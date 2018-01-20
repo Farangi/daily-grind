@@ -63,7 +63,7 @@
 </ion-content>
 
 <ion-footer>
-    <button ion-button block color="primary" type="button" class="grind-block-btn grind-btn-icon-right" (click)="placeOrder()">
+    <button ion-button block color="primary" type="button" class="grind-block-btn grind-btn-icon-right" [disabled]="!this.enableLocations" (click)="placeOrder()">
 		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>
 		Done
 		<ion-icon name="arrow-round-forward"></ion-icon>

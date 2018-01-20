@@ -1,6 +1,6 @@
 import { UserService, AuthenticationService, AlertService } from "../../_services";
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
 
 import { File } from '@ionic-native/file';
