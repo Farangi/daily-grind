@@ -28,12 +28,25 @@
 				    <ion-col col-12>
 					  	<ion-item class="grind-item-input primary-select">
 						  <ion-label class="text-white">Select Location</ion-label>
-						  <ion-select [disabled]="!this.enableLocations" [(ngModel)]="orderLocation" name="orderLocation" [selectOptions]="{ cssClass: 'confirm-alert' }">
-						    <ion-option value="{{location._id}}" *ngFor="let location of locations">{{location.name}}</ion-option>
+						  <ion-select [disabled]="!this.enableLocations" [(ngModel)]="orderLocation.location" name="orderLocation" [selectOptions]="{ cssClass: 'confirm-alert' }">
+						    <ion-option [value]="location" *ngFor="let location of locations">{{location.name}}</ion-option>
 						  </ion-select>
 						</ion-item>
 					</ion-col>
 			  	</ion-row>
+
+				<div *ngIf="!isEmpty(orderLocation)">
+				  	<ion-row margin-bottom *ngIf="orderLocation.location.subLocations != undefined">
+					    <ion-col col-12>
+						  	<ion-item class="grind-item-input primary-select">
+							  <ion-label class="text-white">Select Location</ion-label>
+							  <ion-select [disabled]="!this.enableLocations" [(ngModel)]="orderLocation.subLocation" name="orderSubLocation" [selectOptions]="{ cssClass: 'confirm-alert' }">
+							    <ion-option [value]="subLocation" *ngFor="let subLocation of orderLocation.location.subLocations">{{subLocation.name}}</ion-option>
+							  </ion-select>
+							</ion-item>
+						</ion-col>
+				  	</ion-row>
+			  </div>
 		  </form>
 			<p *ngIf="!this.enableLocations" ion-text margin-bottom color="dark" class="bold">You have insufficient balance but you can still pay by cash at counter.</p>
 		  	<h5 *ngIf="this.enableLocations" ion-text margin-bottom color="dark" class="bold">OR</h5>

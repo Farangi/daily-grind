@@ -10,7 +10,7 @@ import { OrderService } from "../../_services";
 })
 export class LocationPage implements OnInit {
 
-	orderLocation:any = "";
+	orderLocation:any = {};
 	locations = [];
 	enableLocations:boolean = false;
 
@@ -19,7 +19,9 @@ export class LocationPage implements OnInit {
 		public navParams: NavParams,
 		private app: App,
 		private orderService: OrderService) {
-		this.locations = [{_id:1,name:"Staff Room"}, {_id:2,name:"Main Hallway"}, {_id:3,name:"Ground"}];
+		this.locations = [{_id:1,name:"Staff Room",subLocations:[{_id:1,name:"Location1"},{_id:2,name:"Location2"}]},
+						  {_id:2,name:"Main Hallway",subLocations:[{_id:1,name:"Location2"},{_id:2,name:"Location3"}]}, 
+						  {_id:3,name:"Ground", subLocations:[{_id:1,name:"Location4"},{_id:2,name:"Location5"}]}];
 	}
 	
 	ngOnInit () {
@@ -30,10 +32,26 @@ export class LocationPage implements OnInit {
 		});
 	}
 
+	isEmpty(obj) {
+	    for(var key in obj) {
+	        if(obj.hasOwnProperty(key)){
+	        	 console.log(JSON.stringify(this.orderLocation.location));
+	            return false;
+	        }
+	    }
+	    return true;
+	}
+
+	private getPreparedLocation(){
+    	var preparedOrderLocation = JSON.parse(JSON.stringify(this.orderLocation));;
+    	delete preparedOrderLocation.location.subLocations;
+        return preparedOrderLocation;
+    }
+
 	placeOrder() {
-		if(this.orderLocation != ""){console.log(JSON.stringify(this.navParams.data));
-			this.navParams.data.order.location = this.orderLocation;
-			//console.log(JSON.stringify(this.navParams.data));
+		if(this.orderLocation.location){
+			this.navParams.data.order.location = this.getPreparedLocation();
+			console.log(JSON.stringify(this.navParams.data));
 			this.app.getRootNav().push("OrderpreviewPage", this.navParams.data);
 		}
 		else{
@@ -42,9 +60,6 @@ export class LocationPage implements OnInit {
 	}
 
 	placeOrderNoLocation(){
-		// if(this.navParams.data.order.location != undefined){
-		// 	delete this.navParams.data.order.location;
-		// }
 		console.log(JSON.stringify(this.navParams.data));
 		this.app.getRootNav().push("OrderpreviewPage", this.navParams.data);
 	}

@@ -38,6 +38,7 @@ export class OrderpreviewPage implements OnInit {
 
 		});
 		this.items = this.order.items;
+		this.selectedLocation = this.order.location.subLocation.name;
 	}
 
 	calculatePrice( orderItem ) {
