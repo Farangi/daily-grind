@@ -33,9 +33,11 @@ export class OrderpreviewPage implements OnInit {
 	prepareItems() {
 		this.order.items.map(( orderItem ) => {
 
-			this.calculatePrice( orderItem )
+			this.calculatePrice( orderItem );
+			return orderItem;
 
 		});
+		this.items = this.order.items;
 	}
 
 	calculatePrice( orderItem ) {
@@ -99,9 +101,23 @@ export class OrderpreviewPage implements OnInit {
 
 	}
 
+	private getPreparedOrder(){
+    	var preparedOrder = JSON.parse(JSON.stringify(this.order));;
+    	preparedOrder.items.map((preparedOrderItem) => {
+    		delete preparedOrderItem.name;
+    		delete preparedOrderItem.price;
+    		delete preparedOrderItem.description;
+    		delete preparedOrderItem.servings;
+            delete preparedOrderItem.variants;
+            delete preparedOrderItem.addons;
+ 
+        });
+        return preparedOrder;
+    }
+
 	placeOrder() {
-		this.orderService.create(this.order).subscribe((data) => {
-			//this.alertService.success('Order Succesfully placed');
+		console.log(JSON.stringify(this.getPreparedOrder()));
+		this.orderService.create(this.getPreparedOrder()).subscribe((data) => {
 			this.app.getRootNav().push("OrdertimerPage");
 		}, error => {
 			this.alertService.error(error);

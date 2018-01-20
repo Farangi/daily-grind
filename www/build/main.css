@@ -25926,6 +25926,10 @@ page-forgotpassword .scroll-content {
   background-size: cover;
 }
 
+page-location ion-header .toolbar-background {
+  background: url("../assets/imgs/red-bg.png") no-repeat;
+}
+
 page-location .fixed-content {
   background: url("../assets/imgs/location-bg.png") no-repeat center center fixed;
   background-size: cover;
@@ -26259,6 +26263,10 @@ page-menuwanted [col-1], page-menuwanted [col-2], page-menuwanted [col-3], page-
   padding: 0px;
 }
 
+page-orderpreview ion-header .toolbar-background {
+  background: url("../assets/imgs/red-bg.png") no-repeat;
+}
+
 page-orderpreview .item-ios, page-orderpreview .item-md {
   padding-left: 0px;
 }
@@ -26276,8 +26284,8 @@ page-orderpreview .quantity-control {
   margin: 0px 5px 0px 5px;
 }
 
-page-orderpreview .card-content-ios, page-orderpreview card-content-md {
-  padding: 0px;
+page-orderpreview .card-content-ios, page-orderpreview .card-content-md {
+  padding: 0px 10px;
 }
 
 page-orderpreview .toolbar-ios, page-orderpreview .toolbar-md {
@@ -26290,8 +26298,12 @@ page-orderpreview .grind-block-btn {
   border-radius: 0px;
 }
 
+page-orderpreview .card-footer {
+  padding: 16px;
+}
+
 page-orderpreview [col-1], page-orderpreview [col-2], page-orderpreview [col-3], page-orderpreview [col-4], page-orderpreview [col-5], page-orderpreview [col-6], page-orderpreview [col-7], page-orderpreview [col-8], page-orderpreview [col-9], page-orderpreview [col-10], page-orderpreview [col-11], page-orderpreview [col-12] {
-  padding: 5px;
+  padding: 3px;
 }
 
 page-ordertimer .fixed-content {
@@ -26304,8 +26316,10 @@ page-ordertimer .scroll-content {
 }
 
 page-ordertimer .transparent-badge {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   color: #1e1e1e;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 page-ordertimer .timer {

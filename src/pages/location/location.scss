@@ -1,5 +1,11 @@
 page-location {
 
+	ion-header {
+	    .toolbar-background {
+	      	background: url("../assets/imgs/red-bg.png") no-repeat;
+	    }
+	}
+
 	.fixed-content{
 	    background: url("../assets/imgs/location-bg.png") no-repeat center center fixed; 
 	    -webkit-background-size: cover;

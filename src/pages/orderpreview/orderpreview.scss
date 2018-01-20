@@ -1,5 +1,11 @@
 page-orderpreview {
 
+	ion-header {
+	    .toolbar-background {
+	      	background: url("../assets/imgs/red-bg.png") no-repeat;
+	    }
+	}
+
 	.item-ios, .item-md{
 		padding-left: 0px;
 	}
@@ -17,8 +23,8 @@ page-orderpreview {
 		margin: 0px 5px 0px 5px;
 	}
 
-	.card-content-ios, card-content-md {
-		padding: 0px;
+	.card-content-ios, .card-content-md {
+		padding: 0px 10px;
 	}
 	
 	.toolbar-ios, .toolbar-md {
@@ -31,7 +37,11 @@ page-orderpreview {
 		border-radius: 0px;
 	}
 
+	.card-footer {
+		padding:16px;
+	}
+
 	[col-1],[col-2],[col-3],[col-4],[col-5],[col-6],[col-7],[col-8],[col-9],[col-10],[col-11],[col-12] {
-		padding: 5px;
+		padding: 3px;
 	}
 }

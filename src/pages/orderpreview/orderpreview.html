@@ -40,17 +40,14 @@
 			</ion-list>
 		</ion-card-content>
 
-		<ion-row>
+		<ion-row class="card-footer">
 		    <ion-col text-center>
-		      <p ion-text color="dark">Total Bill</p>
-		    </ion-col>
-		</ion-row>
-
-		<ion-row>
-		    <ion-col text-center>
+		      <p ion-text color="dark" class="mb-10">Total Bill</p>
 		      <ion-badge>RS {{totalPrice}}/-</ion-badge>
 		    </ion-col>
 		</ion-row>
+
+		
 
 	</ion-card>
 
@@ -60,7 +57,7 @@
 
 	<ion-row>
 	    <ion-col text-center>
-	      <p ion-text color="dark">{{selectedLocation}}</p>
+	      <span ion-text color="dark">{{selectedLocation}}</span>
 	      <ion-icon name="md-create" color="secondary" (click)="editLocation()"></ion-icon>
 	    </ion-col>
 	</ion-row>
