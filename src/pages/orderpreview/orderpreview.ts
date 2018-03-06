@@ -12,8 +12,7 @@ export class OrderpreviewPage implements OnInit {
 	items: any = [];
 	order: any = {};
 	totalPrice: number = 0;
-	selectedLocation: any = "";
-	locations: any = [];
+	selectedLocation: any;
 
 	constructor(
 		public navCtrl: NavController,
@@ -21,7 +20,7 @@ export class OrderpreviewPage implements OnInit {
 		private app: App,
 		private alertService: AlertService,
 	   	private orderService: OrderService ) {
-		this.locations = [ { _id: 1, name: "Staff Room" }, { _id: 2, name: "Main Hallway" }, { _id: 3, name: "Ground" }];
+		this.selectedLocation = {};
 	}
 
 	ngOnInit() {
@@ -41,7 +40,8 @@ export class OrderpreviewPage implements OnInit {
 			this.selectedLocation = 'Counter';
 		}
 		else {
-			this.selectedLocation = this.order.location.subLocation.name;
+			this.selectedLocation.name = this.order.location.location.name;
+			this.selectedLocation.sublocation = this.order.location.subLocation.name;
 		}
 	}
 

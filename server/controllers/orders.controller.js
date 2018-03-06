@@ -4,10 +4,21 @@ var router = express.Router();
 var orderService = require('services/order.service');
 
 // routes
+router.get('/', getAll);
 router.post('/create', create);
 router.post('/checkBalanceAvailability', checkBalanceAvailability);
 
 module.exports = router;
+
+function getAll(req, res) {
+	orderService.getAll()
+        .then(function (orders) {
+            res.send(orders);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
 
 function create(req, res) {
     orderService.create(req.body)

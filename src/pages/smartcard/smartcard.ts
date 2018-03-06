@@ -18,5 +18,11 @@ export class SmartcardPage {
 			this.accountBalance = response.balance;
 		});
   	}
-
+	
+	ionViewWillEnter() {
+		let userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+		this.userService.getAccountBalance(userId).subscribe((response) => {
+			this.accountBalance = response.balance;
+		});
+	}
 }

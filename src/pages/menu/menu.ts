@@ -33,6 +33,15 @@ export class MenuPage implements OnInit{
 			this.alertService.error(error);
 		});
 	}
+	
+	ionViewWillEnter() {
+		this.itemService.getAll().subscribe( data => {
+			this.items = data;
+			this.prepareItems();
+		}, error => {
+			this.alertService.error(error);
+		});
+	}
 
     private prepareItems(){
     	this.items.map((item) => {
@@ -52,6 +61,10 @@ export class MenuPage implements OnInit{
         this.items[3].category = 'snacks';
         this.items[4].category = 'snacks';
         this.items[5].category = 'snacks';
+		
+		this.items = this.items.filter((item) => {
+			return !item.outofstock;
+		});
     }
  
     expandItem(item){

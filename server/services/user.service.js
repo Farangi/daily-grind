@@ -12,9 +12,12 @@ var service = {};
 service.authenticate = authenticate;
 service.getAll = getAll;
 service.getById = getById;
+service.getUserNameById = getUserNameById;
 service.getAccountBalance = getAccountBalance;
 service.create = create;
 service.update = update;
+service.updateBalance = updateBalance;
+service.deductBalance = deductBalance;
 service.delete = _delete;
 
 module.exports = service;
@@ -42,6 +45,7 @@ function authenticate(username, password) {
     return deferred.promise;
 }
 
+
 function getAll() {
     var deferred = Q.defer();
 
@@ -68,6 +72,23 @@ function getById(_id) {
         if (user) {
             // return user (without hashed password)
             deferred.resolve(_.omit(user, 'hash'));
+        } else {
+            // user not found
+            deferred.resolve();
+        }
+    });
+
+    return deferred.promise;
+}
+
+function getUserNameById(_id) {
+    var deferred = Q.defer();
+    db.users.findById(_id,{ username: 1 }, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        
+        if (user) {
+            // return user with username
+            deferred.resolve(user);
         } else {
             // user not found
             deferred.resolve();
@@ -190,6 +211,80 @@ function update(_id, userParam) {
             });
     }
 
+    return deferred.promise;
+}
+
+function updateBalance(_id, userParam) {
+    var deferred = Q.defer();
+
+    // validation
+    db.users.findById(_id, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        else {
+        	if (user){
+        		if(user.balance){
+        			// fields to update
+        	        var set = {
+        	            balance: (user.balance + userParam.amount)
+        	        };
+        	        updateUserBalance(set);
+        		} else {
+        			// fields to update
+        	        var set = {
+        	            balance: userParam.amount
+        	        };
+        	        updateUserBalance(set);
+        		}
+        	}
+        	else
+        		deferred.reject("Unable to update balance.");
+        }
+    });
+
+    function updateUserBalance(set) {
+        db.users.update(
+            { _id: mongo.helper.toObjectID(_id) },
+            { $set: set },
+            function (err, doc) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+
+                deferred.resolve();
+            });
+    }
+    return deferred.promise;
+}
+
+function deductBalance(_id, price) {
+    var deferred = Q.defer();
+
+    // validation
+    db.users.findById(_id, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        else {
+        	if (user){
+        		if(user.balance){
+        			// fields to update
+        	        var set = {
+        	            balance: (user.balance - price)
+        	        };
+        	        updateUserBalance(set);
+        		}
+        	}
+        	else
+        		deferred.reject("Unable to deduct balance.");
+        }
+    });
+
+    function updateUserBalance(set) {
+        db.users.update(
+            { _id: mongo.helper.toObjectID(_id) },
+            { $set: set },
+            function (err, doc) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+
+                deferred.resolve();
+            });
+    }
     return deferred.promise;
 }
 

@@ -1,7 +1,7 @@
 import { OnInit } from "@angular/core";
 import { Component } from '@angular/core';
 import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
-import { OrderService } from "../../_services";
+import { OrderService, LocationService } from "../../_services";
 
 @IonicPage()
 @Component({
@@ -18,18 +18,24 @@ export class LocationPage implements OnInit {
 		public navCtrl: NavController, 
 		public navParams: NavParams,
 		private app: App,
-		private orderService: OrderService) {
-		this.locations = [{_id:1,name:"Staff Room",subLocations:[{_id:1,name:"Location1"},{_id:2,name:"Location2"}]},
-						  {_id:2,name:"Main Hallway",subLocations:[{_id:1,name:"Location2"},{_id:2,name:"Location3"}]}, 
-						  {_id:3,name:"Ground", subLocations:[{_id:1,name:"Location4"},{_id:2,name:"Location5"}]}];
+		private orderService: OrderService,
+		private locationService: LocationService) {
+		this.locationService.getAll().subscribe(data => {
+			this.locations = data;
+		}, err => {
+			console.log(err);
+		});
+		
 	}
 	
 	ngOnInit () {
 		let order = this.navParams.data.order;
-		order.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
-		this.orderService.checkBalanceAvailability(order).subscribe((data) => {
-			this.enableLocations = data;
-		});
+		if(order) {
+			order.userId = JSON.parse( localStorage.getItem( 'currentUser' ) )._id;
+			this.orderService.checkBalanceAvailability( order ).subscribe(( data ) => {
+				this.enableLocations = data;
+			} );
+		}
 	}
 
 	isEmpty(obj) {
@@ -60,6 +66,7 @@ export class LocationPage implements OnInit {
 	}
 
 	placeOrderNoLocation(){
+		this.navParams.data.order.location = undefined;
 		console.log(JSON.stringify(this.navParams.data));
 		this.app.getRootNav().push("OrderpreviewPage", this.navParams.data);
 	}

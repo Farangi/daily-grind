@@ -8,8 +8,10 @@ router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
 router.get('/:_id', getCurrent);
+router.get('/username/:_id', getUserName);
 router.get('/smartcard/:_id', getAccountBalance);
 router.put('/:_id', update);
+router.put('/addBalance/:_id', addBalance);
 router.delete('/:_id', _delete);
 
 module.exports = router;
@@ -64,6 +66,20 @@ function getCurrent(req, res) {
         });
 }
 
+function getUserName(req, res) {
+    userService.getUserNameById(req.params._id)
+        .then(function (user) {
+            if (user) {
+                res.send(user);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
 function getAccountBalance(req, res) {
     userService.getAccountBalance(req.user.sub)
         .then(function (balance) {
@@ -76,6 +92,16 @@ function getAccountBalance(req, res) {
 
 function update(req, res) {
     userService.update(req.params._id, req.body)
+        .then(function () {
+            res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function addBalance(req, res) {
+    userService.updateBalance(req.params._id, req.body)
         .then(function () {
             res.sendStatus(200);
         })
