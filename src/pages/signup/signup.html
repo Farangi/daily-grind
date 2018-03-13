@@ -14,10 +14,10 @@
 	    </ion-buttons> -->
 
 	    <ion-buttons class="mb-10">
-	    	<button ion-button [color]="showDiscipline ? 'primary' : 'light'" (click)="showDisciplineDrop()" type="button">
+	    	<button ion-button [color]="isStudent ? 'primary' : 'light'" (click)="showStudentControls()" type="button">
 	        	Student
 	      	</button>
-	      	<button ion-button [color]="showDiscipline ? 'light' : 'primary'" (click)="hideDisciplineDrop()" type="button">
+	      	<button ion-button [color]="isAdmin ? 'primary' : 'light'" (click)="showAdminControls()" type="button">
 	        	Admin
 	      	</button>
 	    </ion-buttons>
@@ -114,7 +114,7 @@
 			</ion-col>
 	  	</ion-row>
 
-	  	<ion-row margin-bottom *ngIf="showDiscipline">
+	  	<ion-row margin-bottom *ngIf="isStudent">
 		    <ion-col col-12 text-right>
 			  	<ion-item class="grind-item-input faded-input" [ngClass]="{'error-border':!authForm.controls.enrollmentNumber.valid && authForm.controls.enrollmentNumber.touched}">
 			    	<ion-input type="text" placeholder="Enrollment Number" formControlName="enrollmentNumber" [attr.maxlength]="12"></ion-input>
@@ -125,7 +125,7 @@
 		  	</ion-col>
 	  	</ion-row>
 
-	  	<ion-row margin-bottom *ngIf="showDiscipline">
+	  	<ion-row margin-bottom *ngIf="isStudent">
 		    <ion-col col-12 text-right>
 			  	<ion-item class="grind-item-input faded-input" [ngClass]="{'error-border':!authForm.controls.discipline.valid && authForm.controls.discipline.touched}">
 				  <ion-label class="text-white-dim">Discipline</ion-label>
@@ -144,6 +144,17 @@
 
 				<p ion-text color="primary" class="error-text" *ngIf="authForm.controls.discipline.hasError('required') && authForm.controls.discipline.touched">This field is required!</p>
 			</ion-col>
+	  	</ion-row>
+
+	  	<ion-row margin-bottom *ngIf="isAdmin">
+		    <ion-col col-12 text-right>
+			  	<ion-item class="grind-item-input faded-input" [ngClass]="{'error-border':!authForm.controls.universityId.valid && authForm.controls.universityId.touched}">
+			    	<ion-input type="text" placeholder="University Id" formControlName="universityId" [attr.maxlength]="12"></ion-input>
+			  	</ion-item>
+
+			  	<p ion-text color="primary" class="error-text" *ngIf="authForm.controls.universityId.hasError('required') && authForm.controls.universityId.touched">This field is required!</p>
+			  	<p ion-text color="primary" class="error-text" *ngIf="authForm.controls.universityId.hasError('pattern') && authForm.controls.universityId.touched">Correct format is 01-xxxxxx-xx!</p>
+		  	</ion-col>
 	  	</ion-row>
 
 	  	<ion-row margin-bottom>

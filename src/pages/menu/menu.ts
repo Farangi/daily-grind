@@ -9,13 +9,13 @@ import { App, IonicPage, NavController, NavParams, AlertController  } from 'ioni
 })
 export class MenuPage implements OnInit{
 
-  	menu: string = "wanted";
+  menu: string = "wanted";
 	items: any = [];
-  	orderItems: any = [];
-  	orderItemCount: number = 0;
-  	uniqueOrderItemCount: number = 0;
+  orderItems: any = [];
+  orderItemCount: number = 0;
+  uniqueOrderItemCount: number = 0;
  
-    constructor(
+  constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams, 
 		private app: App,
@@ -23,7 +23,7 @@ export class MenuPage implements OnInit{
 		private itemService: ItemService,
 		private alertService: AlertService) {        
  
-    }
+  }
 	
 	ngOnInit(){
 		this.itemService.getAll().subscribe( data => {
@@ -32,39 +32,130 @@ export class MenuPage implements OnInit{
 		}, error => {
 			this.alertService.error(error);
 		});
+        
+        // this.items = [
+        //     {
+        //         id: 1,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+        //         servings:[
+        //              {id:1,name:'Two egg',price:0},
+        //              {id:2,name:'Three egg',price:15}
+        //         ],
+        //          variants:[
+        //               {id:1,name:'Plain',price:0},
+        //               {id:2,name:'Mushroom',price:10},
+        //               {id:3,name:'Cheese',price:20}
+        //          ],
+        //          addons:[
+        //               {id:1,name:'Mushroom',price:10},
+        //               {id:2,name:'Cheese',price:20},
+        //               {id:3,name:'Olives',price:30}
+        //          ]
+        //      },
+        //     {
+        //         id: 2,name:'Tea', description: 'Served with complimentary two slices of milk bread', price:40,
+        //          variants:[
+        //               {id:1,name:'Plain',price:0},
+        //               {id:3,name:'Cheese',price:20}
+        //          ],
+        //          addons:[
+        //               {id:1,name:'Mushroom',price:10},
+        //               {id:2,name:'Cheese',price:20}
+        //          ]
+        //      },
+        //     {
+        //         id: 3,name:'Paratha', description: 'Served with complimentary two slices of milk bread', price:40,
+        //          variants:[
+        //               {id:2,name:'Mushroom',price:10},
+        //               {id:3,name:'Cheese',price:20}
+        //          ],
+        //          addons:[
+        //               {id:1,name:'Mushroom',price:10}
+        //          ]
+        //      },
+        //     {
+        //         id: 4,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+        //         servings:[
+        //              {id:1,name:'Two egg',price:0},
+        //              {id:2,name:'Three egg',price:15}
+        //         ],
+        //          variants:[
+        //               {id:1,name:'Plain',price:0},
+        //               {id:2,name:'Mushroom',price:10},
+        //               {id:3,name:'Cheese',price:20}
+        //          ],
+        //          addons:[
+        //               {id:1,name:'Mushroom',price:10},
+        //               {id:2,name:'Cheese',price:20},
+        //               {id:3,name:'Olives',price:30}
+        //          ]
+        //      },
+        //     {
+        //         id: 5,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+        //         servings:[
+        //              {id:1,name:'Two egg',price:0},
+        //              {id:2,name:'Three egg',price:15}
+        //         ],
+        //          variants:[
+        //               {id:1,name:'Plain',price:0},
+        //               {id:2,name:'Mushroom',price:10},
+        //               {id:3,name:'Cheese',price:20}
+        //          ],
+        //          addons:[
+        //               {id:1,name:'Mushroom',price:10},
+        //               {id:2,name:'Cheese',price:20},
+        //               {id:3,name:'Olives',price:30}
+        //          ]
+        //      },
+        //     {
+        //         id: 6,name:'Omelete', description: 'Served with complimentary two slices of milk bread', price:40,
+        //         servings:[
+        //              {id:1,name:'Two egg',price:0},
+        //              {id:2,name:'Three egg',price:15}
+        //         ],
+        //          variants:[
+        //               {id:1,name:'Plain',price:0},
+        //               {id:2,name:'Mushroom',price:10},
+        //               {id:3,name:'Cheese',price:20}
+        //          ],
+        //          addons:[
+        //               {id:1,name:'Mushroom',price:10},
+        //               {id:2,name:'Cheese',price:20},
+        //               {id:3,name:'Olives',price:30}
+        //          ]
+        //      }
+        // ];
+
+        // this.prepareItems();
 	}
 	
-	ionViewWillEnter() {
-		this.itemService.getAll().subscribe( data => {
-			this.items = data;
-			this.prepareItems();
-		}, error => {
-			this.alertService.error(error);
-		});
-	}
+	// ionViewWillEnter() {
+	// 	this.itemService.getAll().subscribe( data => {
+	// 		this.items = data;
+	// 		this.prepareItems();
+	// 	}, error => {
+	// 		this.alertService.error(error);
+	// 	});
+	// }
 
     private prepareItems(){
     	this.items.map((item) => {
- 
-            item.expanded = false;
+        item.expanded = false;
     		item.selected = false;
     		item.quantity = 0;
-    		item.itemOrderNum = 0
+    		item.itemOrderNum = 0;
     		item.orderItemsHelper = [];
-            item.category = 'wanted'
-            return item;
- 
-        });
-        this.items[0].category = 'all';
-        this.items[1].category = 'all';
-        this.items[2].category = 'all';
-        this.items[3].category = 'snacks';
-        this.items[4].category = 'snacks';
-        this.items[5].category = 'snacks';
+        item.category = 'wanted';
+        return item;
+      });
+
+      this.items[2].category = 'all';
+      this.items[3].category = 'all';
+      this.items[4].category = 'snacks';
+      this.items[5].category = 'snacks';
 		
-		this.items = this.items.filter((item) => {
-			return !item.outofstock;
-		});
+  		this.items = this.items.filter((item) => {
+  			return !item.outofstock;
+  		});
     }
  
     expandItem(item){
@@ -92,7 +183,6 @@ export class MenuPage implements OnInit{
     }
 
     expandOrderItem(item, orderIdx){
-    	console.log(JSON.stringify(this.orderItems));
  
         item.orderItemsHelper.map((orderItem, idx) => {
  
@@ -139,7 +229,7 @@ export class MenuPage implements OnInit{
 
         if(removeIdx > -1){
         	this.orderItems.splice(removeIdx, 1);
-            item.orderItemsHelper.splice(-1, 1);
+          item.orderItemsHelper.splice(-1, 1);
         	this.orderItemCount--;
     	}
 	}
@@ -198,24 +288,24 @@ export class MenuPage implements OnInit{
 
     public showRemoveConfirmDialogue(item) {
     	let alert = this.alertCtrl.create({
-	    title: 'Confirm removal',
-	    message: 'Are you sure you want to remove this item?',
-	    buttons: [
-	      {
-	        text: 'Cancel',
-	        role: 'cancel',
-	        handler: () => {
-	        }
-	      },
-	      {
-	        text: 'Yes',
-	        handler: () => {
-	          this.removeItemOfOrder(item);
-	        }
-	      }
-	    ]
-	  });
-	  alert.present();
+  	    title: 'Confirm removal',
+  	    message: 'Are you sure you want to remove this item?',
+  	    buttons: [
+  	      {
+  	        text: 'Cancel',
+  	        role: 'cancel',
+  	        handler: () => {
+  	        }
+  	      },
+  	      {
+  	        text: 'Yes',
+  	        handler: () => {
+  	          this.removeItemOfOrder(item);
+  	        }
+  	      }
+  	    ]
+	    });
+	    alert.present();
     }
 
     private getPreparedOrder(){
@@ -240,7 +330,7 @@ export class MenuPage implements OnInit{
     	}
     	else{
     		console.log(this.getPreparedOrder());
-            this.app.getRootNav().push("LocationPage", this.getPreparedOrder());
+        this.app.getRootNav().push("LocationPage", this.getPreparedOrder());
     	}
     }
 

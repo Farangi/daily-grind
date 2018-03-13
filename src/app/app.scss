@@ -70,11 +70,10 @@ ion-app{
  		border-bottom: 0px;
  	}
 
- .item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.item-input-has-focus .item-inner {
+ .grind-item-input.item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.item-input-has-focus .item-inner, .grind-item-input.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
  	border-bottom: 0px;
  	box-shadow: none;
  }
-
 
  .grind-clear-item.item.item-ios .checkbox-ios, .grind-clear-item.item.item-md .checkbox-md{
 	margin-right: 5px;
@@ -156,6 +155,10 @@ ion-app{
  		justify-content: space-between;
  	}
 
+.error-border {
+    border: 1px solid color($colors, primary);
+}
+
  .mb-10 { margin-bottom: 10px !important; }
  .ml-10 { margin-bottom: 10px !important; }
  .mt-10 { margin-bottom: 10px !important; }
@@ -172,6 +175,7 @@ ion-app{
  .text-white { color: white !important; }
 
  .invisible { visibility: hidden; }
+ .show-inline { display: inline; }
 
  .text-mutated {
  	opacity: 0.8;

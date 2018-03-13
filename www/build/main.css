@@ -25739,7 +25739,7 @@ ion-app .grind-item-input.item-ios.item-block .item-inner, ion-app .grind-item-i
   border-bottom: 0px;
 }
 
-ion-app .item-md.item-input.item-input-has-focus .item-inner, ion-app .item-md.item-input.item-input-has-focus .item-inner {
+ion-app .grind-item-input.item-md.item-input.item-input-has-focus .item-inner, ion-app .item-md.item-input.item-input-has-focus .item-inner, ion-app .grind-item-input.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
   border-bottom: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -25828,6 +25828,10 @@ ion-app .grind-btn-icon-right .button-inner {
   justify-content: space-between;
 }
 
+ion-app .error-border {
+  border: 1px solid #f02222;
+}
+
 ion-app .mb-10 {
   margin-bottom: 10px !important;
 }
@@ -25878,6 +25882,10 @@ ion-app .text-white {
 
 ion-app .invisible {
   visibility: hidden;
+}
+
+ion-app .show-inline {
+  display: inline;
 }
 
 ion-app .text-mutated {
@@ -25932,6 +25940,10 @@ page-forgotpassword .scroll-content {
 
 page-location ion-header .toolbar-background {
   background: url("../assets/imgs/red-bg.png") no-repeat;
+}
+
+page-location ion-header .back-button-ios.bar-button-default-ios {
+  color: #000;
 }
 
 page-location .fixed-content {
@@ -26271,6 +26283,10 @@ page-orderpreview ion-header .toolbar-background {
   background: url("../assets/imgs/red-bg.png") no-repeat;
 }
 
+page-orderpreview ion-header .back-button-ios.bar-button-default-ios {
+  color: #000;
+}
+
 page-orderpreview .item-ios, page-orderpreview .item-md {
   padding-left: 0px;
 }
@@ -26308,6 +26324,11 @@ page-orderpreview .card-footer {
 
 page-orderpreview [col-1], page-orderpreview [col-2], page-orderpreview [col-3], page-orderpreview [col-4], page-orderpreview [col-5], page-orderpreview [col-6], page-orderpreview [col-7], page-orderpreview [col-8], page-orderpreview [col-9], page-orderpreview [col-10], page-orderpreview [col-11], page-orderpreview [col-12] {
   padding: 3px;
+}
+
+page-orderprevieweditorder .grind-block-btn {
+  margin: 0px;
+  border-radius: 0px;
 }
 
 page-ordertimer .fixed-content {
@@ -26424,25 +26445,18 @@ page-sidemenu ion-header .toolbar-background {
   background: url("../assets/imgs/bg.png") no-repeat;
 }
 
-page-signup .col {
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-page-signup [col-6] {
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
 page-signup .scroll-content {
   background: url("../assets/imgs/bg.png") no-repeat center center fixed;
   background-size: cover;
 }
 
-page-signup .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, page-signup .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
-  border: 0px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+page-signup .grind-item-input.item-md.item-select, page-signup .grind-item-input.item-ios.item-select {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+page-signup .col, page-signup [col-6] {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 page-smartcard .fixed-content {

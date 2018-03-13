@@ -21,7 +21,8 @@ export class SignupPage
 
     user: any = {};
     lastImage: string = null;
-    showDiscipline: boolean = true;
+    isStudent: boolean = true;
+    isAdmin: boolean = false;
     loading: Loading;
     authForm: FormGroup;
 
@@ -51,6 +52,7 @@ export class SignupPage
                 cellPhone: ['', Validators.compose([Validators.required, Validators.pattern(/^(?=(\D*\d){11}\D*$)/)])],
                 university: ['', Validators.compose([Validators.required])],
                 enrollmentNumber: ['', Validators.compose([Validators.required, Validators.pattern(/^([0-1][0-1])-(\d{6})-(\d{2})$/)])],
+                universityId: ['', Validators.compose([Validators.required, Validators.pattern(/^([0-1][0-1])-(\d{6})-(\d{2})$/)])],
                 discipline: ['', Validators.compose([Validators.required])],
                 requestSmartCard: ['']
             });
@@ -200,9 +202,9 @@ export class SignupPage
         } );
     }
 
-    submitForm (value: any)
-    {   console.log(this.authForm.valid);
-        if(this.authForm.valid) {console.log(value);
+    submitForm (value: any) 
+    {  
+        if(this.authForm.valid) {
             this.userService.create(value).subscribe(
                 data=>{
                 this.authenticationService.login(value.username, value.password)
@@ -220,17 +222,21 @@ export class SignupPage
         }
     }
 
-    showLogin ()
+    showLogin () 
     {
         this.navCtrl.pop();
     }
 
-    hideDisciplineDrop() {
-        this.showDiscipline = false;
+    showAdminControls() 
+    {
+        this.isStudent = false;
+        this.isAdmin = true;
     }
 
-    showDisciplineDrop() {
-        this.showDiscipline = true;
+    showStudentControls() 
+    {
+        this.isAdmin = false;
+        this.isStudent = true;
     }
 
 }
