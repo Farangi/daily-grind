@@ -6,6 +6,7 @@ var userService = require('services/user.service');
 
 // routes
 router.get('/', getAll);
+router.get('/user/:userId', getAllForUser);
 router.post('/create', create);
 router.post('/checkBalanceAvailability', checkBalanceAvailability);
 router.put('/:_id', dispatchOrder);
@@ -14,6 +15,16 @@ module.exports = router;
 
 function getAll(req, res) {
 	orderService.getAll(req.query)
+        .then(function (orders) {
+            res.send(orders);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getAllForUser(req, res) {
+	orderService.getAllForUser(req.params.userId)
         .then(function (orders) {
             res.send(orders);
         })

@@ -12,6 +12,7 @@ var itemService = require('./item.service');
 var service = {};
 
 service.getAll = getAll;
+service.getAllForUser = getAllForUser;
 service.create = create;
 service.checkBalanceAvailability = checkBalanceAvailability;
 service.calculatePrice = calculatePrice;
@@ -33,6 +34,19 @@ function getAll(date) {
 		deferred.resolve(orders);
 	});
 
+	return deferred.promise;
+}
+
+function getAllForUser(userId) {
+	var deferred = Q.defer();
+	if(userId) {
+		db.orders.find({
+			userId : userId
+		}).toArray(function(err, orders) {
+			if (err) deferred.reject(err.name + ': ' + err.message);
+			deferred.resolve(orders);
+		});
+	}
 	return deferred.promise;
 }
 

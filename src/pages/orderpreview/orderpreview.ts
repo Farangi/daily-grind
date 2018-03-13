@@ -152,41 +152,11 @@ export class OrderpreviewPage {
     }
 
 	placeOrder() {
-		console.log(JSON.stringify(this.getPreparedOrder()));
 		this.orderService.create(this.getPreparedOrder()).subscribe((data) => {
-			this.app.getRootNav().push("OrdertimerPage");
+			console.log(data);
+			this.app.getRootNav().push("OrdertimerPage", this.navParams.data);
 		}, error => {
 			this.alertService.error(error);
 		});
 	}
 }
-
-// @Component({
-//   	template: `
-// 		<ion-row>
-//             <ion-col col-4 class="centered-col">
-//                 <ion-avatar class="grind-avatar">
-//                   <img src="../assets/imgs/food-img.jpg">
-//                 </ion-avatar>
-//             </ion-col>  
-//             <ion-col col-8>
-//               <h2 class="grind-menu-list-item-p">{{item.name}}</h2>
-//                 <p class="grind-menu-list-item-p">{{item.description}}</p>
-//               <p ion-text color="primary" class="bold">RS {{item.price}}/-</p>
-//             </ion-col>
-//         </ion-row>
-//   	`
-// })
-// export class EditOrderPage {
-//   item: any = {};
-
-//   constructor(
-//     public navParams: NavParams,
-//     public viewCtrl: ViewController) {console.log(this.navParams.get('item'));
-//       this.item = this.navParams.get('item');
-//   }
-
-//   dismiss() {
-//     this.viewCtrl.dismiss();
-//   }
-// }

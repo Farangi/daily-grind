@@ -388,7 +388,7 @@ var customHttpProvider = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return appConfig; });
 var appConfig = {
-    apiUrl: 'http://192.168.10.4:4000'
+    apiUrl: 'http://localhost:4000'
 };
 //# sourceMappingURL=app.config.js.map
 
@@ -585,6 +585,9 @@ var ItemService = (function () {
     ItemService.prototype.getAll = function () {
         return this.http.get('/items').map(function (response) { return response.json(); });
     };
+    ItemService.prototype.getById = function (_id) {
+        return this.http.get('/items/' + _id).map(function (response) { return response.json(); });
+    };
     ItemService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]])
@@ -623,6 +626,10 @@ var OrderService = (function () {
     };
     OrderService.prototype.create = function (order) {
         return this.http.post('/orders/create', order);
+    };
+    OrderService.prototype.getAll = function (userId) {
+        return this.http.get('/orders/user/' + userId)
+            .map(function (response) { return response.json(); });
     };
     OrderService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),

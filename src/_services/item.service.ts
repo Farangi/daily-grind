@@ -7,5 +7,9 @@ export class ItemService {
 
     getAll() {
         return this.http.get('/items').map((response: Response) => response.json());
-	}   
+	}
+	
+	getById( _id: string ) {
+		return this.http.get( '/items/' + _id ).map( ( response: Response ) => response.json() );
+	}
 }

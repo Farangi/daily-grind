@@ -1,7 +1,7 @@
 import { OnInit } from "@angular/core";
 import { Component } from '@angular/core';
 import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
-import { OrderService, LocationService } from "../../_services";
+import { OrderService, LocationService, AlertService } from "../../_services";
 
 @IonicPage()
 @Component({
@@ -19,11 +19,12 @@ export class LocationPage implements OnInit {
 		public navParams: NavParams,
 		private app: App,
 		private orderService: OrderService,
-		private locationService: LocationService) {
+		private locationService: LocationService,
+		private alertService: AlertService) {
 		this.locationService.getAll().subscribe(data => {
 			this.locations = data;
 		}, err => {
-			console.log(err);
+			this.alertService.error(err);
 		});
 		
 	}
@@ -41,7 +42,6 @@ export class LocationPage implements OnInit {
 	isEmpty(obj) {
 	    for(var key in obj) {
 	        if(obj.hasOwnProperty(key)){
-	        	 console.log(JSON.stringify(this.orderLocation.location));
 	            return false;
 	        }
 	    }
@@ -57,7 +57,6 @@ export class LocationPage implements OnInit {
 	placeOrder() {
 		if(this.orderLocation.location){
 			this.navParams.data.order.location = this.getPreparedLocation();
-			console.log(JSON.stringify(this.navParams.data));
 			this.app.getRootNav().push("OrderpreviewPage", this.navParams.data);
 		}
 		else{
@@ -67,7 +66,6 @@ export class LocationPage implements OnInit {
 
 	placeOrderNoLocation(){
 		this.navParams.data.order.location = undefined;
-		console.log(JSON.stringify(this.navParams.data));
 		this.app.getRootNav().push("OrderpreviewPage", this.navParams.data);
 	}
 
