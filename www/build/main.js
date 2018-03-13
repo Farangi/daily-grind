@@ -1,4 +1,4 @@
-webpackJsonp([16],{
+webpackJsonp([17],{
 
 /***/ 112:
 /***/ (function(module, exports) {
@@ -23,19 +23,19 @@ webpackEmptyAsyncContext.id = 112;
 var map = {
 	"../pages/forgotpassword/forgotpassword.module": [
 		288,
-		14
+		15
 	],
 	"../pages/home/home.module": [
 		289,
-		13
+		14
 	],
 	"../pages/location/location.module": [
 		290,
-		12
+		13
 	],
 	"../pages/login/login.module": [
 		291,
-		15
+		16
 	],
 	"../pages/menu/menu.module": [
 		287,
@@ -55,34 +55,38 @@ var map = {
 	],
 	"../pages/orderhistory/orderhistory.module": [
 		295,
+		12
+	],
+	"../pages/orderhistoryitems/orderhistoryitems.module": [
+		296,
 		11
 	],
 	"../pages/orderpreview/orderpreview.module": [
-		296,
+		297,
 		10
 	],
 	"../pages/orderprevieweditorder/orderprevieweditorder.module": [
-		297,
+		298,
 		9
 	],
 	"../pages/ordertimer/ordertimer.module": [
-		298,
+		299,
 		8
 	],
 	"../pages/profile/profile.module": [
-		299,
+		300,
 		7
 	],
 	"../pages/sidemenu/sidemenu.module": [
-		300,
+		301,
 		6
 	],
 	"../pages/signup/signup.module": [
-		301,
+		302,
 		0
 	],
 	"../pages/smartcard/smartcard.module": [
-		302,
+		303,
 		5
 	]
 };
@@ -150,7 +154,7 @@ var LoginPage = (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\pages\login\login.html"*/'<ion-content padding text-center>\n\n\n\n	<img margin-bottom src="../assets/imgs/logo-md.png" alt="Logo" />\n\n\n\n	<form (ngSubmit)="submitForm()">\n\n\n\n		<ion-row>\n\n			<ion-col col-12>\n\n				<ion-item margin-bottom class="grind-item-input faded-input">\n\n			    	<ion-input type="text" placeholder="Username" [(ngModel)]="user.username" name="username"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	    </ion-row>\n\n\n\n	    <ion-row>\n\n		    <ion-col col-12>\n\n			  	<ion-item margin-bottom class="grind-item-input faded-input">\n\n			    	<ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="password"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n	  		<ion-col col-6>\n\n				<ion-item class="grind-clear-item">\n\n		    		<ion-label ion-text color="dark">Remember me</ion-label>\n\n		    		<ion-checkbox name="rememberme" class="grind-checkbox"></ion-checkbox>\n\n				</ion-item>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<ion-item class="grind-clear-item" text-right>\n\n					<a ion-text color="dark" (click)="showForgotPassword()">Forgot Password?</a>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n		<ion-row>\n\n			<ion-col col-12>\n\n			  	<button ion-button block round margin-bottom color="primary" type="submit" class="grind-btn-icon-right">\n\n			  		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n\n			  		Sign In\n\n			  		<ion-icon name="arrow-round-forward"></ion-icon>\n\n			  	</button>\n\n			</ion-col>\n\n		</ion-row>\n\n\n\n	</form>\n\n\n\n	<div text-center margin-bottom>\n\n		<h5 ion-text color="primary">OR</h5>\n\n	</div>\n\n\n\n	<ion-row>\n\n		<ion-col col-12>\n\n			<button ion-button block round outline margin-bottom color="primary" type="button" (click)="showSignup()" class="grind-btn-icon-right">\n\n				<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n\n				Sign Up\n\n				<ion-icon name="arrow-round-forward"></ion-icon>\n\n			</button>\n\n		</ion-col>\n\n    </ion-row>\n\n\n\n	<div text-center>\n\n		<p class="text-grind-dark-gray text-mutated">By signing up, I agree to the \n\n			<a class="text-grind-dark-gray">Terms of Use</a>\n\n		</p>\n\n	</div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\pages\login\login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\login\login.html"*/'<ion-content padding text-center>\n\n\n\n	<img margin-bottom src="../assets/imgs/logo-md.png" alt="Logo" />\n\n\n\n	<form (ngSubmit)="submitForm()">\n\n\n\n		<ion-row>\n\n			<ion-col col-12>\n\n				<ion-item margin-bottom class="grind-item-input faded-input">\n\n			    	<ion-input type="text" placeholder="Username" [(ngModel)]="user.username" name="username"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	    </ion-row>\n\n\n\n	    <ion-row>\n\n		    <ion-col col-12>\n\n			  	<ion-item margin-bottom class="grind-item-input faded-input">\n\n			    	<ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="password"></ion-input>\n\n			  	</ion-item>\n\n		  	</ion-col>\n\n	  	</ion-row>\n\n\n\n	  	<ion-row margin-bottom>\n\n	  		<ion-col col-6>\n\n				<ion-item class="grind-clear-item">\n\n		    		<ion-label ion-text color="dark">Remember me</ion-label>\n\n		    		<ion-checkbox name="rememberme" class="grind-checkbox"></ion-checkbox>\n\n				</ion-item>\n\n			</ion-col>\n\n			<ion-col col-6>\n\n				<ion-item class="grind-clear-item" text-right>\n\n					<a ion-text color="dark" (click)="showForgotPassword()">Forgot Password?</a>\n\n				</ion-item>\n\n			</ion-col>\n\n	  	</ion-row>\n\n\n\n		<ion-row>\n\n			<ion-col col-12>\n\n			  	<button ion-button block round margin-bottom color="primary" type="submit" class="grind-btn-icon-right">\n\n			  		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n\n			  		Sign In\n\n			  		<ion-icon name="arrow-round-forward"></ion-icon>\n\n			  	</button>\n\n			</ion-col>\n\n		</ion-row>\n\n\n\n	</form>\n\n\n\n	<div text-center margin-bottom>\n\n		<h5 ion-text color="primary">OR</h5>\n\n	</div>\n\n\n\n	<ion-row>\n\n		<ion-col col-12>\n\n			<button ion-button block round outline margin-bottom color="primary" type="button" (click)="showSignup()" class="grind-btn-icon-right">\n\n				<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>\n\n				Sign Up\n\n				<ion-icon name="arrow-round-forward"></ion-icon>\n\n			</button>\n\n		</ion-col>\n\n    </ion-row>\n\n\n\n	<div text-center>\n\n		<p class="text-grind-dark-gray text-mutated">By signing up, I agree to the \n\n			<a class="text-grind-dark-gray">Terms of Use</a>\n\n		</p>\n\n	</div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\FreeLancing\DailyGrind\DailyGrind\src\pages\login\login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
@@ -229,6 +233,7 @@ var AppModule = (function () {
                         { loadChildren: '../pages/menusnacks/menusnacks.module#MenusnacksPageModule', name: 'MenusnacksPage', segment: 'menusnacks', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/menuwanted/menuwanted.module#MenuwantedPageModule', name: 'MenuwantedPage', segment: 'menuwanted', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/orderhistory/orderhistory.module#OrderhistoryPageModule', name: 'OrderhistoryPage', segment: 'orderhistory', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/orderhistoryitems/orderhistoryitems.module#OrderhistoryitemsPageModule', name: 'OrderhistoryitemsPage', segment: 'orderhistoryitems', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/orderpreview/orderpreview.module#OrderpreviewPageModule', name: 'OrderpreviewPage', segment: 'orderpreview', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/orderprevieweditorder/orderprevieweditorder.module#OrderprevieweditorderPageModule', name: 'OrderprevieweditorderPage', segment: 'orderprevieweditorder', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ordertimer/ordertimer.module#OrdertimerPageModule', name: 'OrdertimerPage', segment: 'ordertimer', priority: 'low', defaultHistory: [] },
@@ -388,7 +393,7 @@ var customHttpProvider = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return appConfig; });
 var appConfig = {
-    apiUrl: 'http://localhost:4000'
+    apiUrl: 'http://192.168.10.2:4000'
 };
 //# sourceMappingURL=app.config.js.map
 
@@ -739,7 +744,7 @@ var MyApp = (function () {
         });
     };
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\User\Desktop\elfarangi-daily-grind-81f73a782558\daily-grind\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\FreeLancing\DailyGrind\DailyGrind\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"E:\FreeLancing\DailyGrind\DailyGrind\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__["a" /* StatusBar */],
