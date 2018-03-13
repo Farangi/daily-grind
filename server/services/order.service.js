@@ -15,18 +15,25 @@ service.getAll = getAll;
 service.create = create;
 service.checkBalanceAvailability = checkBalanceAvailability;
 service.calculatePrice = calculatePrice;
+service.dispatch = dispatch;
 
 module.exports = service;
 
-function getAll() {
-    var deferred = Q.defer();
+function getAll(date) {
+	var deferred = Q.defer();
+	
+	let time = {
+			$gte : new Date(date.fromDate).toISOString(),
+			$lt : new Date(date.toDate).toISOString()
+		};
+	db.orders.find({
+		time : time
+	}).toArray(function(err, orders) {
+		if (err) deferred.reject(err.name + ': ' + err.message);
+		deferred.resolve(orders);
+	});
 
-    db.orders.find().toArray(function (err, orders) {
-        if (err) deferred.reject(err.name + ': ' + err.message);
-        deferred.resolve(orders);
-    });
-
-    return deferred.promise;
+	return deferred.promise;
 }
 
 function calculatePrice(orderObject) {
@@ -183,24 +190,24 @@ function checkBalanceAvailability(orderObject) {
 
 function create(orderObject) {
 	var deferred = Q.defer();
-	orderObject.time = new Date();
-	if(orderObject.location !== undefined) {
-		if(orderObject.location.location !== undefined) {
+	orderObject.time = new Date().toISOString();
+	if (orderObject.location !== undefined) {
+		if (orderObject.location.location !== undefined) {
 			orderObject.location = {
-					name: orderObject.location.location.name,
-					subLocation: orderObject.location.subLocation
+				name : orderObject.location.location.name,
+				subLocation : orderObject.location.subLocation
 			};
 		}
 	}
-	
-	if(orderObject.adminId){
-		db.orders.insert(
-				orderObject,
-				function(err, doc) {
-					if (err) deferred.reject(err.name + ': ' + err.message);
 
-					deferred.resolve();
-				});
+	if (orderObject.adminId) {
+		db.orders.insert(
+			orderObject,
+			function(err, doc) {
+				if (err) deferred.reject(err.name + ': ' + err.message);
+
+				deferred.resolve();
+			});
 	} else {
 		checkBalanceAvailability(orderObject)
 			.then(function(availability) {
@@ -209,11 +216,11 @@ function create(orderObject) {
 					calculatePrice(orderObject)
 						.then(function(price) {
 							userService.deductBalance(orderObject.userId, price)
-								.catch(function(err){
+								.catch(function(err) {
 									deferred.reject(err.name + ': ' + err.message);
 								});
 						})
-						.catch(function(err){
+						.catch(function(err) {
 							deferred.reject(err.name + ': ' + err.message);
 						});
 				} else {
@@ -224,12 +231,46 @@ function create(orderObject) {
 					orderObject,
 					function(err, doc) {
 						if (err) deferred.reject(err.name + ': ' + err.message);
-	
+
 						deferred.resolve();
 					});
 			})
 			.catch(function(err) {
 				deferred.reject(err.name + ': ' + err.message);
+			});
+	}
+
+	return deferred.promise;
+}
+
+function dispatch(_id) {
+	var deferred = Q.defer();
+
+	// validation
+	db.orders.findById(_id, function(err, order) {
+		if (err) deferred.reject(err.name + ': ' + err.message);
+
+		if (order) {
+			dispatchOrder();
+		}
+	});
+
+	function dispatchOrder() {
+		// fields to update
+
+		db.orders.update(
+			{
+				_id : mongo.helper.toObjectID(_id)
+			},
+			{
+				$set : {
+					"status" : 'dispatched'
+				}
+			},
+			function(err, doc) {
+				if (err) deferred.reject(err.name + ': ' + err.message);
+
+				deferred.resolve();
 			});
 	}
 

@@ -21,7 +21,7 @@ app.use(expressJwt({
         }
         return null;
     }
-}).unless({ path: ['/users/authenticate', '/users/register', '/admins/authenticate'] }));
+}).unless({ path: ['/users/authenticate', '/users/register', '/admins/authenticate', '/socket.io/'] }));
 
 // routes
 app.use('/users', require('./controllers/users.controller'));
@@ -34,4 +34,14 @@ app.use('/locations', require('./controllers/locations.controller'));
 var port = process.env.NODE_ENV === 'production' ? 80 : 4000;
 var server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
+});
+
+// socket connection
+let socketIO = require('socket.io');
+let io = socketIO.listen(server);
+
+app.set('socketio', io);
+
+io.on('connection', (socket) => {
+    console.log('Admin connected');
 });
