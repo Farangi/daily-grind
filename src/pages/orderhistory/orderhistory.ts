@@ -26,33 +26,12 @@ export class OrderhistoryPage {
 
 	private prepareItems(orders){
     	orders.map((order) => {
-    		if(order.time){
-    			var humanTime = this.convertIsoDate(order.time);
-    			order.humanDate = humanTime.date;
-    			order.humanTime = humanTime.time;
-    		}
     		if(order.location === undefined){
     			order.location = {name:'counter'};
     		}
 	        return order;
 	    });
 	    return orders;
-    }
-
-    private convertIsoDate(isoDate) {
-    	var date = new Date(isoDate);
-    	var time = date.toLocaleTimeString();
-		var year = date.getFullYear();
-		var month = date.getMonth()+1;
-		var dt = date.getDate();
-
-		if (dt < 10) {
-		  dt = '0' + dt;
-		}
-		if (month < 10) {
-		  month = '0' + month;
-		}
-		return {time:time, date:year+'-' + month + '-'+dt};
     }
 
     showDetails(items){

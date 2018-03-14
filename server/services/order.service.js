@@ -205,6 +205,14 @@ function checkBalanceAvailability(orderObject) {
 function create(orderObject) {
 	var deferred = Q.defer();
 	orderObject.time = new Date().toISOString();
+	calculatePrice(orderObject)
+	.then(function(price) {
+		orderObject.price = price;
+	})
+	.catch(function(err) {
+		deferred.reject(err.name + ': ' + err.message);
+	});
+	
 	if (orderObject.location !== undefined) {
 		if (orderObject.location.location !== undefined) {
 			orderObject.location = {
@@ -227,16 +235,10 @@ function create(orderObject) {
 			.then(function(availability) {
 				if (availability) {
 					orderObject.payment = 'balance';
-					calculatePrice(orderObject)
-						.then(function(price) {
-							userService.deductBalance(orderObject.userId, price)
-								.catch(function(err) {
-									deferred.reject(err.name + ': ' + err.message);
-								});
-						})
-						.catch(function(err) {
-							deferred.reject(err.name + ': ' + err.message);
-						});
+					userService.deductBalance(orderObject.userId, orderObject.price)
+					.catch(function(err) {
+						deferred.reject(err.name + ': ' + err.message);
+					});
 				} else {
 					orderObject.payment = 'cash';
 				}
@@ -245,8 +247,11 @@ function create(orderObject) {
 					orderObject,
 					function(err, doc) {
 						if (err) deferred.reject(err.name + ': ' + err.message);
-
-						deferred.resolve();
+						var responseOrder = null;
+						if (orderObject.status == 'pending'){
+							responseOrder = orderObject;
+						}
+						deferred.resolve(responseOrder);
 					});
 			})
 			.catch(function(err) {

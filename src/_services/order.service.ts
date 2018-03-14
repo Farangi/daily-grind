@@ -11,7 +11,8 @@ export class OrderService {
 	}
 
 	create( order: any ) {
-		return this.http.post( '/orders/create', order );
+		return this.http.post( '/orders/create', order )
+			.map(( response: Response ) => response.json() );
 	}
 
 	getAll( userId ) {

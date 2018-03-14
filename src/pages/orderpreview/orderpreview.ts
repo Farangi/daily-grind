@@ -1,5 +1,5 @@
 import { AlertService, OrderService } from "../../_services";
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { App, IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 
 @IonicPage()
@@ -34,7 +34,7 @@ export class OrderpreviewPage {
 		this.calculatePrice();
 		this.items = this.order.items;
 
-		if(this.order.location == undefined) {console.log('azz');
+		if(this.order.location == undefined) {
 			this.selectedLocation.name = 'Counter';
 		}
 		else {
@@ -153,8 +153,7 @@ export class OrderpreviewPage {
 
 	placeOrder() {
 		this.orderService.create(this.getPreparedOrder()).subscribe((data) => {
-			console.log(data);
-			this.app.getRootNav().push("OrdertimerPage", this.navParams.data);
+			this.app.getRootNav().setRoot("OrdertimerPage", data);
 		}, error => {
 			this.alertService.error(error);
 		});

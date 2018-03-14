@@ -14,13 +14,13 @@
 	<div margin-bottom>
 
 		<div class="timer">
-			<ion-badge class="transparent-badge timer-badge">00</ion-badge>
+			<ion-badge class="transparent-badge timer-badge">{{this.hours}}</ion-badge>
 			
 			<span class="timer-dots">:</span>
-			<ion-badge class="transparent-badge timer-badge">30</ion-badge>
+			<ion-badge class="transparent-badge timer-badge">{{this.minutes}}</ion-badge>
 			
 			<span class="timer-dots">:</span>
-			<ion-badge class="transparent-badge timer-badge">10</ion-badge>
+			<ion-badge class="transparent-badge timer-badge">{{this.seconds}}</ion-badge>
 		</div>
 
 		<div class="timer-label">
@@ -40,7 +40,7 @@
 	</div>
 
 	<div class="order-timer-inner" margin-bottom>
-		<button ion-button full round color="primary" type="button">
+		<button ion-button full round color="primary" type="button" [disabled]="this.isTimeCompleted" (click)="doneClicked()">
 			Done
 		</button>
 	</div>

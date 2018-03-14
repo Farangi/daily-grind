@@ -30,56 +30,56 @@
 		        </ion-col>
 		    </ion-row>
 		    
-		    <ion-list *ngIf="item.serving">
+		    <div *ngIf="item.serving">
 
-                <ion-list-header>
+                <h4>
                     Servings
-                </ion-list-header>
+                </h4>
 
                 <ion-item>
                     <p class="grind-menu-list-item-p show-inline">Name : </p>
-		           	<p class="grind-menu-list-item-p bold show-inline">{{item.serving.name}}</p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.servings[item.serving-1].name}}</p>
 		           	<br />
 
 		           	<p class="grind-menu-list-item-p show-inline">Price : </p>
-		           	<p class="grind-menu-list-item-p bold show-inline">{{item.serving.price}}</p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.servings[item.serving-1].price}}</p>
                 </ion-item>
 
-            </ion-list>
+            </div>
 
-            <ion-list *ngIf="item.variant">
+            <div *ngIf="item.variant">
 
-                <ion-list-header>
+                <h4>
                     Variant
-                </ion-list-header>
+                </h4>
 
                 <ion-item>
                     <p class="grind-menu-list-item-p show-inline">Name : </p>
-		           	<p class="grind-menu-list-item-p bold show-inline">{{item.variant.name}}</p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.variants[item.variant-1].name}}</p>
 		           	<br />
 
 		           	<p class="grind-menu-list-item-p show-inline">Price : </p>
-		           	<p class="grind-menu-list-item-p bold show-inline">{{item.variant.price}}</p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.variants[item.variant-1].price}}</p>
                 </ion-item>
 
-            </ion-list>
+            </div>
 
-            <ion-list *ngIf="item.addon">
+            <div *ngIf="item.addon">
 
-                <ion-list-header>
+                <h4>
                       Addon
-                </ion-list-header>
+                </h4>
 
                 <ion-item>
                     <p class="grind-menu-list-item-p show-inline">Name : </p>
-		           	<p class="grind-menu-list-item-p bold show-inline">{{item.addon.name}}</p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.addons[item.addon-1].name}}</p>
 		           	<br />
 
 		           	<p class="grind-menu-list-item-p show-inline">Price : </p>
-		           	<p class="grind-menu-list-item-p bold show-inline">{{item.addon.price}}</p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.addons[item.addon-1].price}}</p>
                 </ion-item>
 
-            </ion-list>
+            </div>
 
 	 	</ion-item>
 	</ion-list>

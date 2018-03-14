@@ -36,8 +36,8 @@ function getAllForUser(req, res) {
 function create(req, res) {
 	var io = req.app.get('socketio');
     orderService.create(req.body)
-        .then(function () {
-            res.sendStatus(200);
+        .then(function (order) {
+            res.status(200).send(order);
             if(req.body.userId){
             	userService.getUserNameById(req.body.userId)
             		.then(user => {

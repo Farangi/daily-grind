@@ -35,13 +35,13 @@
                 <div item-content text-left>
                 	<div *ngIf="order.time">
 	                	<p class="grind-menu-list-item-p show-inline">Date : </p>
-			           	<p class="grind-menu-list-item-p bold show-inline">{{order.humanDate}}</p>
+			           	<p class="grind-menu-list-item-p bold show-inline">{{order.time | date:'fullDate'}}</p>
 			           	<br />
 			        </div>
 
 			        <div *ngIf="order.time">
 			           	<p class="grind-menu-list-item-p show-inline">Time : </p>
-			           	<p class="grind-menu-list-item-p bold show-inline">{{order.humanTime}}</p>
+			           	<p class="grind-menu-list-item-p bold show-inline">{{order.time | date:'shortTime'}}</p>
 			           	<br />
 			        </div>
 
@@ -52,6 +52,7 @@
 		           	<p class="grind-menu-list-item-p show-inline">Location : </p>
 		           	<p class="grind-menu-list-item-p bold show-inline">{{order.location.name}}</p>
 		           	<br />
+		           	
                 </div>
 	    	</ion-item>
 

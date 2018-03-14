@@ -10,6 +10,7 @@ service.getAll = getAll;
 service.create = create;
 service.getById = getById;
 service.update = update;
+service.updateTime = updateTime;
 
 module.exports = service;
 
@@ -75,6 +76,37 @@ function update(_id, itemParam) {
             { 
             	$set: {
             		"outofstock": itemParam.outofstock
+            	}
+            },
+            function (err, doc) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+
+                deferred.resolve();
+            });
+    }
+
+    return deferred.promise;
+}
+function updateTime(_id, orderParam) {
+    var deferred = Q.defer();
+    let timeParam = orderParam.time;
+    // validation
+    db.foodItems.findById(_id, function (err, item) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        if (item) {
+            updateItemTime();
+        }
+    });
+
+    function updateItemTime() {
+        // fields to update
+
+        db.foodItems.update(
+            { _id: mongo.helper.toObjectID(_id) },
+            { 
+            	$set: {
+            		"time": timeParam
             	}
             },
             function (err, doc) {
