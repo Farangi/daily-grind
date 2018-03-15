@@ -1,7 +1,10 @@
 {
 	"name": "daily-grind-server",
 	"version": "1.0.0",
-	"description": "Server for DailyGrind",
+	"engines": {
+		"node":"6.11.4"
+	},
+	"description":"Server for DailyGrind",
 	"dependencies": {
 		"@google/maps": "^0.4.5",
 		"bcryptjs": "^2.1.0",
