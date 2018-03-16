@@ -18,11 +18,14 @@
 ion-app{
 
  .scroll-content{
-    
  }
 
  a {
  	text-decoration: underline;
+ }
+
+ .tabs-ios .tabbar, .tabs-md .tabbar {
+    background: #fff;
  }
 
  .item[no-lines].bottom-border { 
@@ -42,9 +45,16 @@ ion-app{
  ion-item.grind-item-input {
     border-radius: 64px;
     padding-left: 25px;
-    background-color: rgba(30, 30, 30, 0.3);
     box-shadow: none;
  }
+
+    ion-item.grind-item-input.faded-input {
+        background-color: rgba(30, 30, 30, 0.3);
+    }
+
+    ion-item.grind-item-input.primary-select {
+        background-color: color($colors, primary);
+    }
 
  ion-item.grind-clear-item {
  	padding-left: 5px;
@@ -60,11 +70,10 @@ ion-app{
  		border-bottom: 0px;
  	}
 
- .item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.item-input-has-focus .item-inner {
+ .grind-item-input.item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.item-input-has-focus .item-inner, .grind-item-input.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
  	border-bottom: 0px;
  	box-shadow: none;
  }
-
 
  .grind-clear-item.item.item-ios .checkbox-ios, .grind-clear-item.item.item-md .checkbox-md{
 	margin-right: 5px;
@@ -91,6 +100,34 @@ ion-app{
  .grind-menu-list-item-p {
     white-space: pre-line;
  }
+
+ .grind-toast {
+    position: absolute;
+    top: 65px;
+}
+
+.toast-ios.grind-toast .toast-message, .toast-md.grind-toast .toast-message {
+    color: $grind-dark-gray;
+    padding-right: 0px;
+}
+
+.toast-ios.grind-toast .toast-button, .toast-md.grind-toast .toast-button {
+    color: color($colors, primary);
+}
+
+.toast-md.grind-toast .toast-wrapper, .toast-ios.grind-toast .toast-wrapper {
+    left: 10%;
+    right: 10%;
+    max-height: 90px;
+    border-radius: 1.5rem;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.toast-md.grind-toast .toast-wrapper {
+	width: 80%;
+}
  
  .alert-ios .alert-head h2, .alert-md .alert-head h2,  {
     color: color($colors, primary);
@@ -118,6 +155,10 @@ ion-app{
  		justify-content: space-between;
  	}
 
+.error-border {
+    border: 1px solid color($colors, primary);
+}
+
  .mb-10 { margin-bottom: 10px !important; }
  .ml-10 { margin-bottom: 10px !important; }
  .mt-10 { margin-bottom: 10px !important; }
@@ -130,12 +171,27 @@ ion-app{
 
  .text-grind-gray { color: $grind-gray !important; }
  .text-grind-dark-gray { color: $grind-dark-gray !important; }
+ .text-grind-light-gray { color: $grind-light-gray; }
+ .text-white { color: white !important; }
 
  .invisible { visibility: hidden; }
+ .show-inline { display: inline; }
 
  .text-mutated {
  	opacity: 0.8;
  	font-size: 1.1rem;
+ }
+
+ .text-blue {
+    color: #387ef5;
+ }
+
+ .text-green {
+    color: #32db64;
+ }
+
+ .bg-green {
+    background-color: #32db64;
  }
 
  .bold {

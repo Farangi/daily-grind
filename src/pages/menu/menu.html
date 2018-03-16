@@ -1,21 +1,455 @@
-<ion-header>
+<ion-header no-border>
 
   <ion-navbar>
   	<ion-buttons start>
-        <button ion-button menuToggle>
+        <button ion-button color="dark" menuToggle>
       		<ion-icon name="menu"></ion-icon>
     	</button>
     </ion-buttons>
-    <ion-title>menu</ion-title>
+    <ion-title>Menu</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="menu">
+      <ion-segment-button value="wanted">
+        Wanted
+      </ion-segment-button>
+      <ion-segment-button value="all">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="snacks">
+        Snacks
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
 </ion-header>
 
 
-<ion-content>
-	<ion-tabs tabsPlacement="top">
+<ion-content padding>
+  <div [ngSwitch]="menu">
+    <ion-list *ngSwitchCase="'wanted'">
+
+      <div *ngFor="let item of items; let itemIdx= index">
+        <ion-item detail-none no-lines class="bottom-border" *ngIf="item.category === 'wanted'" [class.selected]="item.selected">
+          
+          <ion-row (click)="expandItem(item)" (press)="showRemoveConfirmDialogue(item)" [class.mb-10]="item.expanded">
+            <ion-col col-4 class="centered-col">
+                <ion-avatar class="grind-avatar">
+                  <img src="../assets/imgs/food-img.jpg">
+                </ion-avatar>
+            </ion-col>  
+            <ion-col col-6>
+              <h2 class="grind-menu-list-item-p">{{item.name}}</h2>
+                <p class="grind-menu-list-item-p">{{item.description}}</p>
+              <p ion-text color="primary" class="bold">RS {{item.price}}/-</p>
+            </ion-col>
+            <ion-col col-2 class="centered-col">
+              <button ion-button clear icon-only color="dark">
+                <ion-icon class="text-grind-light-gray collapse-icon" [name]="item.expanded ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+
+          <menu-item-collapse [expanded]="item.expanded">
+            <div class="collapse-content">
+
+              <ion-item [class.selected-inner]="item.selected">
+                <div item-start>
+                  <ion-badge>Item {{item.itemOrderNum}}</ion-badge>
+                </div>
+                <div item-content text-center>
+                  <button ion-button clear icon-only class="text-grind-light-gray" (click)="showRemoveConfirmDialogue(item)">
+                    <ion-icon name="close"></ion-icon>
+                  </button>
+                </div>
+              </ion-item>
+
+              <ion-item [class.selected-inner]="item.selected">
+                <div item-start>
+                    <p ion-text color="dark" class="bold">Quantity</p>
+                  </div>
+                <div item-content text-center>
+                    <ion-icon name="remove-circle" color="primary" class="quantity-control" (click)="decrement(item)"></ion-icon>
+                    <span class="quantity-text">{{item.quantity}}</span>
+                    <ion-icon name="add-circle" color="secondary" class="quantity-control" (click)="increment(item)"></ion-icon>
+                  </div>
+              </ion-item>
+
+              <div *ngIf="item.servings || item.variants || item.addons">
+                <ion-item *ngFor="let orderItem of getordersOfItem(item._id); let orderItemidx= index" [class.selected-inner]="item.selected">
+                  
+                  <ion-item (click)="expandOrderItem(item, orderItemidx)" [class.selected-inner]="item.selected">
+                    <div item-start>
+                        <p ion-text class="bold">Options for {{item.name}} {{orderItemidx+1}}</p>
+                      </div>
+                    <div item-end text-center>
+                        <button ion-button outline icon-only color="primary">
+                          <ion-icon [name]="orderItem.orderItemsHelper[orderItemidx].expanded ? 'remove' : 'add'"></ion-icon>
+                        </button>
+                      </div>
+                  </ion-item>
+
+                  <menu-item-collapse [expanded]="orderItem.orderItemsHelper[orderItemidx].expanded">
+
+                    <ion-list radio-group *ngIf="item.servings" [(ngModel)]="orderItems[orderItem.orderItemsHelper[orderItemidx].index].serving">
+
+                      <ion-list-header [class.selected-inner]="item.selected">
+                          Servings
+                      </ion-list-header>
+
+                      <ion-item *ngFor="let serving of orderItem.servings" [class.selected-inner]="item.selected">
+                        <div item-start>
+                            <ion-radio value="{{serving.id}}" name="serving"></ion-radio>
+                          </div>
+                        <div item-content>
+                            <p>{{serving.name}}</p>
+                        </div>
+                        <div item-end text-center>
+                          <p ion-text color="primary">{{serving.price}}/-</p>
+                        </div>
+                      </ion-item>
+
+                    </ion-list>
+
+                    <ion-list radio-group *ngIf="orderItem.variants" [(ngModel)]="orderItems[orderItem.orderItemsHelper[orderItemidx].index].variant">
+
+                      <ion-list-header [class.selected-inner]="item.selected">
+                          Variants
+                      </ion-list-header>
+
+                      <ion-item *ngFor="let variant of orderItem.variants" [class.selected-inner]="item.selected">
+                        <div item-start>
+                            <ion-radio value="{{variant.id}}" name="variant"></ion-radio>
+                          </div>
+                        <div item-content>
+                            <p>{{variant.name}}</p>
+                          </div>
+                          <div item-end text-center>
+                            <p ion-text color="primary">{{variant.price}}/-</p>
+                          </div>
+                      </ion-item>
+
+                    </ion-list>
+
+                    <ion-list radio-group *ngIf="orderItem.addons" [(ngModel)]="orderItems[orderItem.orderItemsHelper[orderItemidx].index].addon">
+
+                      <ion-list-header [class.selected-inner]="item.selected">
+                          Addons
+                      </ion-list-header>
+
+                      <ion-item *ngFor="let addon of orderItem.addons" [class.selected-inner]="item.selected">
+                        <div item-start>
+                            <ion-radio value="{{addon.id}}" name="addon"></ion-radio>
+                          </div>
+                        <div item-content>
+                            <p>{{addon.name}}</p>
+                          </div>
+                          <div item-end text-center>
+                            <p ion-text color="primary">{{addon.price}}/-</p>
+                          </div>
+                      </ion-item>
+
+                    </ion-list>
+
+                  </menu-item-collapse>
+                
+                </ion-item>
+              </div>
+
+            </div>
+
+          </menu-item-collapse>
+        </ion-item>
+      </div>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'all'">
+
+      <div *ngFor="let item of items; let itemIdx= index">
+        <ion-item detail-none no-lines class="bottom-border" *ngIf="item.category === 'all'" [class.selected]="item.selected">
+          
+          <ion-row (click)="expandItem(item)" (press)="showRemoveConfirmDialogue(item)" [class.mb-10]="item.expanded">
+            <ion-col col-4 class="centered-col">
+                <ion-avatar class="grind-avatar">
+                  <img src="../assets/imgs/food-img.jpg">
+                </ion-avatar>
+            </ion-col>  
+            <ion-col col-6>
+              <h2 class="grind-menu-list-item-p">{{item.name}}</h2>
+                <p class="grind-menu-list-item-p">{{item.description}}</p>
+              <p ion-text color="primary" class="bold">RS {{item.price}}/-</p>
+            </ion-col>
+            <ion-col col-2 class="centered-col">
+              <button ion-button clear icon-only color="dark">
+                <ion-icon class="text-grind-light-gray collapse-icon" [name]="item.expanded ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+
+          <menu-item-collapse [expanded]="item.expanded">
+            <div class="collapse-content">
+
+              <ion-item [class.selected-inner]="item.selected">
+                <div item-start>
+                  <ion-badge>Item {{item.itemOrderNum}}</ion-badge>
+                </div>
+                <div item-content text-center>
+                  <button ion-button clear icon-only class="text-grind-light-gray" (click)="showRemoveConfirmDialogue(item)">
+                    <ion-icon name="close"></ion-icon>
+                  </button>
+                </div>
+              </ion-item>
+
+              <ion-item [class.selected-inner]="item.selected">
+                <div item-start>
+                    <p ion-text color="dark" class="bold">Quantity</p>
+                  </div>
+                <div item-content text-center>
+                    <ion-icon name="remove-circle" color="primary" class="quantity-control" (click)="decrement(item)"></ion-icon>
+                    <span class="quantity-text">{{item.quantity}}</span>
+                    <ion-icon name="add-circle" color="secondary" class="quantity-control" (click)="increment(item)"></ion-icon>
+                  </div>
+              </ion-item>
+
+              <div *ngIf="item.servings || item.variants || item.addons">
+                <ion-item *ngFor="let orderItem of getordersOfItem(item._id); let orderItemidx= index" [class.selected-inner]="item.selected">
+                  
+                  <ion-item (click)="expandOrderItem(item, orderItemidx)" [class.selected-inner]="item.selected">
+                    <div item-start>
+                        <p ion-text class="bold">Options for {{item.name}} {{orderItemidx+1}}</p>
+                      </div>
+                    <div item-end text-center>
+                        <button ion-button outline icon-only color="primary">
+                          <ion-icon [name]="orderItem.orderItemsHelper[orderItemidx].expanded ? 'remove' : 'add'"></ion-icon>
+                        </button>
+                      </div>
+                  </ion-item>
+
+                  <menu-item-collapse [expanded]="orderItem.orderItemsHelper[orderItemidx].expanded">
+
+                    <ion-list radio-group *ngIf="item.servings" [(ngModel)]="orderItems[orderItem.orderItemsHelper[orderItemidx].index].serving">
+
+                      <ion-list-header [class.selected-inner]="item.selected">
+                          Servings
+                      </ion-list-header>
+
+                      <ion-item *ngFor="let serving of orderItem.servings" [class.selected-inner]="item.selected">
+                        <div item-start>
+                            <ion-radio value="{{serving.id}}" name="serving"></ion-radio>
+                          </div>
+                        <div item-content>
+                            <p>{{serving.name}}</p>
+                        </div>
+                        <div item-end text-center>
+                          <p ion-text color="primary">{{serving.price}}/-</p>
+                        </div>
+                      </ion-item>
+
+                    </ion-list>
+
+                    <ion-list radio-group *ngIf="orderItem.variants" [(ngModel)]="orderItems[orderItem.orderItemsHelper[orderItemidx].index].variant">
+
+                      <ion-list-header [class.selected-inner]="item.selected">
+                          Variants
+                      </ion-list-header>
+
+                      <ion-item *ngFor="let variant of orderItem.variants" [class.selected-inner]="item.selected">
+                        <div item-start>
+                            <ion-radio value="{{variant.id}}" name="variant"></ion-radio>
+                          </div>
+                        <div item-content>
+                            <p>{{variant.name}}</p>
+                          </div>
+                          <div item-end text-center>
+                            <p ion-text color="primary">{{variant.price}}/-</p>
+                          </div>
+                      </ion-item>
+
+                    </ion-list>
+
+                    <ion-list radio-group *ngIf="orderItem.addons" [(ngModel)]="orderItems[orderItem.orderItemsHelper[orderItemidx].index].addon">
+
+                      <ion-list-header [class.selected-inner]="item.selected">
+                          Addons
+                      </ion-list-header>
+
+                      <ion-item *ngFor="let addon of orderItem.addons" [class.selected-inner]="item.selected">
+                        <div item-start>
+                            <ion-radio value="{{addon.id}}" name="addon"></ion-radio>
+                          </div>
+                        <div item-content>
+                            <p>{{addon.name}}</p>
+                          </div>
+                          <div item-end text-center>
+                            <p ion-text color="primary">{{addon.price}}/-</p>
+                          </div>
+                      </ion-item>
+
+                    </ion-list>
+
+                  </menu-item-collapse>
+                
+                </ion-item>
+              </div>
+
+            </div>
+
+          </menu-item-collapse>
+        </ion-item>
+      </div>
+      
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'snacks'">
+
+      <div *ngFor="let item of items; let itemIdx= index">
+        <ion-item detail-none no-lines class="bottom-border" *ngIf="item.category === 'snacks'" [class.selected]="item.selected">
+          
+          <ion-row (click)="expandItem(item)" (press)="showRemoveConfirmDialogue(item)" [class.mb-10]="item.expanded">
+            <ion-col col-4 class="centered-col">
+                <ion-avatar class="grind-avatar">
+                  <img src="../assets/imgs/food-img.jpg">
+                </ion-avatar>
+            </ion-col>  
+            <ion-col col-6>
+              <h2 class="grind-menu-list-item-p">{{item.name}}</h2>
+                <p class="grind-menu-list-item-p">{{item.description}}</p>
+              <p ion-text color="primary" class="bold">RS {{item.price}}/-</p>
+            </ion-col>
+            <ion-col col-2 class="centered-col">
+              <button ion-button clear icon-only color="dark">
+                <ion-icon class="text-grind-light-gray collapse-icon" [name]="item.expanded ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+
+          <menu-item-collapse [expanded]="item.expanded">
+            <div class="collapse-content">
+
+              <ion-item [class.selected-inner]="item.selected">
+                <div item-start>
+                  <ion-badge>Item {{item.itemOrderNum}}</ion-badge>
+                </div>
+                <div item-content text-center>
+                  <button ion-button clear icon-only class="text-grind-light-gray" (click)="showRemoveConfirmDialogue(item)">
+                    <ion-icon name="close"></ion-icon>
+                  </button>
+                </div>
+              </ion-item>
+
+              <ion-item [class.selected-inner]="item.selected">
+                <div item-start>
+                    <p ion-text color="dark" class="bold">Quantity</p>
+                  </div>
+                <div item-content text-center>
+                    <ion-icon name="remove-circle" color="primary" class="quantity-control" (click)="decrement(item)"></ion-icon>
+                    <span class="quantity-text">{{item.quantity}}</span>
+                    <ion-icon name="add-circle" color="secondary" class="quantity-control" (click)="increment(item)"></ion-icon>
+                  </div>
+              </ion-item>
+
+              <div *ngIf="item.servings || item.variants || item.addons">
+                <ion-item *ngFor="let orderItem of getordersOfItem(item._id); let orderItemidx= index" [class.selected-inner]="item.selected">
+                  
+                  <ion-item (click)="expandOrderItem(item, orderItemidx)" [class.selected-inner]="item.selected">
+                    <div item-start>
+                        <p ion-text class="bold">Options for {{item.name}} {{orderItemidx+1}}</p>
+                      </div>
+                    <div item-end text-center>
+                        <button ion-button outline icon-only color="primary">
+                          <ion-icon [name]="orderItem.orderItemsHelper[orderItemidx].expanded ? 'remove' : 'add'"></ion-icon>
+                        </button>
+                      </div>
+                  </ion-item>
+
+                  <menu-item-collapse [expanded]="orderItem.orderItemsHelper[orderItemidx].expanded">
+
+                    <ion-list radio-group *ngIf="item.servings" [(ngModel)]="orderItems[orderItem.orderItemsHelper[orderItemidx].index].serving">
+
+                      <ion-list-header [class.selected-inner]="item.selected">
+                          Servings
+                      </ion-list-header>
+
+                      <ion-item *ngFor="let serving of orderItem.servings" [class.selected-inner]="item.selected">
+                        <div item-start>
+                            <ion-radio value="{{serving.id}}" name="serving"></ion-radio>
+                          </div>
+                        <div item-content>
+                            <p>{{serving.name}}</p>
+                        </div>
+                        <div item-end text-center>
+                          <p ion-text color="primary">{{serving.price}}/-</p>
+                        </div>
+                      </ion-item>
+
+                    </ion-list>
+
+                    <ion-list radio-group *ngIf="orderItem.variants" [(ngModel)]="orderItems[orderItem.orderItemsHelper[orderItemidx].index].variant">
+
+                      <ion-list-header [class.selected-inner]="item.selected">
+                          Variants
+                      </ion-list-header>
+
+                      <ion-item *ngFor="let variant of orderItem.variants" [class.selected-inner]="item.selected">
+                        <div item-start>
+                            <ion-radio value="{{variant.id}}" name="variant"></ion-radio>
+                          </div>
+                        <div item-content>
+                            <p>{{variant.name}}</p>
+                          </div>
+                          <div item-end text-center>
+                            <p ion-text color="primary">{{variant.price}}/-</p>
+                          </div>
+                      </ion-item>
+
+                    </ion-list>
+
+                    <ion-list radio-group *ngIf="orderItem.addons" [(ngModel)]="orderItems[orderItem.orderItemsHelper[orderItemidx].index].addon">
+
+                      <ion-list-header [class.selected-inner]="item.selected">
+                          Addons
+                      </ion-list-header>
+
+                      <ion-item *ngFor="let addon of orderItem.addons" [class.selected-inner]="item.selected">
+                        <div item-start>
+                            <ion-radio value="{{addon.id}}" name="addon"></ion-radio>
+                          </div>
+                        <div item-content>
+                            <p>{{addon.name}}</p>
+                          </div>
+                          <div item-end text-center>
+                            <p ion-text color="primary">{{addon.price}}/-</p>
+                          </div>
+                      </ion-item>
+
+                    </ion-list>
+
+                  </menu-item-collapse>
+                
+                </ion-item>
+              </div>
+
+            </div>
+
+          </menu-item-collapse>
+        </ion-item>
+      </div> 
+    </ion-list>
+
+  </div>
+	<!-- <ion-tabs tabsPlacement="top">
 	  <ion-tab [root]="wantedRoot" tabTitle="Wanted Deals"></ion-tab>
 	  <ion-tab [root]="allRoot" tabTitle="All"></ion-tab>
 	  <ion-tab [root]="snacksRoot" tabTitle="Snacks"></ion-tab>
-	</ion-tabs>
+	</ion-tabs> -->
 </ion-content>
+
+<ion-footer>
+    <button ion-button block color="primary" type="button" class="grind-block-btn grind-btn-icon-right" (click)="placeOrder()">
+    <ion-icon class="invisible" name="arrow-round-forward"></ion-icon>
+    Place Order
+    <ion-icon name="arrow-round-forward"></ion-icon>
+  </button>
+</ion-footer>

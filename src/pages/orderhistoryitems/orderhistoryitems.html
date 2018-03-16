@@ -1,0 +1,87 @@
+<ion-header>
+	<ion-toolbar>
+	    <ion-title>
+	      	Order Items
+	    </ion-title>
+	    <ion-buttons start>
+	      	<button ion-button (click)="dismiss()">
+	        	<span ion-text color="primary" showWhen="ios">Back</span>
+	        	<ion-icon name="md-close" showWhen="android"></ion-icon>
+	      	</button>
+	    </ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-list>
+		<ion-item detail-none no-lines class="bottom-border" *ngFor="let item of items">
+		  	<ion-row>
+		 		<ion-col col-4 class="centered-col">
+		            <ion-avatar class="grind-avatar">
+		               <img src="../assets/imgs/food-img.jpg">
+		             </ion-avatar>
+		        </ion-col>  
+		        <ion-col col-8>
+		           	<h2 class="grind-menu-list-item-p bold">{{item.details.name}}</h2>
+		            <p class="grind-menu-list-item-p">{{item.details.description}}</p>
+		           	<p ion-text color="primary" class="bold">RS {{item.details.price}}/-</p>
+		        </ion-col>
+		    </ion-row>
+		    
+		    <div *ngIf="item.serving">
+
+                <h4>
+                    Servings
+                </h4>
+
+                <ion-item>
+                    <p class="grind-menu-list-item-p show-inline">Name : </p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.servings[item.serving-1].name}}</p>
+		           	<br />
+
+		           	<p class="grind-menu-list-item-p show-inline">Price : </p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.servings[item.serving-1].price}}</p>
+                </ion-item>
+
+            </div>
+
+            <div *ngIf="item.variant">
+
+                <h4>
+                    Variant
+                </h4>
+
+                <ion-item>
+                    <p class="grind-menu-list-item-p show-inline">Name : </p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.variants[item.variant-1].name}}</p>
+		           	<br />
+
+		           	<p class="grind-menu-list-item-p show-inline">Price : </p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.variants[item.variant-1].price}}</p>
+                </ion-item>
+
+            </div>
+
+            <div *ngIf="item.addon">
+
+                <h4>
+                      Addon
+                </h4>
+
+                <ion-item>
+                    <p class="grind-menu-list-item-p show-inline">Name : </p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.addons[item.addon-1].name}}</p>
+		           	<br />
+
+		           	<p class="grind-menu-list-item-p show-inline">Price : </p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{item.details.addons[item.addon-1].price}}</p>
+                </ion-item>
+
+            </div>
+
+	 	</ion-item>
+	</ion-list>
+
+</ion-content>

@@ -1,6 +1,7 @@
 import { UserService, AuthenticationService, AlertService } from "../../_services";
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IonicPage, NavController, NavParams, LoadingController, ActionSheetController, ToastController, Platform, Loading } from 'ionic-angular';
 
 import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
@@ -20,11 +21,17 @@ export class SignupPage
 
     user: any = {};
     lastImage: string = null;
+    isStudent: boolean = true;
+    isAdmin: boolean = false;
     loading: Loading;
+    authForm: FormGroup;
+    loader: any;
 
     constructor (
         public navCtrl: NavController,
         public navParams: NavParams,
+        public loadingCtrl: LoadingController,
+        public formBuilder: FormBuilder,
         private camera: Camera,
         private transfer: Transfer,
         private file: File,
@@ -32,11 +39,24 @@ export class SignupPage
         public actionSheetCtrl: ActionSheetController,
         public toastCtrl: ToastController,
         public platform: Platform,
-        public loadingCtrl: LoadingController,
         private userService: UserService,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService   )
-    {
+        private alertService: AlertService   ) {
+
+            this.authForm = formBuilder.group({
+                firstName: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(3), Validators.maxLength(50)])],
+                lastName: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(3), Validators.maxLength(50)])],
+                email: ['', Validators.compose([Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)])],
+                username: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
+                password: ['', Validators.compose([Validators.required, Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/), Validators.minLength(6), Validators.maxLength(100)])],
+                confirmPassword: ['', Validators.compose([Validators.required])],
+                cellPhone: ['', Validators.compose([Validators.required, Validators.pattern(/^(?=(\D*\d){11}\D*$)/)])],
+                university: ['', Validators.compose([Validators.required])],
+                enrollmentNumber: ['', Validators.compose([Validators.required, Validators.pattern(/^([0-1][0-1])-(\d{6})-(\d{2})$/)])],
+                universityId: ['', Validators.compose([Validators.required, Validators.pattern(/^([0-1][0-1])-(\d{6})-(\d{2})$/)])],
+                discipline: ['', Validators.compose([Validators.required])],
+                requestSmartCard: ['']
+            });
     };
     public presentActionSheet ()
     {
@@ -183,32 +203,55 @@ export class SignupPage
         } );
     }
 
-    ionViewDidLoad ()
-    {
-        console.log( 'ionViewDidLoad SignupPage' );
-    }
-
-    submitForm ()
+    submitForm (value: any) 
     {   
-        this.userService.create(this.user).subscribe(
-            data=>{
-            this.authenticationService.login(this.user.username, this.user.password)
-                .subscribe(
+        this.presentLoading();
+        if(this.authForm.valid) {
+            this.userService.create(value).subscribe(
                 data=>{
-                    this.navCtrl.setRoot( "SidemenuPage" );
-                },
-                error=>{
-                    this.alertService.error(error);
-                });
-        },
-        error=>{
-            this.alertService.error(error);
-        });
+                this.authenticationService.login(value.username, value.password)
+                    .subscribe(
+                    data=>{
+                        this.loader.dismiss();
+                        this.navCtrl.setRoot( "SidemenuPage" );
+                    },
+                    error=>{
+                        this.loader.dismiss();
+                        this.alertService.error(error);
+                    });
+            },
+            error=>{
+                this.loader.dismiss();
+                this.alertService.error(error);
+            });
+        }
     }
 
-    showLogin ()
+    presentLoading() {
+ 
+        this.loader = this.loadingCtrl.create({
+          content: "Signing Up..."
+        });
+     
+        this.loader.present();
+     
+    }
+
+    showLogin () 
     {
         this.navCtrl.pop();
+    }
+
+    showAdminControls() 
+    {
+        this.isStudent = false;
+        this.isAdmin = true;
+    }
+
+    showStudentControls() 
+    {
+        this.isAdmin = false;
+        this.isStudent = true;
     }
 
 }

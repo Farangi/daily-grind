@@ -1,0 +1,48 @@
+<ion-header>
+
+  	<ion-navbar>
+    	<ion-title>Daily Grind</ion-title>
+  	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding text-center>
+
+	<h1 margin-bottom class="text-white">#KEEPGRINDING</h1>
+
+	<div margin-bottom>
+
+		<div class="timer">
+			<ion-badge class="transparent-badge timer-badge">{{this.hours}}</ion-badge>
+			
+			<span class="timer-dots">:</span>
+			<ion-badge class="transparent-badge timer-badge">{{this.minutes}}</ion-badge>
+			
+			<span class="timer-dots">:</span>
+			<ion-badge class="transparent-badge timer-badge">{{this.seconds}}</ion-badge>
+		</div>
+
+		<div class="timer-label">
+			<span>Hours</span>
+		</div>
+
+		<span class="timer-dots invisible">:</span>
+		<div class="timer-label">
+			<span>Minutes</span>
+		</div>
+
+		<span class="timer-dots invisible">:</span>
+		<div class="timer-label">
+			<span>Seconds</span>
+		</div>
+
+	</div>
+
+	<div class="order-timer-inner" margin-bottom>
+		<button ion-button full round color="primary" type="button" [disabled]="this.isTimeCompleted" (click)="doneClicked()">
+			Done
+		</button>
+	</div>
+
+</ion-content>

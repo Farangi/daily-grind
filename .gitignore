@@ -11,7 +11,11 @@ log.txt
 *.sublime-workspace
 .vscode/
 npm-debug.log*
+.tern-project
+.editorconfig
+.classpath
 
+.settings/
 .idea/
 .sourcemaps/
 .sass-cache/

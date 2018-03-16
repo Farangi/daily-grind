@@ -1,5 +1,5 @@
 <ion-menu [content]="content">
-  <ion-header>
+  <ion-header class="red-header">
     <ion-toolbar>
       <ion-title>Daily Grind</ion-title>
     </ion-toolbar>
@@ -10,6 +10,10 @@
       <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
         <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
         {{ p.title }}
+      </button>
+      <button ion-item menuClose (click)="gotoIntro()">
+        <ion-icon item-start name="help-circle"></ion-icon>
+        Help
       </button>
       <ion-list-header>
         Action

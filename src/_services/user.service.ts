@@ -14,6 +14,10 @@ export class UserService {
     getById(_id: string) {
         return this.http.get('/users/' + _id).map((response: Response) => response.json());
     }
+	
+	getAccountBalance(_id: string) {
+        return this.http.get('/users/smartcard/' + _id).map((response: Response) => response.json());
+    }
 
     create(user: User) {
         return this.http.post('/users/register', user);

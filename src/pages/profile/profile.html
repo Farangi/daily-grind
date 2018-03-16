@@ -2,16 +2,112 @@
 
   	<ion-navbar>
 	    <ion-buttons start>
-	        <button ion-button menuToggle>
+	        <button ion-button color="dark" menuToggle>
 	      		<ion-icon name="menu"></ion-icon>
 	    	</button>
 	    </ion-buttons>
-	    <ion-title>profile</ion-title>
+	    <ion-title>Profile</ion-title>
   	</ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-This is profile tab.
+<ion-content padding class="transparent-header">
+  	<div id="profile-bg"></div>
+  	<div id="content">
+  		<div id="profile-info" padding>
+      		<img id="profile-image" src="http://lorempixel.com/200/200/">
+      		<h3 id="profile-name">{{user.username}}</h3>
+      	</div>
+
+		<ion-list no-border>
+		    <ion-list-header>
+		      	General
+		    </ion-list-header>
+
+		    <ion-item>
+	            <ion-icon name="contact" class="text-blue" item-start></ion-icon>
+	            <p>First Name</p>
+	            {{user.firstName}}
+	        </ion-item>
+
+	        <ion-item>
+	            <ion-icon name="contact" class="text-blue" item-start></ion-icon>
+	            <p>Last Name</p>
+	            {{user.lastName}}
+	        </ion-item>
+
+		    <ion-item>
+	            <ion-icon name="mail" class="text-blue" item-start></ion-icon>
+	            <p>Email</p>
+	            {{user.email}}
+	        </ion-item>
+		</ion-list>
+		
+		<ion-list>
+		    <ion-list-header>
+		      Account
+		    </ion-list-header>
+
+		    <ion-item>
+		      	<ion-icon name='person' class="text-green" item-start></ion-icon>
+		      	<ion-label floating>Username</ion-label>
+		      	<ion-input [(ngModel)]="user.username" type="text" name="username"></ion-input>
+		    </ion-item>
+
+		    <ion-item>
+		      	<ion-icon name='key' class="text-green" item-start></ion-icon>
+		      	<ion-label floating>Password</ion-label>
+		      	<ion-input [(ngModel)]="user.password" type="password" name="password"></ion-input>
+		    </ion-item>
+
+		    <ion-item>
+		      	<ion-icon name='call' class="text-green" item-start></ion-icon>
+		      	<ion-label floating>Cell Phone</ion-label>
+		      	<ion-input [(ngModel)]="user.cellPhone" type="text" name="cellphone"></ion-input>
+		    </ion-item>
+
+		    <ion-item>
+			    <button ion-button class="bg-green" item-content (click)="update()">
+			      	Update
+			    </button>
+		    </ion-item>
+		</ion-list>
+
+		<ion-list>
+		    <ion-list-header>
+		      	Institution
+		    </ion-list-header>
+
+		    <ion-item>
+	            <ion-icon name="school" color="primary" item-start></ion-icon>
+	            <p>University</p>
+	            {{user.university}}
+	        </ion-item>
+
+	        <ion-item>
+	            <ion-icon name="clipboard" color="primary" item-start></ion-icon>
+	            <p>Enrollment Number</p>
+	            {{user.enrollmentNumber}}
+	        </ion-item>
+
+		    <ion-item>
+	            <ion-icon name="ribbon" color="primary" item-start></ion-icon>
+	            <p>Discipline</p>
+	            {{user.discipline}}
+	        </ion-item>
+		</ion-list>
+
+		<ion-list>
+		    <ion-list-header>
+		    	Other
+		    </ion-list-header>
+		    <ion-item>
+			    <ion-icon name='power' item-start></ion-icon>
+			    <button ion-button item-end (click)="logOut()">
+			      	Logout
+			    </button>
+		    </ion-item>
+		</ion-list>
+	</div>
 </ion-content>

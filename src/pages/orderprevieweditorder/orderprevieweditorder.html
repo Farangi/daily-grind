@@ -1,0 +1,101 @@
+<ion-header>
+	<ion-toolbar>
+	    <ion-title>
+	      	Edit Order Item
+	    </ion-title>
+	    <ion-buttons start>
+	      	<button ion-button (click)="dismiss()">
+	        	<span ion-text color="primary" showWhen="ios">Cancel</span>
+	        	<ion-icon name="md-close" showWhen="android"></ion-icon>
+	      	</button>
+	    </ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item detail-none no-lines class="bottom-border">
+		  	<ion-row>
+		 		<ion-col col-4 class="centered-col">
+		            <ion-avatar class="grind-avatar">
+		               <img src="../assets/imgs/food-img.jpg">
+		             </ion-avatar>
+		        </ion-col>  
+		        <ion-col col-8>
+		           	<h2 class="grind-menu-list-item-p bold">{{item.name}}</h2>
+		            <p class="grind-menu-list-item-p">{{item.description}}</p>
+		           	<p ion-text color="primary" class="bold">RS {{item.price}}/-</p>
+		        </ion-col>
+		    </ion-row>
+		    
+		    <ion-list radio-group *ngIf="item.servings" [(ngModel)]="helperItem.serving">
+
+                <ion-list-header>
+                    Servings
+                </ion-list-header>
+
+                <ion-item *ngFor="let serving of item.servings">
+                    <div item-start>
+                        <ion-radio value="{{serving.id}}" name="serving"></ion-radio>
+                    </div>
+                    <div item-content>
+                        <p>{{serving.name}}</p>
+                    </div>
+                    <div item-end text-center>
+                      	<p ion-text color="primary">{{serving.price}}/-</p>
+                    </div>
+                </ion-item>
+
+            </ion-list>
+
+            <ion-list radio-group *ngIf="item.variants" [(ngModel)]="helperItem.variant">
+
+                <ion-list-header>
+                    Variants
+                </ion-list-header>
+
+                <ion-item *ngFor="let variant of item.variants">
+                    <div item-start>
+                        <ion-radio value="{{variant.id}}" name="variant"></ion-radio>
+                    </div>
+                    <div item-content>
+                        <p>{{variant.name}}</p>
+                    </div>
+                    <div item-end text-center>
+                    	<p ion-text color="primary">{{variant.price}}/-</p>
+                    </div>
+                </ion-item>
+
+            </ion-list>
+
+            <ion-list radio-group *ngIf="item.addons" [(ngModel)]="helperItem.addon">
+
+                <ion-list-header>
+                      Addons
+                </ion-list-header>
+
+                <ion-item *ngFor="let addon of item.addons">
+                    <div item-start>
+                        <ion-radio value="{{addon.id}}" name="addon"></ion-radio>
+                    </div>
+                    <div item-content>
+                        <p>{{addon.name}}</p>
+                    </div>
+                    <div item-end text-center>
+                        <p ion-text color="primary">{{addon.price}}/-</p>
+                    </div>
+                </ion-item>
+
+            </ion-list>
+
+	 	</ion-item>
+	</ion-list>
+</ion-content>
+
+<ion-footer>
+    <button ion-button block color="primary" type="button" class="grind-block-btn grind-btn-icon-right" (click)="done()">
+		<ion-icon class="invisible" name="arrow-round-forward"></ion-icon>
+		Done
+		<ion-icon name="arrow-round-forward"></ion-icon>
+	</button>
+</ion-footer>

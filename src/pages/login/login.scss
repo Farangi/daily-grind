@@ -15,4 +15,9 @@ page-login {
     background-size: cover;
  }
 
+ .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+ 	border: 0px;
+ 	box-shadow: none;
+ }
+
 }

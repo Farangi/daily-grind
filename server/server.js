@@ -10,6 +10,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => res.send('Daily Grind Server is alive!'));
+
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(expressJwt({
     secret: config.secret,
@@ -21,13 +23,27 @@ app.use(expressJwt({
         }
         return null;
     }
-}).unless({ path: ['/users/authenticate', '/users/register'] }));
+}).unless({ path: ['/users/authenticate', '/users/register', '/admins/authenticate', '/socket.io/'] }));
 
 // routes
 app.use('/users', require('./controllers/users.controller'));
+app.use('/items', require('./controllers/items.controller'));
+app.use('/orders', require('./controllers/orders.controller'));
+app.use('/admins', require('./controllers/admins.controller'));
+app.use('/locations', require('./controllers/locations.controller'));
 
 // start server
 var port = process.env.NODE_ENV === 'production' ? 80 : 4000;
-var server = app.listen(port, function () {
+var server = app.listen(process.env.PORT || port, function () {
     console.log('Server listening on port ' + port);
+});
+
+// socket connection
+let socketIO = require('socket.io');
+let io = socketIO.listen(server);
+
+app.set('socketio', io);
+
+io.on('connection', (socket) => {
+    console.log('Admin connected');
 });

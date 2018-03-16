@@ -30,14 +30,23 @@ export class MyApp implements OnInit
     ngOnInit ()
     {
         this.alertService.getMessage().subscribe( message => {
-            if(message){
-                let alert = this.alertCtrl.create({
-                    title: 'Error',
-                    subTitle: message.text,
-                    buttons: [ 'Dismiss' ]
-                });
-                alert.present();
-            }
+			if(message){
+	            if(message.type == 'error'){
+	                let alert = this.alertCtrl.create({
+	                    title: 'Error',
+	                    subTitle: message.text,
+	                    buttons: [ 'Dismiss' ]
+	                });
+	                alert.present();
+	            } else if(message.type == 'success'){
+					let alert = this.alertCtrl.create({
+	                    title: 'Success',
+	                    subTitle: message.text,
+	                    buttons: [ 'OK' ]
+	                });
+	                alert.present();
+				}
+			}
         }); 
     }
 }

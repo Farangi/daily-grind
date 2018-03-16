@@ -1,20 +1,19 @@
 page-signup {
 
- .col {
- 	padding-top: 0px;
- 	padding-bottom: 0px;
- }
+ 	.scroll-content{
+	    background: url("../assets/imgs/bg.png") no-repeat center center fixed; 
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    background-size: cover;
+ 	}
 
- [col-6]{
- 	padding-top: 0px;
- 	padding-bottom: 0px;
- }
+ 	.grind-item-input.item-md.item-select, .grind-item-input.item-ios.item-select {
+ 		color: rgba(255, 255, 255, 0.9);
+ 	}
 
- .scroll-content{
-    background: url("../assets/imgs/bg.png") no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
- }
+ 	.col, [col-6]{
+	 	padding-top: 0px;
+	 	padding-bottom: 0px;
+ 	}
 
 }

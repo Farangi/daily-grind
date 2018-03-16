@@ -1,0 +1,23 @@
+page-intro {
+
+  ion-slide {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  ion-slide img {
+    height: 100vh !important;
+    width: auto !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: color($colors, primary) !important;
+  }
+
+  .slider-skip-button {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+}

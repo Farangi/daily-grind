@@ -1,17 +1,61 @@
 <ion-header>
 
   	<ion-navbar>
-	  	<ion-buttons start>
-	        <button ion-button menuToggle>
+	    <ion-buttons start>
+	        <button ion-button color="dark" menuToggle>
 	      		<ion-icon name="menu"></ion-icon>
 	    	</button>
 	    </ion-buttons>
-	    <ion-title>orderhistory</ion-title>
+	    <ion-title>Order History</ion-title>
   	</ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-This is order history tab.
+	<ion-list>
+		<ion-item detail-none no-lines class="bottom-border" *ngFor="let order of orders">
+		  	<ion-row>
+		 		<ion-col col-4 class="centered-col">
+		            <ion-avatar class="grind-avatar">
+		               <img src="../assets/imgs/food-img.jpg">
+		             </ion-avatar>
+		        </ion-col>  
+		        <ion-col col-8>
+		        	<p class="grind-menu-list-item-p show-inline">Order No : </p>
+		           	<p class="grind-menu-list-item-p bold show-inline">#{{order._id}}</p>
+		           	<p ion-text color="primary" class="bold" *ngIf="order.price">RS {{order.price}}/-</p>
+		        </ion-col>
+		    </ion-row>
+
+		    <ion-item detail-none no-lines>
+                <div item-start>
+                    <button ion-button color="primary" (click)="showDetails(order.items)">Details</button>
+                  </div>
+                <div item-content text-left>
+                	<div *ngIf="order.time">
+	                	<p class="grind-menu-list-item-p show-inline">Date : </p>
+			           	<p class="grind-menu-list-item-p bold show-inline">{{order.time | date:'fullDate'}}</p>
+			           	<br />
+			        </div>
+
+			        <div *ngIf="order.time">
+			           	<p class="grind-menu-list-item-p show-inline">Time : </p>
+			           	<p class="grind-menu-list-item-p bold show-inline">{{order.time | date:'shortTime'}}</p>
+			           	<br />
+			        </div>
+
+		           	<p class="grind-menu-list-item-p show-inline">Payment : </p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{order.payment}}</p>
+		           	<br />
+
+		           	<p class="grind-menu-list-item-p show-inline">Location : </p>
+		           	<p class="grind-menu-list-item-p bold show-inline">{{order.location.name}}</p>
+		           	<br />
+		           	
+                </div>
+	    	</ion-item>
+
+	    </ion-item>
+	</ion-list>
 </ion-content>
