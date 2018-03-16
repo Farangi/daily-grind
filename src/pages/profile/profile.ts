@@ -1,7 +1,7 @@
 import { AuthenticationService, UserService, AlertService } from "../../_services";
 import { OnInit } from "@angular/core";
 import { Component } from '@angular/core';
-import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -11,50 +11,64 @@ import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ProfilePage implements OnInit {
 
 	user: any = {};
+  loader: any;
 
-  	constructor(
-  				public navCtrl: NavController, 
-  				public navParams: NavParams,
-  				private app: App,
-  				private authenticationService: AuthenticationService,
-				private userService: UserService,
-				private alertService: AlertService) {
-//  		this.user = {
-//  						firstName:'Hassan', lastName: 'Jalil', email:'abx@gmail.com', 
-//  					 	username:'Hassan', password: '12345678', cellPhone:'03124374837',
-//  					 	university:'Bahria University Islamabad', enrollmentNumber: '01-674535-54', 
-//  					 	discipline:'Management Sciences'
-//  					};
-  	}
+  constructor(
+  	public navCtrl: NavController, 
+  	public navParams: NavParams,
+    public loadingCtrl: LoadingController,
+    private app: App,
+  	private authenticationService: AuthenticationService,
+		private userService: UserService,
+		private alertService: AlertService) {
+  }
 	  
 	ngOnInit() {
+    this.presentLoading();
+
 		let userId = JSON.parse(localStorage.getItem('currentUser'))._id;
 		this.userService.getById(userId).subscribe(user => {
 			this.user = user;
+      this.loader.dismiss();
 		},error => {
+      this.loader.dismiss();
 			this.alertService.error(error);
 		});
 	}
 
-  	update() {
-  		var updatedUser:any = {};
-  		updatedUser._id = JSON.parse(localStorage.getItem('currentUser'))._id;
-  		updatedUser.username = this.user.username;
-  		updatedUser.password = this.user.password;
-  		updatedUser.cellPhone = this.user.cellPhone;
+  update() {
+    this.presentLoading();
+
+  	var updatedUser:any = {};
+  	updatedUser._id = JSON.parse(localStorage.getItem('currentUser'))._id;
+  	updatedUser.username = this.user.username;
+  	updatedUser.password = this.user.password;
+  	updatedUser.cellPhone = this.user.cellPhone;
 		
 		this.userService.update(updatedUser).subscribe(data => {
+      this.loader.dismiss();
 			this.alertService.success('Successfully Updated.')
 		}, error => {
+      this.loader.dismiss();
 			this.alertService.error(error);
 		});
 		
   		console.log(updatedUser);
-  	}
+  }
 
-  	logOut() {
-    	this.authenticationService.logout();
-    	this.app.getRootNav().setRoot("LoginPage");
-  	}
+  presentLoading() {
+ 
+    this.loader = this.loadingCtrl.create({
+      content: "Loading..."
+    });
+ 
+    this.loader.present();
+ 
+  }
+
+  logOut() {
+    this.authenticationService.logout();
+    this.app.getRootNav().setRoot("LoginPage");
+  }
 
 }

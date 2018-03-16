@@ -1,6 +1,6 @@
-import { OrderService } from "../../_services";
+import { AlertService, OrderService } from "../../_services";
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component( {
@@ -10,19 +10,39 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 export class OrderhistoryPage {
 
 	orders: any = [];
+	loader: any;
 
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
+		public loadingCtrl: LoadingController,
 		public modalCtrl: ModalController,
-		public orderService: OrderService ) {
+		public orderService: OrderService,
+		private alertService: AlertService ) {
+	}
+
+	ionViewWillEnter() {
+		this.presentLoading();
+
 		let userId = JSON.parse( localStorage.getItem( 'currentUser' ) )._id;
 		this.orderService.getAll( userId ).subscribe( data => {
 			this.orders = this.prepareItems(data);
-		}, err => { 
-			console.log(err);
-		} )
+			this.loader.dismiss();
+		}, error => { 
+			this.loader.dismiss();
+			this.alertService.error(error);
+		});
 	}
+
+	presentLoading() {
+ 
+        this.loader = this.loadingCtrl.create({
+          content: "Loading..."
+        });
+     
+        this.loader.present();
+     
+    }
 
 	private prepareItems(orders){
     	orders.map((order) => {

@@ -25938,6 +25938,27 @@ page-forgotpassword .scroll-content {
   background-size: cover;
 }
 
+page-intro ion-slide {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+page-intro ion-slide img {
+  height: 100vh !important;
+  width: auto !important;
+}
+
+page-intro .swiper-pagination-bullet-active {
+  background: #f02222 !important;
+}
+
+page-intro .slider-skip-button {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
 page-location ion-header .toolbar-background {
   background: url("../assets/imgs/red-bg.png") no-repeat;
 }
@@ -26129,153 +26150,6 @@ page-menu .collapse-icon {
 }
 
 page-menu [col-1], page-menu [col-2], page-menu [col-3], page-menu [col-4], page-menu [col-5], page-menu [col-6], page-menu [col-7], page-menu [col-8], page-menu [col-9], page-menu [col-10], page-menu [col-11], page-menu [col-12] {
-  padding: 0px;
-}
-
-page-menuall .item-ios, page-menuall .item-md {
-  padding-left: 0px;
-}
-
-page-menuall .item-ios.item-block .item-inner, page-menuall .item-md.item-block .item-inner {
-  padding-right: 0px;
-}
-
-page-menuall .label-ios, page-menuall .label-md {
-  margin: 10px 0px 10px 0px;
-}
-
-page-menuall .collapse-content {
-  padding: 0px 20px 10px 20px;
-  border-top: 1px solid #dedede;
-}
-
-page-menuall .quantity-control {
-  font-size: 1.4em;
-  margin: 0px 5px 0px 5px;
-}
-
-page-menuall .quantity-text {
-  font-size: 1.1em;
-}
-
-page-menuall .toolbar-ios, page-menuall .toolbar-md {
-  padding: 0px;
-  padding-left: 0px;
-}
-
-page-menuall .grind-block-btn {
-  margin: 0px;
-  border-radius: 0px;
-}
-
-page-menuall .selected {
-  background-color: #f7f7f7 !important;
-  border-left: 5px solid #f02222 !important;
-}
-
-page-menuall .selected-inner {
-  background-color: #f7f7f7 !important;
-}
-
-page-menuall [col-1], page-menuall [col-2], page-menuall [col-3], page-menuall [col-4], page-menuall [col-5], page-menuall [col-6], page-menuall [col-7], page-menuall [col-8], page-menuall [col-9], page-menuall [col-10], page-menuall [col-11], page-menuall [col-12] {
-  padding: 0px;
-}
-
-page-menusnacks .item-ios, page-menusnacks .item-md {
-  padding-left: 0px;
-}
-
-page-menusnacks .item-ios.item-block .item-inner, page-menusnacks .item-md.item-block .item-inner {
-  padding-right: 0px;
-}
-
-page-menusnacks .label-ios, page-menusnacks .label-md {
-  margin: 10px 0px 10px 0px;
-}
-
-page-menusnacks .collapse-content {
-  padding: 0px 20px 10px 20px;
-  border-top: 1px solid #dedede;
-}
-
-page-menusnacks .quantity-control {
-  font-size: 1.4em;
-  margin: 0px 5px 0px 5px;
-}
-
-page-menusnacks .quantity-text {
-  font-size: 1.1em;
-}
-
-page-menusnacks .toolbar-ios, page-menusnacks .toolbar-md {
-  padding: 0px;
-  padding-left: 0px;
-}
-
-page-menusnacks .grind-block-btn {
-  margin: 0px;
-  border-radius: 0px;
-}
-
-page-menusnacks .selected {
-  background-color: #f7f7f7 !important;
-  border-left: 5px solid #f02222 !important;
-}
-
-page-menusnacks .selected-inner {
-  background-color: #f7f7f7 !important;
-}
-
-page-menusnacks [col-1], page-menusnacks [col-2], page-menusnacks [col-3], page-menusnacks [col-4], page-menusnacks [col-5], page-menusnacks [col-6], page-menusnacks [col-7], page-menusnacks [col-8], page-menusnacks [col-9], page-menusnacks [col-10], page-menusnacks [col-11], page-menusnacks [col-12] {
-  padding: 0px;
-}
-
-page-menuwanted .item-ios, page-menuwanted .item-md {
-  padding-left: 0px;
-}
-
-page-menuwanted .item-ios.item-block .item-inner, page-menuwanted .item-md.item-block .item-inner {
-  padding-right: 0px;
-}
-
-page-menuwanted .label-ios, page-menuwanted .label-md {
-  margin: 10px 0px 10px 0px;
-}
-
-page-menuwanted .collapse-content {
-  padding: 0px 20px 10px 20px;
-  border-top: 1px solid #dedede;
-}
-
-page-menuwanted .quantity-control {
-  font-size: 1.4em;
-  margin: 0px 5px 0px 5px;
-}
-
-page-menuwanted .quantity-text {
-  font-size: 1.1em;
-}
-
-page-menuwanted .toolbar-ios, page-menuwanted .toolbar-md {
-  padding: 0px;
-  padding-left: 0px;
-}
-
-page-menuwanted .grind-block-btn {
-  margin: 0px;
-  border-radius: 0px;
-}
-
-page-menuwanted .selected {
-  background-color: #f7f7f7 !important;
-  border-left: 5px solid #f02222 !important;
-}
-
-page-menuwanted .selected-inner {
-  background-color: #f7f7f7 !important;
-}
-
-page-menuwanted [col-1], page-menuwanted [col-2], page-menuwanted [col-3], page-menuwanted [col-4], page-menuwanted [col-5], page-menuwanted [col-6], page-menuwanted [col-7], page-menuwanted [col-8], page-menuwanted [col-9], page-menuwanted [col-10], page-menuwanted [col-11], page-menuwanted [col-12] {
   padding: 0px;
 }
 

@@ -1,6 +1,6 @@
 import { AlertService, OrderService } from "../../_services";
 import { Component } from '@angular/core';
-import { App, IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, LoadingController, AlertController, ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component( {
@@ -13,10 +13,12 @@ export class OrderpreviewPage {
 	order: any = {};
 	totalPrice: number = 0;
 	selectedLocation: any;
+	loader: any;
 
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
+		public loadingCtrl: LoadingController,
 		private app: App,
 		private alertCtrl: AlertController,
 		public modalCtrl: ModalController,
@@ -26,8 +28,22 @@ export class OrderpreviewPage {
 	}
 
 	ionViewWillEnter() {
+		this.presentLoading();
+
 		this.order = this.navParams.data.order;
 		this.prepareItems();
+
+		this.loader.dismiss();
+	}
+
+	presentLoading() {
+ 
+	    this.loader = this.loadingCtrl.create({
+	      content: "Loading..."
+	    });
+	 
+	    this.loader.present();
+	 
 	}
 
 	prepareItems() {
@@ -152,9 +168,14 @@ export class OrderpreviewPage {
     }
 
 	placeOrder() {
-		this.orderService.create(this.getPreparedOrder()).subscribe((data) => {
+		this.presentLoading();
+		let preparedOrder = this.getPreparedOrder();
+
+		this.orderService.create(preparedOrder).subscribe((data) => {
+			this.loader.dismiss();
 			this.app.getRootNav().setRoot("OrdertimerPage", data);
 		}, error => {
+			this.loader.dismiss();
 			this.alertService.error(error);
 		});
 	}

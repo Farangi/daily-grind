@@ -64,6 +64,10 @@ export class SidemenuPage {
     return;
   }
 
+  gotoIntro() {
+    this.navCtrl.setRoot("IntroPage");
+  }
+
   logOut() {
     this.authenticationService.logout();
     this.navCtrl.setRoot("LoginPage");

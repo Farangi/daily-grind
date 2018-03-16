@@ -1,7 +1,7 @@
+import { OrderService, LocationService, AlertService } from "../../_services";
 import { OnInit } from "@angular/core";
 import { Component } from '@angular/core';
-import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
-import { OrderService, LocationService, AlertService } from "../../_services";
+import { App, IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -17,6 +17,7 @@ export class LocationPage implements OnInit {
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
+		public loadingCtrl: LoadingController,
 		private app: App,
 		private orderService: OrderService,
 		private locationService: LocationService,
@@ -29,14 +30,30 @@ export class LocationPage implements OnInit {
 		
 	}
 	
-	ngOnInit () {
+	ionViewWillEnter () {
+		this.presentLoading();
+
 		let order = this.navParams.data.order;
 		if(order) {
 			order.userId = JSON.parse( localStorage.getItem( 'currentUser' ) )._id;
 			this.orderService.checkBalanceAvailability( order ).subscribe(( data ) => {
 				this.enableLocations = data;
-			} );
+				this.loader.dismiss();
+			}, error=>{
+	         	this.loader.dismiss();
+	         	this.alertService.error(error);
+	       });
 		}
+	}
+
+	presentLoading() {
+ 
+	    this.loader = this.loadingCtrl.create({
+	      content: "Loading..."
+	    });
+	 
+	    this.loader.present();
+	 
 	}
 
 	isEmpty(obj) {

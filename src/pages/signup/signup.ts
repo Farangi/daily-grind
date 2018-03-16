@@ -1,7 +1,7 @@
 import { UserService, AuthenticationService, AlertService } from "../../_services";
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ActionSheetController, ToastController, Platform, Loading } from 'ionic-angular';
 
 import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
@@ -25,10 +25,12 @@ export class SignupPage
     isAdmin: boolean = false;
     loading: Loading;
     authForm: FormGroup;
+    loader: any;
 
     constructor (
         public navCtrl: NavController,
         public navParams: NavParams,
+        public loadingCtrl: LoadingController,
         public formBuilder: FormBuilder,
         private camera: Camera,
         private transfer: Transfer,
@@ -37,7 +39,6 @@ export class SignupPage
         public actionSheetCtrl: ActionSheetController,
         public toastCtrl: ToastController,
         public platform: Platform,
-        public loadingCtrl: LoadingController,
         private userService: UserService,
         private authenticationService: AuthenticationService,
         private alertService: AlertService   ) {
@@ -203,23 +204,37 @@ export class SignupPage
     }
 
     submitForm (value: any) 
-    {  
+    {   
+        this.presentLoading();
         if(this.authForm.valid) {
             this.userService.create(value).subscribe(
                 data=>{
                 this.authenticationService.login(value.username, value.password)
                     .subscribe(
                     data=>{
+                        this.loader.dismiss();
                         this.navCtrl.setRoot( "SidemenuPage" );
                     },
                     error=>{
+                        this.loader.dismiss();
                         this.alertService.error(error);
                     });
             },
             error=>{
+                this.loader.dismiss();
                 this.alertService.error(error);
             });
         }
+    }
+
+    presentLoading() {
+ 
+        this.loader = this.loadingCtrl.create({
+          content: "Signing Up..."
+        });
+     
+        this.loader.present();
+     
     }
 
     showLogin () 
